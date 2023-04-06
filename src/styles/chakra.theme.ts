@@ -48,7 +48,7 @@ export const theme = extendTheme({
   styles: {
     global: {
       "html, body": {
-        lineheight: "inter",
+        fontFamily: "inter",
         height: "100vh",
       },
       button: {
