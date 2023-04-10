@@ -1,5 +1,13 @@
+import { ToastContainer } from "react-toastify";
+import Routed from "./routes";
+
 const App = () => {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      <ToastContainer />
+      <Routed />
+    </>
+  );
 };
 
 export default App;
