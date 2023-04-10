@@ -12,11 +12,11 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { ImMenu } from "react-icons/im";
 
 const Header = () => {
-  let test = false;
   let location = useLocation();
   return (
     <Card width={"100vw"}>
@@ -26,7 +26,7 @@ const Header = () => {
         justifyContent={"space-between"}
       >
         <Image src={motorsShop} alt="logo" />
-        {test ? (
+        {location.pathname === "/login" ? (
           <Menu>
             <MenuButton
               as={IconButton}
