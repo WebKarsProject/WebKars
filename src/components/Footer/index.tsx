@@ -7,15 +7,16 @@ const Footer = () => {
     <Card width={"100vw"} backgroundColor={"black"}>
       <CardFooter
         display={"flex"}
-        flexDirection={"row"}
+        flexDirection={"column"}
         justifyContent={"space-between"}
         alignItems={"center"}
+        gap={"1rem"}
       >
         <Image src={motorsShop} alt="logo" width={"100px"} height={"30px"} />
         <Text fontSize="sm" noOfLines={1} color="grey">
           © 2023 - Todos os direitos reservados.
         </Text>
-        <Button backgroundColor={"grey"}>
+        <Button backgroundColor={"gray.400"}>
           <SlArrowUp />
         </Button>
       </CardFooter>
