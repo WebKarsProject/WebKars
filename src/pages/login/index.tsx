@@ -1,5 +1,11 @@
+import Header from "../../components/Header";
+
 const Login = () => {
-  return <></>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default Login;
