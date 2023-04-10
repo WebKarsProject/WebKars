@@ -10,7 +10,7 @@ const Footer = () => {
         flexDirection={"column"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        gap={"1rem"}
+        gap={"0.5rem"}
       >
         <Image src={motorsShop} alt="logo" width={"100px"} height={"30px"} />
         <Text fontSize="sm" noOfLines={1} color="grey">
