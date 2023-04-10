@@ -3,7 +3,6 @@ import {
   Card,
   CardBody,
   FormControl,
-  FormHelperText,
   FormLabel,
   Heading,
   Input,
@@ -20,6 +19,7 @@ const Login = () => {
         display={"flex"}
         flexDirection={"column"}
         alignItems={"center"}
+        justifyContent={"center"}
         backgroundColor={"gray.50"}
       >
         <FormControl
