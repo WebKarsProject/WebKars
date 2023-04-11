@@ -20,7 +20,7 @@ const Footer = () => {
         alignItems={"center"}
         gap={"0.5rem"}
       >
-        <Image src={motorsShop} alt="logo" width={"100px"} height={"30px"} />
+        <Image src={motorsShop} alt="logo" />
         <Text fontSize="sm" noOfLines={1} color="grey">
           © 2023 - Todos os direitos reservados.
         </Text>
