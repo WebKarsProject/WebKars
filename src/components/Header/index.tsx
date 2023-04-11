@@ -38,11 +38,20 @@ const Header = () => {
               variant="outline"
             />
             <MenuList>
-              {location.pathname === "/" ? (
-                <MenuItem>Cadastrar</MenuItem>
-              ) : (
-                <MenuItem>Fazer Login</MenuItem>
-              )}
+              <MenuItem>
+                <Link
+                  color={"brand.brand1"}
+                  href="/"
+                  _hover={{ textDecoration: "none" }}
+                >
+                  Fazer Login
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link _hover={{ textDecoration: "none" }} href="/register">
+                  Cadastrar
+                </Link>
+              </MenuItem>
             </MenuList>
           </Menu>
         ) : (
@@ -55,25 +64,22 @@ const Header = () => {
             borderColor={"grey_scale.grey6"}
             padding={"1rem"}
           >
-            {location.pathname === "/" ? (
-              <Link
-                border={"1px"}
-                borderRadius={"6px"}
-                padding={".5rem"}
-                _hover={{ textDecoration: "none" }}
-                href="/register"
-              >
-                Cadastrar
-              </Link>
-            ) : (
-              <Link
-                color={"brand.brand1"}
-                href="/"
-                _hover={{ textDecoration: "none" }}
-              >
-                Fazer Login
-              </Link>
-            )}
+            <Link
+              color={"brand.brand1"}
+              href="/"
+              _hover={{ textDecoration: "none" }}
+            >
+              Fazer Login
+            </Link>
+            <Link
+              border={"1px"}
+              borderRadius={"6px"}
+              padding={".5rem"}
+              _hover={{ textDecoration: "none" }}
+              href="/register"
+            >
+              Cadastrar
+            </Link>
           </Box>
         )}
       </CardHeader>
