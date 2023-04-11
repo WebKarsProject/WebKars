@@ -17,6 +17,7 @@ import {
 import { ImMenu } from "react-icons/im";
 
 const Header = () => {
+  console.log("oi");
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   let location = useLocation();
   return (
