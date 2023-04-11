@@ -34,6 +34,7 @@ const Login = () => {
         alignItems={"center"}
         justifyContent={"center"}
         backgroundColor={"grey_scale.grey8"}
+        height={"100vh"}
       >
         <FormControl
           display="flex"
