@@ -17,6 +17,7 @@ import {
 import { ImMenu } from "react-icons/im";
 
 const Header = () => {
+  const [isLarger] = useMediaQuery("(max-width: 500px)");
   let location = useLocation();
   return (
     <Card width={"100vw"}>
@@ -24,9 +25,11 @@ const Header = () => {
         display={"flex"}
         flexDirection={"row"}
         justifyContent={"space-between"}
+        alignItems={"center"}
+        height={"80px"}
       >
         <Image src={motorsShop} alt="logo" />
-        {location.pathname === "/login" ? (
+        {isLarger ? (
           <Menu>
             <MenuButton
               as={IconButton}
