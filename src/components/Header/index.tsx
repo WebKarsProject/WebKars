@@ -43,13 +43,23 @@ const Header = () => {
             </MenuList>
           </Menu>
         ) : (
-          <Box display={"flex"} flexDirection={"row"} gap={"1rem"}>
-            <Link>Fazer Login</Link>
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            gap={"1rem"}
+            alignItems={"center"}
+            borderLeft={"1px"}
+            borderColor={"grey_scale.grey6"}
+            padding={"1rem"}
+          >
+            <Link color={"brand.brand1"} _hover={{ textDecoration: "none" }}>
+              Fazer Login
+            </Link>
             <Link
               border={"1px"}
               borderRadius={"6px"}
-              paddingLeft={"0.5rem"}
-              paddingRight={"0.5rem"}
+              padding={".5rem"}
+              _hover={{ textDecoration: "none" }}
             >
               Cadastrar
             </Link>
