@@ -20,27 +20,33 @@ const Login = () => {
         flexDirection={"column"}
         alignItems={"center"}
         justifyContent={"center"}
-        backgroundColor={"gray.50"}
+        backgroundColor={"grey_scale.grey8"}
       >
         <FormControl
           display="flex"
           flexDirection={"column"}
           gap={"0.3rem"}
-          width={"300px"}
+          width={"98%"}
+          maxWidth={"500px"}
           borderRadius={"15px"}
-          padding={"1rem"}
+          padding={"2rem"}
           backgroundColor={"white"}
+          height={"max-content"}
         >
-          <Heading>Login</Heading>
-          <FormLabel>Usuario</FormLabel>
+          <Heading fontSize={"1.5rem"}>Login</Heading>
+          <FormLabel fontSize={"1rem"}>Usuario</FormLabel>
           <Input type="email" placeholder="Digitar usuário" />
-          <FormLabel>Senha</FormLabel>
+          <FormLabel fontSize={"1rem"}>Senha</FormLabel>
           <Input type="password" placeholder="Digitar senha" />
-          <Text textAlign={"end"}>esqueci minha senaha</Text>
+          <Text textAlign={"end"} fontSize={"1rem"}>
+            esqueci minha senaha
+          </Text>
           <Button backgroundColor={"blue"} color={"white"}>
             Entrar
           </Button>
-          <Text textAlign={"center"}>Ainda não possui conta?</Text>
+          <Text textAlign={"center"} fontSize={"1rem"}>
+            Ainda não possui conta?
+          </Text>
           <Button backgroundColor={"white"} border={"1px"}>
             Cadastrar
           </Button>
