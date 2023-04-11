@@ -12,12 +12,15 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Text,
   useMediaQuery,
 } from "@chakra-ui/react";
 import { ImMenu } from "react-icons/im";
+import { useState } from "react";
 
 const Header = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
+  const [close, setClose] = useState(true);
   let location = useLocation();
   return (
     <Card width={"100vw"}>
@@ -32,9 +35,12 @@ const Header = () => {
         {isLarger ? (
           <Menu>
             <MenuButton
+              onClick={() => (close ? setClose(false) : setClose(true))}
               as={IconButton}
               aria-label="Options"
-              icon={<ImMenu />}
+              icon={
+                close ? <ImMenu /> : <Text fontFamily={"sans-serif"}>X</Text>
+              }
               variant="outline"
             />
             <MenuList>
