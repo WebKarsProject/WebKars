@@ -1,7 +1,7 @@
-import { Box, Container, Flex, Heading, Stack, Text } from '@chakra-ui/layout';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
-import { Button } from '@chakra-ui/button';
+import { Box, Container, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import { Button } from "@chakra-ui/button";
 import {
   FormControl,
   FormLabel,
@@ -17,14 +17,15 @@ import {
   useDisclosure,
   useMediaQuery,
   useTheme,
-} from '@chakra-ui/react';
-import { transparentize } from '@chakra-ui/theme-tools';
-import photo_home from '../../assets/Photo_homepage.png';
-import React from 'react';
+} from "@chakra-ui/react";
+import { transparentize } from "@chakra-ui/theme-tools";
+import photo_home from "../../assets/Photo_homepage.png";
+import React from "react";
+import ProductCard from "../../components/ProductCard";
 
 const Homepage = () => {
   const theme = useTheme();
-  const [isLarger] = useMediaQuery('(min-width: 650px)');
+  const [isLarger] = useMediaQuery("(min-width: 650px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -34,11 +35,7 @@ const Homepage = () => {
       <Header />
       {isLarger ? (
         <Box>
-          <Box
-            width={'100%'}
-            maxWidth={'none'}
-            height={'450px'}
-          >
+          <Box width={"100%"} maxWidth={"none"} height={"450px"}>
             <Flex
               position="relative"
               alignItems="center"
@@ -67,22 +64,22 @@ const Homepage = () => {
                   right="0"
                   bottom="0"
                   background={`linear-gradient(180deg, ${transparentize(
-                    'white',
+                    "white",
                     0.7
-                  )(theme)} 0%, ${transparentize('black', 0.8)(theme)} 40%)`}
+                  )(theme)} 0%, ${transparentize("black", 0.8)(theme)} 40%)`}
                   zIndex="1"
                 >
                   <Box
                     position="absolute"
-                    top={'50%'}
-                    left={'50%'}
-                    transform={'translate(-50%, -50%)'}
-                    color={'white'}
-                    textAlign={'center'}
-                    zIndex={'2'}
+                    top={"50%"}
+                    left={"50%"}
+                    transform={"translate(-50%, -50%)"}
+                    color={"white"}
+                    textAlign={"center"}
+                    zIndex={"2"}
                   >
-                    <Heading fontSize={'48px'}>Motor Shop</Heading>
-                    <Text fontSize={'25px'}>
+                    <Heading fontSize={"48px"}>Motor Shop</Heading>
+                    <Text fontSize={"25px"}>
                       A melhor plataforma de anúncios de carros do país
                     </Text>
                   </Box>
@@ -90,38 +87,23 @@ const Homepage = () => {
               </Flex>
             </Flex>
           </Box>
-          <Box
-            maxWidth={'none'}
-            display={'flex'}
-            gap={'30px'}
-            padding={'30px'}
-          >
-            <Flex width={'100%'}>
+          <Box maxWidth={"none"} display={"flex"} gap={"30px"} padding={"30px"}>
+            <Flex width={"100%"}>
               <Flex
-                width={'40%'}
-                maxWidth={'400px'}
-                height={'100%'}
-                display={'flex'}
-                flexDirection={'column'}
-                fontFamily={'Lexend'}
+                width={"40%"}
+                maxWidth={"400px"}
+                height={"100%"}
+                display={"flex"}
+                flexDirection={"column"}
+                fontFamily={"Lexend"}
               >
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
                       Marca
                     </Heading>
                   </Stack>
-                  <Stack
-                    padding={'10px'}
-                    color={'#868E96'}
-                    fontSize={'16px'}
-                  >
+                  <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
                     <Text>General Motors</Text>
                     <Text>Fiat</Text>
                     <Text>Ford</Text>
@@ -131,24 +113,14 @@ const Homepage = () => {
                   </Stack>
                 </Flex>
 
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
-                      {' '}
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
+                      {" "}
                       Modelo
                     </Heading>
                   </Stack>
-                  <Stack
-                    padding={'10px'}
-                    color={'#868E96'}
-                    fontSize={'16px'}
-                  >
+                  <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
                     <Text>General Motors</Text>
                     <Text>Fiat</Text>
                     <Text>Ford</Text>
@@ -157,24 +129,14 @@ const Homepage = () => {
                     <Text>Volswagen</Text>
                   </Stack>
                 </Flex>
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
-                      {' '}
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
+                      {" "}
                       Cor
                     </Heading>
                   </Stack>
-                  <Stack
-                    padding={'10px'}
-                    color={'#868E96'}
-                    fontSize={'16px'}
-                  >
+                  <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
                     <Text>General Motors</Text>
                     <Text>Fiat</Text>
                     <Text>Ford</Text>
@@ -183,24 +145,14 @@ const Homepage = () => {
                     <Text>Volswagen</Text>
                   </Stack>
                 </Flex>
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
-                      {' '}
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
+                      {" "}
                       Ano
                     </Heading>
                   </Stack>
-                  <Stack
-                    padding={'10px'}
-                    color={'#868E96'}
-                    fontSize={'16px'}
-                  >
+                  <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
                     <Text>General Motors</Text>
                     <Text>Fiat</Text>
                     <Text>Ford</Text>
@@ -210,24 +162,14 @@ const Homepage = () => {
                   </Stack>
                 </Flex>
 
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
-                      {' '}
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
+                      {" "}
                       Combustível
                     </Heading>
                   </Stack>
-                  <Stack
-                    padding={'10px'}
-                    color={'#868E96'}
-                    fontSize={'16px'}
-                  >
+                  <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
                     <Text>General Motors</Text>
                     <Text>Fiat</Text>
                     <Text>Ford</Text>
@@ -237,97 +179,78 @@ const Homepage = () => {
                   </Stack>
                 </Flex>
 
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
-                      {' '}
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
+                      {" "}
                       Km
                     </Heading>
                   </Stack>
                   <Flex
-                    display={'flex'}
-                    flexDirection={'row'}
-                    alignItems={'center'}
-                    gap={'20px'}
-                    padding={'20px'}
+                    display={"flex"}
+                    flexDirection={"row"}
+                    alignItems={"center"}
+                    gap={"20px"}
+                    padding={"20px"}
                   >
-                    <Input
-                      bg={'#CED4DA'}
-                      placeholder={'Mínimo'}
-                    />
-                    <Input
-                      bg={'#CED4DA'}
-                      placeholder={'Máximo'}
-                    />
+                    <Input bg={"#CED4DA"} placeholder={"Mínimo"} />
+                    <Input bg={"#CED4DA"} placeholder={"Máximo"} />
                   </Flex>
                 </Flex>
-                <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                >
+                <Flex display={"flex"} flexDirection={"column"}>
                   <Stack>
-                    <Heading
-                      fontWeight={'bold'}
-                      fontSize={'28px'}
-                    >
-                      {' '}
+                    <Heading fontWeight={"bold"} fontSize={"28px"}>
+                      {" "}
                       Preço
                     </Heading>
                   </Stack>
                   <Flex
-                    display={'flex'}
-                    flexDirection={'row'}
-                    alignItems={'center'}
-                    gap={'20px'}
-                    padding={'20px'}
+                    display={"flex"}
+                    flexDirection={"row"}
+                    alignItems={"center"}
+                    gap={"20px"}
+                    padding={"20px"}
                   >
-                    <Input
-                      bg={'#CED4DA'}
-                      placeholder={'Mínimo'}
-                    />
-                    <Input
-                      bg={'#CED4DA'}
-                      placeholder={'Máximo'}
-                    />
+                    <Input bg={"#CED4DA"} placeholder={"Mínimo"} />
+                    <Input bg={"#CED4DA"} placeholder={"Máximo"} />
                   </Flex>
                 </Flex>
               </Flex>
               <Flex
-                height={'100%'}
-                width={'70%'}
-                maxWidth={'1300px'}
-                bg={''}
-                flexDirection={'column'}
+                height={"100%"}
+                width={"70%"}
+                maxWidth={"1300px"}
+                bg={""}
+                flexDirection={"column"}
               >
-                {' '}
-                <Box height={'80%'}>
-                  <Text> Product Cards</Text>
+                {" "}
+                <Box
+                  height={"80%"}
+                  display={"flex"}
+                  gap={"1rem"}
+                  flexWrap={"wrap"}
+                >
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
                 </Box>
                 <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                  gap={'10px'}
-                  alignItems={'center'}
+                  display={"flex"}
+                  flexDirection={"column"}
+                  gap={"10px"}
+                  alignItems={"center"}
                 >
-                  <Flex
-                    gap={'5px'}
-                    fontWeight={'bold'}
-                  >
-                    <Text color={'#868E96.200'}> 1 </Text>
-                    <Text color={'#868E96'}> de 2</Text>
+                  <Flex gap={"5px"} fontWeight={"bold"}>
+                    <Text color={"#868E96.200"}> 1 </Text>
+                    <Text color={"#868E96"}> de 2</Text>
                   </Flex>
-                  <Text
-                    color={'#5126EA'}
-                    fontWeight={'bold'}
-                  >
-                    {' '}
-                    Seguinte{' '}
+                  <Text color={"#5126EA"} fontWeight={"bold"}>
+                    {" "}
+                    Seguinte{" "}
                   </Text>
                 </Flex>
               </Flex>
@@ -336,12 +259,8 @@ const Homepage = () => {
         </Box>
       ) : (
         <Box>
-          <Flex flexDirection={'column'}>
-            <Box
-              width={'100%'}
-              maxWidth={'none'}
-              height={'450px'}
-            >
+          <Flex flexDirection={"column"}>
+            <Box width={"100%"} maxWidth={"none"} height={"450px"}>
               <Flex
                 position="relative"
                 alignItems="center"
@@ -370,22 +289,22 @@ const Homepage = () => {
                     right="0"
                     bottom="0"
                     background={`linear-gradient(180deg, ${transparentize(
-                      'white',
+                      "white",
                       0.7
-                    )(theme)} 0%, ${transparentize('black', 0.8)(theme)} 30%)`}
+                    )(theme)} 0%, ${transparentize("black", 0.8)(theme)} 30%)`}
                     zIndex="1"
                   >
                     <Box
                       position="absolute"
-                      top={'30%'}
-                      left={'50%'}
-                      transform={'translate(-50%, -50%)'}
-                      color={'white'}
-                      textAlign={'center'}
-                      zIndex={'2'}
+                      top={"30%"}
+                      left={"50%"}
+                      transform={"translate(-50%, -50%)"}
+                      color={"white"}
+                      textAlign={"center"}
+                      zIndex={"2"}
                     >
-                      <Heading fontSize={'36px'}>Motor Shop</Heading>
-                      <Text fontSize={'20px'}>
+                      <Heading fontSize={"36px"}>Motor Shop</Heading>
+                      <Text fontSize={"20px"}>
                         A melhor plataforma de anúncios de carros do país
                       </Text>
                     </Box>
@@ -393,55 +312,43 @@ const Homepage = () => {
                 </Flex>
               </Flex>
             </Box>
-            <Box
-              height={'400px'}
-              width={'100%'}
-            >
-              {' '}
+            <Box height={"400px"} width={"100%"}>
+              {" "}
             </Box>
           </Flex>
-          <Box
-            display={'flex'}
-            flexDirection={'column'}
-          >
-            <Flex flexDirection={'column'}>
+          <Box display={"flex"} flexDirection={"column"}>
+            <Flex flexDirection={"column"}>
               <Box
-                display={'flex'}
-                flexDirection={'column'}
-                alignItems={'center'}
-                marginBottom={'20px'}
-                gap={'10px'}
+                display={"flex"}
+                flexDirection={"column"}
+                alignItems={"center"}
+                marginBottom={"20px"}
+                gap={"10px"}
               >
                 <Button
-                  bg={'#5126EA'}
-                  border={'1.5px solid #5126EA'}
-                  borderRadius={'4px'}
-                  color={'white'}
+                  bg={"#5126EA"}
+                  border={"1.5px solid #5126EA"}
+                  borderRadius={"4px"}
+                  color={"white"}
                   onClick={onOpen}
-                  width={'60%'}
+                  width={"60%"}
                 >
                   Filtros
                 </Button>
                 <Flex
-                  display={'flex'}
-                  flexDirection={'column'}
-                  gap={'10px'}
-                  alignItems={'center'}
+                  display={"flex"}
+                  flexDirection={"column"}
+                  gap={"10px"}
+                  alignItems={"center"}
                 >
-                  <Flex
-                    gap={'5px'}
-                    fontWeight={'bold'}
-                  >
-                    <Text color={'#868E96.200'}> 1 </Text>
-                    <Text color={'#868E96'}> de 2</Text>
+                  <Flex gap={"5px"} fontWeight={"bold"}>
+                    <Text color={"#868E96.200"}> 1 </Text>
+                    <Text color={"#868E96"}> de 2</Text>
                   </Flex>
 
-                  <Text
-                    color={'#5126EA'}
-                    fontWeight={'bold'}
-                  >
-                    {' '}
-                    Seguinte{' '}
+                  <Text color={"#5126EA"} fontWeight={"bold"}>
+                    {" "}
+                    Seguinte{" "}
                   </Text>
                 </Flex>
               </Box>
@@ -459,16 +366,16 @@ const Homepage = () => {
                 <ModalBody pb={8}>
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Marca
                     </FormLabel>
                     <Stack
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
                     >
                       <Text>General Motors</Text>
                       <Text>Fiat</Text>
@@ -481,16 +388,16 @@ const Homepage = () => {
 
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Modelo
                     </FormLabel>
                     <Stack
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
                     >
                       <Text>Civic</Text>
                       <Text>Corolla</Text>
@@ -503,16 +410,16 @@ const Homepage = () => {
 
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Cor
                     </FormLabel>
                     <Stack
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
                     >
                       <Text>Azul</Text>
                       <Text>Branco</Text>
@@ -525,16 +432,16 @@ const Homepage = () => {
 
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Ano
                     </FormLabel>
                     <Stack
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
                     >
                       <Text>2022</Text>
                       <Text>2021</Text>
@@ -546,16 +453,16 @@ const Homepage = () => {
                   </FormControl>
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Combustível
                     </FormLabel>
                     <Stack
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
                     >
                       <Text>Diesel</Text>
                       <Text>Etanol</Text>
@@ -565,70 +472,55 @@ const Homepage = () => {
                   </FormControl>
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Km
                     </FormLabel>
                     <Flex
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
-                      display={'flex'}
-                      flexDirection={'row'}
-                      alignItems={'center'}
-                      gap={'10px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
+                      display={"flex"}
+                      flexDirection={"row"}
+                      alignItems={"center"}
+                      gap={"10px"}
                     >
-                      <Input
-                        bg={'#CED4DA'}
-                        placeholder={'Mínimo'}
-                      />
-                      <Input
-                        bg={'#CED4DA'}
-                        placeholder={'Máximo'}
-                      />
+                      <Input bg={"#CED4DA"} placeholder={"Mínimo"} />
+                      <Input bg={"#CED4DA"} placeholder={"Máximo"} />
                     </Flex>
                   </FormControl>
                   <FormControl>
                     <FormLabel
-                      fontWeight={'bold'}
-                      fontSize={'20px'}
-                      padding={'5px'}
+                      fontWeight={"bold"}
+                      fontSize={"20px"}
+                      padding={"5px"}
                     >
                       Preço
                     </FormLabel>
                     <Flex
-                      color={'#868E96'}
-                      fontSize={'16px'}
-                      marginLeft={'20px'}
-                      display={'flex'}
-                      flexDirection={'row'}
-                      alignItems={'center'}
-                      gap={'10px'}
+                      color={"#868E96"}
+                      fontSize={"16px"}
+                      marginLeft={"20px"}
+                      display={"flex"}
+                      flexDirection={"row"}
+                      alignItems={"center"}
+                      gap={"10px"}
                     >
-                      <Input
-                        bg={'#CED4DA'}
-                        placeholder={'Mínimo'}
-                      />
-                      <Input
-                        bg={'#CED4DA'}
-                        placeholder={'Máximo'}
-                      />
+                      <Input bg={"#CED4DA"} placeholder={"Mínimo"} />
+                      <Input bg={"#CED4DA"} placeholder={"Máximo"} />
                     </Flex>
                   </FormControl>
                 </ModalBody>
 
-                <ModalFooter
-                  display={'flex'}
-                  justifyContent={'center'}
-                >
+                <ModalFooter display={"flex"} justifyContent={"center"}>
                   <Button
-                    bg={'#5126EA'}
-                    border={'1.5px solid #5126EA'}
-                    borderRadius={'4px'}
+                    bg={"#5126EA"}
+                    border={"1.5px solid #5126EA"}
+                    borderRadius={"4px"}
                     onClick={onClose}
-                    color={'white'}
+                    color={"white"}
                   >
                     Ver anúncios
                   </Button>
