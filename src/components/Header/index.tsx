@@ -1,18 +1,42 @@
-import { useLocation } from 'react-router-dom'
-import motorsShop from '../../assets/Motors shop.png'
-import { Box, Card, CardHeader, Flex, IconButton, Image, Link, Menu, MenuButton, MenuItem, MenuList, useMediaQuery } from '@chakra-ui/react'
-import { ImMenu } from 'react-icons/im'
+import { useLocation } from "react-router-dom";
+import motorsShop from "../../assets/Motors shop.png";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Flex,
+  IconButton,
+  Image,
+  Link,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
+import { ImMenu } from "react-icons/im";
+import { useState } from "react";
 
 const Header = () => {
-  const [isLarger] = useMediaQuery('(max-width: 500px)')
-  let location = useLocation()
+  const [isLarger] = useMediaQuery("(max-width: 500px)");
+  const [close, setClose] = useState(true);
+  let location = useLocation();
   return (
     <Card width={'100vw'}>
       <CardHeader display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} height={'80px'}>
         <Image src={motorsShop} alt="logo" />
         {isLarger ? (
           <Menu>
-            <MenuButton as={IconButton} aria-label="Options" icon={<ImMenu />} variant="outline" />
+            <MenuButton
+              onClick={() => (close ? setClose(false) : setClose(true))}
+              as={IconButton}
+              aria-label="Options"
+              icon={
+                close ? <ImMenu /> : <Text fontFamily={"sans-serif"}>X</Text>
+              }
+              variant="outline"
+            />
             <MenuList>
               <MenuItem>
                 <Link color={'brand.brand1'} href="/" _hover={{ textDecoration: 'none' }}>
