@@ -23,8 +23,14 @@ const Header = () => {
   const [close, setClose] = useState(true);
   let location = useLocation();
   return (
-    <Card width={'100vw'}>
-      <CardHeader display={'flex'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'center'} height={'80px'}>
+    <Card width={"100vw"} borderRadius={"0"}>
+      <CardHeader
+        display={"flex"}
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        height={"80px"}
+      >
         <Image src={motorsShop} alt="logo" />
         {isLarger ? (
           <Menu>
@@ -39,29 +45,45 @@ const Header = () => {
             />
             <MenuList>
               <MenuItem>
-                <Link color={'brand.brand1'} href="/" _hover={{ textDecoration: 'none' }}>
+                <Link
+                  color={"brand.brand1"}
+                  href="/"
+                  _hover={{ textDecoration: "none" }}
+                >
                   Fazer Login
                 </Link>
               </MenuItem>
               <MenuItem>
-                <Link _hover={{ textDecoration: 'none' }} href="/register">
+                <Link _hover={{ textDecoration: "none" }} href="/register">
                   Cadastrar
                 </Link>
               </MenuItem>
             </MenuList>
           </Menu>
         ) : (
-          <Box display={'flex'} flexDirection={'row'} gap={'1rem'} alignItems={'center'} borderLeft={'1px'} borderColor={'grey_scale.grey6'} padding={'1rem'}>
-            <Link variant={'link'} color={'brand.brand1'} href="/">
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            gap={"1rem"}
+            alignItems={"center"}
+            borderLeft={"1px"}
+            borderColor={"grey_scale.grey6"}
+            padding={"1rem"}
+          >
+            <Link variant={"link"} color={"brand.brand1"} href="/">
               Fazer Login
             </Link>
-            <Link variant={'outline1'} _hover={{ textDecoration: 'none' }} href="/register">
+            <Link
+              variant={"outline1"}
+              _hover={{ textDecoration: "none" }}
+              href="/register"
+            >
               Cadastrar
             </Link>
           </Box>
         )}
       </CardHeader>
     </Card>
-  )
-}
-export default Header
+  );
+};
+export default Header;
