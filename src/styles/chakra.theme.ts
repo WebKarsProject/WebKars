@@ -14,8 +14,8 @@ export const theme = extendTheme({
           borderRadius: 'base',
           fontWeight: 'bold',
           _hover: {
-            bg: 'grey_scale.grey8',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            bg: 'grey_scale.grey8'
           }
         },
         outline1: {
