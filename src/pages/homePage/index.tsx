@@ -90,219 +90,249 @@ const Homepage = () => {
               </Flex>
             </Flex>
           </Box>
-          <Container
+          <Box
             maxWidth={'none'}
             display={'flex'}
             gap={'30px'}
+            padding={'30px'}
           >
-            <Flex
-              width={'40%'}
-              maxWidth={'400px'}
-              height={'100%'}
-              display={'flex'}
-              flexDirection={'column'}
-              fontFamily={'Lexend'}
-            >
+            <Flex width={'100%'}>
               <Flex
+                width={'40%'}
+                maxWidth={'400px'}
+                height={'100%'}
                 display={'flex'}
                 flexDirection={'column'}
+                fontFamily={'Lexend'}
               >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    Marca
-                  </Heading>
-                </Stack>
-                <Stack
-                  padding={'10px'}
-                  color={'#868E96'}
-                  fontSize={'16px'}
-                >
-                  <Text>General Motors</Text>
-                  <Text>Fiat</Text>
-                  <Text>Ford</Text>
-                  <Text>Honda</Text>
-                  <Text>Porsche</Text>
-                  <Text>Volswagen</Text>
-                </Stack>
-              </Flex>
-
-              <Flex
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    {' '}
-                    Modelo
-                  </Heading>
-                </Stack>
-                <Stack
-                  padding={'10px'}
-                  color={'#868E96'}
-                  fontSize={'16px'}
-                >
-                  <Text>General Motors</Text>
-                  <Text>Fiat</Text>
-                  <Text>Ford</Text>
-                  <Text>Honda</Text>
-                  <Text>Porsche</Text>
-                  <Text>Volswagen</Text>
-                </Stack>
-              </Flex>
-              <Flex
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    {' '}
-                    Cor
-                  </Heading>
-                </Stack>
-                <Stack
-                  padding={'10px'}
-                  color={'#868E96'}
-                  fontSize={'16px'}
-                >
-                  <Text>General Motors</Text>
-                  <Text>Fiat</Text>
-                  <Text>Ford</Text>
-                  <Text>Honda</Text>
-                  <Text>Porsche</Text>
-                  <Text>Volswagen</Text>
-                </Stack>
-              </Flex>
-              <Flex
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    {' '}
-                    Ano
-                  </Heading>
-                </Stack>
-                <Stack
-                  padding={'10px'}
-                  color={'#868E96'}
-                  fontSize={'16px'}
-                >
-                  <Text>General Motors</Text>
-                  <Text>Fiat</Text>
-                  <Text>Ford</Text>
-                  <Text>Honda</Text>
-                  <Text>Porsche</Text>
-                  <Text>Volswagen</Text>
-                </Stack>
-              </Flex>
-
-              <Flex
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    {' '}
-                    Combustível
-                  </Heading>
-                </Stack>
-                <Stack
-                  padding={'10px'}
-                  color={'#868E96'}
-                  fontSize={'16px'}
-                >
-                  <Text>General Motors</Text>
-                  <Text>Fiat</Text>
-                  <Text>Ford</Text>
-                  <Text>Honda</Text>
-                  <Text>Porsche</Text>
-                  <Text>Volswagen</Text>
-                </Stack>
-              </Flex>
-
-              <Flex
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    {' '}
-                    Km
-                  </Heading>
-                </Stack>
                 <Flex
                   display={'flex'}
-                  flexDirection={'row'}
-                  alignItems={'center'}
-                  gap={'20px'}
-                  padding={'20px'}
+                  flexDirection={'column'}
                 >
-                  <Input
-                    bg={'#CED4DA'}
-                    placeholder={'Mínimo'}
-                  />
-                  <Input
-                    bg={'#CED4DA'}
-                    placeholder={'Máximo'}
-                  />
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      Marca
+                    </Heading>
+                  </Stack>
+                  <Stack
+                    padding={'10px'}
+                    color={'#868E96'}
+                    fontSize={'16px'}
+                  >
+                    <Text>General Motors</Text>
+                    <Text>Fiat</Text>
+                    <Text>Ford</Text>
+                    <Text>Honda</Text>
+                    <Text>Porsche</Text>
+                    <Text>Volswagen</Text>
+                  </Stack>
+                </Flex>
+
+                <Flex
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      {' '}
+                      Modelo
+                    </Heading>
+                  </Stack>
+                  <Stack
+                    padding={'10px'}
+                    color={'#868E96'}
+                    fontSize={'16px'}
+                  >
+                    <Text>General Motors</Text>
+                    <Text>Fiat</Text>
+                    <Text>Ford</Text>
+                    <Text>Honda</Text>
+                    <Text>Porsche</Text>
+                    <Text>Volswagen</Text>
+                  </Stack>
+                </Flex>
+                <Flex
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      {' '}
+                      Cor
+                    </Heading>
+                  </Stack>
+                  <Stack
+                    padding={'10px'}
+                    color={'#868E96'}
+                    fontSize={'16px'}
+                  >
+                    <Text>General Motors</Text>
+                    <Text>Fiat</Text>
+                    <Text>Ford</Text>
+                    <Text>Honda</Text>
+                    <Text>Porsche</Text>
+                    <Text>Volswagen</Text>
+                  </Stack>
+                </Flex>
+                <Flex
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      {' '}
+                      Ano
+                    </Heading>
+                  </Stack>
+                  <Stack
+                    padding={'10px'}
+                    color={'#868E96'}
+                    fontSize={'16px'}
+                  >
+                    <Text>General Motors</Text>
+                    <Text>Fiat</Text>
+                    <Text>Ford</Text>
+                    <Text>Honda</Text>
+                    <Text>Porsche</Text>
+                    <Text>Volswagen</Text>
+                  </Stack>
+                </Flex>
+
+                <Flex
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      {' '}
+                      Combustível
+                    </Heading>
+                  </Stack>
+                  <Stack
+                    padding={'10px'}
+                    color={'#868E96'}
+                    fontSize={'16px'}
+                  >
+                    <Text>General Motors</Text>
+                    <Text>Fiat</Text>
+                    <Text>Ford</Text>
+                    <Text>Honda</Text>
+                    <Text>Porsche</Text>
+                    <Text>Volswagen</Text>
+                  </Stack>
+                </Flex>
+
+                <Flex
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      {' '}
+                      Km
+                    </Heading>
+                  </Stack>
+                  <Flex
+                    display={'flex'}
+                    flexDirection={'row'}
+                    alignItems={'center'}
+                    gap={'20px'}
+                    padding={'20px'}
+                  >
+                    <Input
+                      bg={'#CED4DA'}
+                      placeholder={'Mínimo'}
+                    />
+                    <Input
+                      bg={'#CED4DA'}
+                      placeholder={'Máximo'}
+                    />
+                  </Flex>
+                </Flex>
+                <Flex
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <Stack>
+                    <Heading
+                      fontWeight={'bold'}
+                      fontSize={'28px'}
+                    >
+                      {' '}
+                      Preço
+                    </Heading>
+                  </Stack>
+                  <Flex
+                    display={'flex'}
+                    flexDirection={'row'}
+                    alignItems={'center'}
+                    gap={'20px'}
+                    padding={'20px'}
+                  >
+                    <Input
+                      bg={'#CED4DA'}
+                      placeholder={'Mínimo'}
+                    />
+                    <Input
+                      bg={'#CED4DA'}
+                      placeholder={'Máximo'}
+                    />
+                  </Flex>
                 </Flex>
               </Flex>
               <Flex
-                display={'flex'}
+                height={'100%'}
+                width={'70%'}
+                maxWidth={'1300px'}
+                bg={''}
                 flexDirection={'column'}
               >
-                <Stack>
-                  <Heading
-                    fontWeight={'bold'}
-                    fontSize={'28px'}
-                  >
-                    {' '}
-                    Preço
-                  </Heading>
-                </Stack>
+                {' '}
+                <Box height={'80%'}>
+                  <Text> Product Cards</Text>
+                </Box>
                 <Flex
                   display={'flex'}
-                  flexDirection={'row'}
+                  flexDirection={'column'}
+                  gap={'10px'}
                   alignItems={'center'}
-                  gap={'20px'}
-                  padding={'20px'}
                 >
-                  <Input
-                    bg={'#CED4DA'}
-                    placeholder={'Mínimo'}
-                  />
-                  <Input
-                    bg={'#CED4DA'}
-                    placeholder={'Máximo'}
-                  />
+                  <Flex
+                    gap={'5px'}
+                    fontWeight={'bold'}
+                  >
+                    <Text color={'#868E96.200'}> 1 </Text>
+                    <Text color={'#868E96'}> de 2</Text>
+                  </Flex>
+                  <Text
+                    color={'#5126EA'}
+                    fontWeight={'bold'}
+                  >
+                    {' '}
+                    Seguinte{' '}
+                  </Text>
                 </Flex>
               </Flex>
             </Flex>
-            <Flex
-              height={'100%'}
-              bg={'black'}
-              width={'70%'}
-              maxWidth={'1300px'}
-            ></Flex>
-          </Container>
+          </Box>
         </Box>
       ) : (
         <Box>
