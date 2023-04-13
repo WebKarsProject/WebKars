@@ -315,7 +315,9 @@ const FilterProduct = () => {
                     display={"flex"}
                     flexDirection={"row"}
                     alignItems={"center"}
-                    gap={"10px"}
+                    gap={"1rem"}
+                    paddingBottom={"17px"}
+                    paddingTop={"17px"}
                   >
                     <Input bg={"#CED4DA"} placeholder={"Mínimo"} />
                     <Input bg={"#CED4DA"} placeholder={"Máximo"} />
@@ -332,11 +334,13 @@ const FilterProduct = () => {
                   <Flex
                     color={"#868E96"}
                     fontSize={"16px"}
-                    // marginLeft={"20px"}
+                    marginLeft={"20px"}
                     display={"flex"}
                     flexDirection={"row"}
-                    // alignItems={"center"}
-                    gap={"10px"}
+                    alignItems={"center"}
+                    gap={"1rem"}
+                    paddingBottom={"17px"}
+                    paddingTop={"17px"}
                   >
                     <Input bg={"#CED4DA"} placeholder={"Mínimo"} />
                     <Input bg={"#CED4DA"} placeholder={"Máximo"} />
