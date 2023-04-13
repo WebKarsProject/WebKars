@@ -19,7 +19,13 @@ import ford from "../../assets/ford.png";
 
 const ProductCard = () => {
   return (
-    <Card maxW="300px" maxH={"410px"}>
+    <Card
+      maxW="300px"
+      maxH={"410px"}
+      padding={"1.5px"}
+      border={"1.5px solid #00000000"}
+      _hover={{ border: "1.5px solid #4529E6" }}
+    >
       <CardBody
         alignItems={"center"}
         display={"flex"}
@@ -82,8 +88,12 @@ const ProductCard = () => {
       </CardBody>
       <CardFooter display={"flex"} justifyContent={"space-between"}>
         <HStack spacing="24px">
-          <Text>O Km</Text>
-          <Text>2023</Text>
+          <Text bg={"brand.brand4"} color={"brand.brand1"}>
+            O Km
+          </Text>
+          <Text bg={"brand.brand4"} color={"brand.brand1"}>
+            2023
+          </Text>
         </HStack>
         <Text>R$100000000</Text>
       </CardFooter>
