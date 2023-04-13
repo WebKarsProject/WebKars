@@ -35,7 +35,6 @@ const FilterProduct = () => {
           display={"flex"}
           flexDirection={"column"}
           fontFamily={"Lexend"}
-          marginLeft={"1.2rem"}
         >
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
