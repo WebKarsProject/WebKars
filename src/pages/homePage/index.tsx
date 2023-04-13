@@ -225,7 +225,7 @@ const Homepage = () => {
               >
                 {" "}
                 <Box
-                  height={"80%"}
+                  height={"fit-content"}
                   display={"flex"}
                   gap={"1rem"}
                   flexWrap={"wrap"}
