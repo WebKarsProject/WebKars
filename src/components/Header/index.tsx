@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { ImMenu } from "react-icons/im";
 import { useState } from "react";
+import Profile from "../Profile";
 
 const Header = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
@@ -32,6 +33,7 @@ const Header = () => {
         height={"80px"}
       >
         <Image src={motorsShop} alt="logo" />
+        {}
         {isLarger ? (
           <Menu>
             <MenuButton
@@ -61,26 +63,29 @@ const Header = () => {
             </MenuList>
           </Menu>
         ) : (
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            gap={"1rem"}
-            alignItems={"center"}
-            borderLeft={"1px"}
-            borderColor={"grey_scale.grey6"}
-            padding={"1rem"}
-          >
-            <Link variant={"link"} color={"brand.brand1"} href="/">
-              Fazer Login
-            </Link>
-            <Link
-              variant={"outline1"}
-              _hover={{ textDecoration: "none" }}
-              href="/register"
+          (
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              gap={"1rem"}
+              alignItems={"center"}
+              borderLeft={"1px"}
+              borderColor={"grey_scale.grey6"}
+              padding={"1rem"}
             >
-              Cadastrar
-            </Link>
-          </Box>
+              <Link variant={"link"} color={"brand.brand1"} href="/">
+                Fazer Login
+              </Link>
+              <Link
+                variant={"outline1"}
+                _hover={{ textDecoration: "none" }}
+                href="/register"
+              >
+                Cadastrar
+              </Link>
+            </Box>
+          ) &&
+          location.pathname === "/product" && <Profile />
         )}
       </CardHeader>
     </Card>
