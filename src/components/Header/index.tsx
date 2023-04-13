@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { ImMenu } from "react-icons/im";
 import { useState } from "react";
+import Profile from "../Profile";
 
 const Header = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
@@ -32,7 +33,9 @@ const Header = () => {
         height={"80px"}
       >
         <Image src={motorsShop} alt="logo" />
-        {isLarger ? (
+        {location.pathname === "/product" ? (
+          <Profile />
+        ) : isLarger ? (
           <Menu>
             <MenuButton
               onClick={() => (close ? setClose(false) : setClose(true))}

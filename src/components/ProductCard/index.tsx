@@ -14,30 +14,9 @@ import {
 } from "@chakra-ui/react";
 import ford from "../../assets/ford.png";
 
-const test = () => {
-  const imgBox: HTMLElement | null = document.getElementById("image_box");
-  const cardBox: HTMLElement | null = document.getElementById("card_box");
-
-  cardBox?.addEventListener(
-    "mouseenter",
-    () => (imgBox!.style.border = "2px solid #4529E6")
-  );
-
-  cardBox?.addEventListener(
-    "mouseleave",
-    () => (imgBox!.style.border = "2px solid #00000000")
-  );
-};
-
 const ProductCard = () => {
   return (
-    <Card
-      maxW="300px"
-      maxH={"410px"}
-      padding={"1.5px"}
-      id="card_box"
-      onMouseOver={() => test()}
-    >
+    <Card maxW="300px" maxH={"410px"} padding={"1.5px"} role="group">
       <CardBody
         alignItems={"center"}
         display={"flex"}
@@ -48,7 +27,8 @@ const ProductCard = () => {
           bg={"grey_scale.grey7"}
           position={"relative"}
           borderRadius={"5px"}
-          id="image_box"
+          border={"2px solid #00000000"}
+          _groupHover={{ border: "2px solid #4529E6" }}
         >
           <Tag
             position={"absolute"}

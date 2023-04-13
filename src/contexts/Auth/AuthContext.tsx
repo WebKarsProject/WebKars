@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const AuthContext = createContext({} as IAuthContext);
 
-const UserProvider = ({ children }: IProviderProps) => {
+const AuthProvider = ({ children }: IProviderProps) => {
   const token = localStorage.getItem(`@WebKars:token`);
   const id = localStorage.getItem(`@WebKars:id`);
   const navigate = useNavigate();
@@ -51,3 +51,4 @@ const UserProvider = ({ children }: IProviderProps) => {
     </AuthContext.Provider>
   );
 };
+export default AuthProvider;
