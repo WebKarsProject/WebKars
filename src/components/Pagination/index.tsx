@@ -3,7 +3,6 @@ import { Flex, Text } from "@chakra-ui/react";
 const Pagination = () => {
   return (
     <>
-      {" "}
       <Flex
         display={"flex"}
         flexDirection={"column"}
@@ -15,7 +14,6 @@ const Pagination = () => {
           <Text color={"#868E96"}> de 2</Text>
         </Flex>
         <Text color={"#5126EA"} fontWeight={"bold"}>
-          {" "}
           Seguinte{" "}
         </Text>
       </Flex>

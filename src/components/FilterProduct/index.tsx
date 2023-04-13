@@ -29,7 +29,7 @@ const FilterProduct = () => {
     <>
       {isLarger ? (
         <Flex
-          width={"40%"}
+          width={"30%"}
           maxWidth={"400px"}
           height={"100%"}
           display={"flex"}
@@ -55,7 +55,6 @@ const FilterProduct = () => {
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
               <Heading fontWeight={"bold"} fontSize={"28px"}>
-                {" "}
                 Modelo
               </Heading>
             </Stack>
@@ -72,7 +71,6 @@ const FilterProduct = () => {
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
               <Heading fontWeight={"bold"} fontSize={"28px"}>
-                {" "}
                 Cor
               </Heading>
             </Stack>
@@ -89,7 +87,6 @@ const FilterProduct = () => {
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
               <Heading fontWeight={"bold"} fontSize={"28px"}>
-                {" "}
                 Ano
               </Heading>
             </Stack>
@@ -106,7 +103,6 @@ const FilterProduct = () => {
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
               <Heading fontWeight={"bold"} fontSize={"28px"}>
-                {" "}
                 Combustível
               </Heading>
             </Stack>
@@ -123,7 +119,6 @@ const FilterProduct = () => {
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
               <Heading fontWeight={"bold"} fontSize={"28px"}>
-                {" "}
                 Km
               </Heading>
             </Stack>
@@ -144,7 +139,6 @@ const FilterProduct = () => {
           <Flex display={"flex"} flexDirection={"column"}>
             <Stack>
               <Heading fontWeight={"bold"} fontSize={"28px"}>
-                {" "}
                 Preço
               </Heading>
             </Stack>
