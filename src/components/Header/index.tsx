@@ -33,8 +33,9 @@ const Header = () => {
         height={"80px"}
       >
         <Image src={motorsShop} alt="logo" />
-        {}
-        {isLarger ? (
+        {location.pathname === "/product" ? (
+          <Profile />
+        ) : isLarger ? (
           <Menu>
             <MenuButton
               onClick={() => (close ? setClose(false) : setClose(true))}
@@ -63,29 +64,26 @@ const Header = () => {
             </MenuList>
           </Menu>
         ) : (
-          (
-            <Box
-              display={"flex"}
-              flexDirection={"row"}
-              gap={"1rem"}
-              alignItems={"center"}
-              borderLeft={"1px"}
-              borderColor={"grey_scale.grey6"}
-              padding={"1rem"}
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            gap={"1rem"}
+            alignItems={"center"}
+            borderLeft={"1px"}
+            borderColor={"grey_scale.grey6"}
+            padding={"1rem"}
+          >
+            <Link variant={"link"} color={"brand.brand1"} href="/">
+              Fazer Login
+            </Link>
+            <Link
+              variant={"outline1"}
+              _hover={{ textDecoration: "none" }}
+              href="/register"
             >
-              <Link variant={"link"} color={"brand.brand1"} href="/">
-                Fazer Login
-              </Link>
-              <Link
-                variant={"outline1"}
-                _hover={{ textDecoration: "none" }}
-                href="/register"
-              >
-                Cadastrar
-              </Link>
-            </Box>
-          ) &&
-          location.pathname === "/product" && <Profile />
+              Cadastrar
+            </Link>
+          </Box>
         )}
       </CardHeader>
     </Card>
