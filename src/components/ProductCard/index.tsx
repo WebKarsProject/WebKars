@@ -19,7 +19,7 @@ import ford from "../../assets/ford.png";
 
 const ProductCard = () => {
   return (
-    <Card maxW="300px" maxH={"fit-content"}>
+    <Card maxW="300px" maxH={"410px"}>
       <CardBody
         alignItems={"center"}
         display={"flex"}
