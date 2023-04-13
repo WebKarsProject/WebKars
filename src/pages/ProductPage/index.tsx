@@ -15,11 +15,11 @@ const ProductPage = () => {
       <Header />
       <Box bg="brand.brand1" w="full" h="544px" pos="absolute" />
       <Container pos={'relative'} maxWidth={'container.xl'} mb={'73px'}>
-        <Box id="main" display={'flex'} flexWrap={'wrap'} marginTop={'40px'} columnGap="40px">
-          <Box w={'60%'} display={'flex'} borderRadius={'4px'} justifyContent={'center'} padding={'40px'} bg="grey_scale.grey10">
+        <Box id="main" display={'flex'} justifyContent={['center', 'center', 'center', 'normal']} flexWrap={'wrap'} marginTop={'40px'} columnGap="40px">
+          <Box w={['100%', '80%', '100%', '60%']} display={'flex'} borderRadius={'4px'} justifyContent={'center'} padding={'40px'} bg="grey_scale.grey10">
             <Image src={car} />
           </Box>
-          <Box p={'40px'} display={'flex'} flexDirection={'column'} flexWrap={'wrap'} w={'35%'} bg="grey_scale.grey10" borderRadius={'4px'}>
+          <Box w={['100%', '80%', '100%', '35%']} mt={['18px', '18px', '18px', '0px']} p={'40px'} display={'flex'} flexDirection={'column'} flexWrap={'wrap'} bg="grey_scale.grey10" borderRadius={'4px'}>
             <Text variant="Heading-3-500" fontSize={'1.2rem'} fontWeight={'600'} mb={'30px'}>
               Fotos
             </Text>
@@ -27,7 +27,7 @@ const ProductPage = () => {
               <ImageCar />
             </Box>
           </Box>
-          <Box w={'60%'} h={'max-content'} display={'flex'} flexDirection={'column'} borderRadius={'4px'} justifyContent={'center'} padding={'40px'} marginTop={'40px'} bg="grey_scale.grey10">
+          <Box w={['100%', '80%', '100%', '60%']} h={'max-content'} display={'flex'} flexDirection={'column'} borderRadius={'4px'} justifyContent={'center'} padding={'40px'} marginTop={'40px'} bg="grey_scale.grey10">
             <Text fontWeight={600}>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 </Text>
             <Box marginTop={'40px'} marginBottom={'20px'} display={'flex'} justifyContent={'space-between'}>
               <Box display={'flex'} gap={'12px'}>
@@ -44,7 +44,7 @@ const ProductPage = () => {
               Comprar
             </Button>
           </Box>
-          <Box gap={'32px'} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} p={'40px'} mt={'34px'} w="35%" bg="grey_scale.grey10" borderRadius={'4px'}>
+          <Box w={['100%', '80%', '100%', '35%']} gap={'32px'} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} p={'40px'} mt={'34px'} bg="grey_scale.grey10" borderRadius={'4px'}>
             <Avatar size={'lg'} name="Kola Tioluwani" src="https://bit.ly/tioluwani-kolawole" />
             <Text fontSize={'20px'} fontWeight={'bold'}>
               Samuel Leão

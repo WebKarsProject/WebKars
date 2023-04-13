@@ -2,7 +2,7 @@ import { Box, Text } from '@chakra-ui/react'
 
 const Description = () => {
   return (
-    <Box p="36px 44px" w={'60%'} mt={'-110px'} mb={'16px'} bg="grey_scale.grey10" borderRadius={'4px'}>
+    <Box w={['100%', '80%', '100%', '60%']} p="36px 44px" mt={['20px', '20px', '20px', '-110px']} mb={'16px'} bg="grey_scale.grey10" borderRadius={'4px'}>
       <Text fontWeight="600" fontSize="20px" lineHeight="25px" color="grey_scale.grey1" mb="32px">
         Descrição
       </Text>
