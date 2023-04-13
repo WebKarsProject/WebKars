@@ -6,7 +6,7 @@ import { transparentize } from "@chakra-ui/theme-tools";
 import photo_home from "../../assets/Photo_homepage.png";
 import ProductCard from "../../components/ProductCard";
 import FilterProduct from "../../components/FilterProduct";
-import Pagination from "../../components/Paginação/Pagination";
+import Pagination from "../../components/Pagination";
 
 const Homepage = () => {
   const theme = useTheme();
