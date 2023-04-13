@@ -1,9 +1,9 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme } from "@chakra-ui/react";
 
 export const theme = extendTheme({
   fonts: {
-    heading: 'Inter',
-    body: 'Inter'
+    heading: "Inter",
+    body: "Inter",
   },
   components: {
     Text: {
@@ -133,128 +133,128 @@ export const theme = extendTheme({
     Link: {
       variants: {
         link: {
-          padding: '8px 16px',
-          bg: 'transparent',
-          color: 'grey_scale.grey0',
-          borderRadius: 'base',
-          fontWeight: 'bold',
+          padding: "8px 16px",
+          bg: "transparent",
+          color: "grey_scale.grey0",
+          borderRadius: "base",
+          fontWeight: "bold",
           _hover: {
-            textDecoration: 'none',
-            bg: 'grey_scale.grey8'
-          }
+            textDecoration: "none",
+            bg: "grey_scale.grey8",
+          },
         },
         outline1: {
-          padding: '8px 16px',
-          bg: 'transparent',
-          color: 'grey_scale.grey0',
-          borderRadius: 'base',
-          borderWidth: '1.5px',
-          borderColor: 'grey_scale.grey0',
-          textAlign: 'center',
-          fontWeight: 'bold',
+          padding: "8px 16px",
+          bg: "transparent",
+          color: "grey_scale.grey0",
+          borderRadius: "base",
+          borderWidth: "1.5px",
+          borderColor: "grey_scale.grey0",
+          textAlign: "center",
+          fontWeight: "bold",
           _hover: {
-            textDecoration: 'none'
-          }
-        }
-      }
+            textDecoration: "none",
+          },
+        },
+      },
     },
     Button: {
       variants: {
         brand_disable: {
-          bg: 'brand.brand3',
-          borderRadius: 'base',
-          color: 'brand.brand4'
+          bg: "brand.brand3",
+          borderRadius: "base",
+          color: "brand.brand4",
         },
         sucess: {
-          bg: 'Feedback.sucess3',
-          color: 'Feedback.sucess1',
-          borderRadius: 'base',
+          bg: "Feedback.sucess3",
+          color: "Feedback.sucess1",
+          borderRadius: "base",
           _hover: {
-            bg: 'Feedback.sucess2',
-            color: 'Feedback.sucess1'
-          }
+            bg: "Feedback.sucess2",
+            color: "Feedback.sucess1",
+          },
         },
         alert: {
-          bg: 'Feedback.alert3',
-          color: 'Feedback.alert1',
-          borderRadius: 'base',
+          bg: "Feedback.alert3",
+          color: "Feedback.alert1",
+          borderRadius: "base",
           _hover: {
-            bg: 'Feedback.alert2',
-            color: 'Feedback.alert1'
-          }
+            bg: "Feedback.alert2",
+            color: "Feedback.alert1",
+          },
         },
         outline_brand: {
-          bg: 'transparent',
-          color: 'brand.brand1',
-          borderRadius: 'base',
-          borderWidth: '1.5px',
-          borderColor: 'brand.brand1',
+          bg: "transparent",
+          color: "brand.brand1",
+          borderRadius: "base",
+          borderWidth: "1.5px",
+          borderColor: "brand.brand1",
           _hover: {
-            bg: 'brand.brand4'
-          }
+            bg: "brand.brand4",
+          },
         },
         outline1: {
-          bg: 'transparent',
-          color: 'grey_scale.grey0',
-          borderRadius: 'base',
-          borderWidth: '1.5px',
-          borderColor: 'grey_scale.grey0'
+          bg: "transparent",
+          color: "grey_scale.grey0",
+          borderRadius: "base",
+          borderWidth: "1.5px",
+          borderColor: "grey_scale.grey0",
         },
         outline2: {
-          bg: 'transparent',
-          color: 'grey_scale.grey0',
-          borderRadius: 'base',
-          borderWidth: '1.5px',
-          borderColor: 'grey_scale.grey4',
+          bg: "transparent",
+          color: "grey_scale.grey0",
+          borderRadius: "base",
+          borderWidth: "1.5px",
+          borderColor: "grey_scale.grey4",
           _hover: {
-            bg: 'grey_scale.grey1',
-            color: 'grey_scale.grey10'
-          }
+            bg: "grey_scale.grey1",
+            color: "grey_scale.grey10",
+          },
         },
         big45: {
-          bg: 'grey_scale.grey1',
-          color: 'grey_scale.grey10'
+          bg: "grey_scale.grey1",
+          color: "grey_scale.grey10",
         },
         light: {
-          bg: 'grey_scale.grey10',
-          color: 'grey_scale.gray1',
-          borderRadius: 'base'
+          bg: "grey_scale.grey10",
+          color: "grey_scale.gray1",
+          borderRadius: "base",
         },
         outline_light: {
-          bg: 'transparent',
-          color: 'grey_scale.grey10',
-          borderRadius: 'base',
-          borderWidth: '1.5px'
+          bg: "transparent",
+          color: "grey_scale.grey10",
+          borderRadius: "base",
+          borderWidth: "1.5px",
         },
         brand_opacity: {
-          bg: 'brand.brand4',
-          color: 'brand.brand1',
-          borderRadius: 'base'
+          bg: "brand.brand4",
+          color: "brand.brand1",
+          borderRadius: "base",
         },
         brand1: {
-          bg: 'brand.brand1',
-          color: 'grey_scale.whiteFixed',
-          borderRadius: 'base',
-          padding: '8px 16px',
+          bg: "brand.brand1",
+          color: "grey_scale.whiteFixed",
+          borderRadius: "base",
+          padding: "8px 16px",
           _hover: {
-            bg: 'brand.brand2',
-            color: 'grey_scale.whiteFixed'
-          }
+            bg: "brand.brand2",
+            color: "grey_scale.whiteFixed",
+          },
         },
         disable: {
-          bg: 'grey_scale.grey5',
-          borderRadius: 'base',
-          color: 'grey_scale.whiteFixed'
+          bg: "grey_scale.grey5",
+          borderRadius: "base",
+          color: "grey_scale.whiteFixed",
         },
         negative: {
-          bg: 'grey_scale.gray6',
-          borderRadius: 'base',
-          color: 'grey_scale.gray2'
+          bg: "grey_scale.gray6",
+          borderRadius: "base",
+          color: "grey_scale.gray2",
         },
         grey1: {
-          bg: 'grey_scale.grey0',
-          color: 'grey_scale.whiteFixed',
-          borderRadius: 'base',
+          bg: "grey_scale.grey0",
+          color: "grey_scale.whiteFixed",
+          borderRadius: "base",
           _hover: {
             bg: 'grey_scale.grey1',
             color: 'grey_scale.whiteFixed'
