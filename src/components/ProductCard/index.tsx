@@ -88,12 +88,12 @@ const ProductCard = () => {
       </CardBody>
       <CardFooter display={"flex"} justifyContent={"space-between"}>
         <HStack spacing="24px">
-          <Text bg={"brand.brand4"} color={"brand.brand1"}>
+          <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
             O Km
-          </Text>
-          <Text bg={"brand.brand4"} color={"brand.brand1"}>
+          </Tag>
+          <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
             2023
-          </Text>
+          </Tag>
         </HStack>
         <Text>R$100000000</Text>
       </CardFooter>
