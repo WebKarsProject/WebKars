@@ -14,14 +14,29 @@ import {
 } from "@chakra-ui/react";
 import ford from "../../assets/ford.png";
 
+const test = () => {
+  const imgBox: HTMLElement | null = document.getElementById("image_box");
+  const cardBox: HTMLElement | null = document.getElementById("card_box");
+
+  cardBox?.addEventListener(
+    "mouseenter",
+    () => (imgBox!.style.border = "2px solid #4529E6")
+  );
+
+  cardBox?.addEventListener(
+    "mouseleave",
+    () => (imgBox!.style.border = "2px solid #00000000")
+  );
+};
+
 const ProductCard = () => {
   return (
     <Card
       maxW="300px"
       maxH={"410px"}
       padding={"1.5px"}
-      border={"1.5px solid #00000000"}
-      _hover={{ border: "1.5px solid #4529E6" }}
+      id="card_box"
+      onMouseOver={() => test()}
     >
       <CardBody
         alignItems={"center"}
@@ -29,7 +44,12 @@ const ProductCard = () => {
         flexDirection={"column"}
         paddingBottom={0}
       >
-        <Box bg={"grey_scale.grey7"} position={"relative"} borderRadius={"5px"}>
+        <Box
+          bg={"grey_scale.grey7"}
+          position={"relative"}
+          borderRadius={"5px"}
+          id="image_box"
+        >
           <Tag
             position={"absolute"}
             color={"grey_scale.whiteFixed"}
