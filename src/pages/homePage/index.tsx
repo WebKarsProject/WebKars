@@ -1,26 +1,14 @@
-import { Box, Container, Flex, Heading, Stack, Text } from "@chakra-ui/layout";
+import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import { Button } from "@chakra-ui/button";
 import {
-  FormControl,
-  FormLabel,
   Image,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   useDisclosure,
   useMediaQuery,
   useTheme,
 } from "@chakra-ui/react";
 import { transparentize } from "@chakra-ui/theme-tools";
 import photo_home from "../../assets/Photo_homepage.png";
-import React from "react";
 import ProductCard from "../../components/ProductCard";
 import FilterProduct from "../../components/FilterProduct";
 import Pagination from "../../components/Paginação/Pagination";
@@ -28,9 +16,6 @@ import Pagination from "../../components/Paginação/Pagination";
 const Homepage = () => {
   const theme = useTheme();
   const [isLarger] = useMediaQuery("(min-width: 650px)");
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
 
   return (
     <>
