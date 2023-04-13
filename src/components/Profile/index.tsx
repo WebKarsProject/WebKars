@@ -9,10 +9,13 @@ import {
   MenuList,
   Stack,
   Link,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
+import { transparentize } from "@chakra-ui/theme-tools";
 
 const Profile = () => {
+  const [isLarger] = useMediaQuery("(max-width: 500px)");
   let location = useLocation();
   return (
     <Menu>
@@ -20,27 +23,46 @@ const Profile = () => {
         as={IconButton}
         aria-label="Options"
         icon={
-          <Stack mt="5" direction="row" alignItems={"center"}>
-            <Avatar name="anuciante" src="https://bit.ly/tioluwani-kolawole">
-              <AvatarBadge bg={"tomato"} />
-            </Avatar>
-            <Heading size="1rem">Anunciante</Heading>
+          <Stack
+            direction="row"
+            alignItems={"center"}
+            margin={0}
+            justifyContent={"space-between"}
+          >
+            <Avatar
+              name="anuciante"
+              src="https://bit.ly/tioluwani-kolawole"
+            ></Avatar>
+            {!isLarger && <Heading size="1rem">Anunciante</Heading>}
           </Stack>
         }
-        variant="outline"
+        display={"flex"}
+        alignItems={"center"}
+        p={"2.1rem"}
+        background={"none"}
+        _hover={{ background: "none" }}
+        _focus={{ background: "none" }}
+        _active={{ background: "none" }}
+        border={"none"}
       />
       <MenuList>
         <MenuItem>
-          <Link>Editar Perfil</Link>
+          <Link _hover={{ textDecoration: "none", background: "none" }}>
+            Editar Perfil
+          </Link>
         </MenuItem>
         <MenuItem>
-          <Link>Editar Endereço</Link>
+          <Link _hover={{ textDecoration: "none", background: "none" }}>
+            Editar Endereço
+          </Link>
         </MenuItem>
         <MenuItem>
-          <Link>Meus anuncios</Link>
+          <Link _hover={{ textDecoration: "none" }}>Meus anuncios</Link>
         </MenuItem>
         <MenuItem>
-          <Link>Sair</Link>
+          <Link _hover={{ textDecoration: "none", background: "none" }}>
+            Sair
+          </Link>
         </MenuItem>
       </MenuList>
     </Menu>
