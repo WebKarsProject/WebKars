@@ -1,22 +1,32 @@
-import { Button, Card, CardBody, FormControl, FormLabel, Heading, Input, Link, Text } from '@chakra-ui/react'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
-import { IReqLogin } from '../../interface'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { loginSchema } from '../../schemas/Login/loginSchema'
-import { useContext } from 'react'
-import { AuthContext } from '../../contexts/Auth/AuthContext'
+import {
+  Button,
+  Card,
+  CardBody,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Text,
+} from "@chakra-ui/react";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import { IReqLogin } from "../../interface";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../schemas/Login/loginSchema";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const Login = () => {
-  const { login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm<IReqLogin>({ resolver: yupResolver(loginSchema) })
+    formState: { errors },
+  } = useForm<IReqLogin>({ resolver: yupResolver(loginSchema) });
   return (
-    <Card height={'100vh'}>
+    <Card height={"100vh"}>
       <Header />
       <CardBody
         display={"flex"}
@@ -62,20 +72,20 @@ const Login = () => {
           >
             esqueci minha senha
           </Link>
-          <Button variant={'brand1'} type="submit">
+          <Button variant={"brand1"} type="submit">
             Entrar
           </Button>
-          <Text textAlign={'center'} fontSize={'1rem'}>
+          <Text textAlign={"center"} fontSize={"1rem"}>
             Ainda não possui conta?
           </Text>
-          <Link href="/register" variant={'outline1'}>
+          <Link href="/register" variant={"outline1"}>
             Cadastrar
           </Link>
         </FormControl>
       </CardBody>
       <Footer />
     </Card>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
