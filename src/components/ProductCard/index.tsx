@@ -29,13 +29,13 @@ const ProductCard = () => {
         flexDirection={"column"}
         paddingBottom={0}
       >
-        <Box bg={"grey_scale.grey7"}>
+        <Box bg={"grey_scale.grey7"} position={"relative"} borderRadius={"5px"}>
           <Tag
             position={"absolute"}
             color={"grey_scale.whiteFixed"}
             bg={"brand.brand1"}
-            top={"30px"}
-            left={"30px"}
+            top={"0"}
+            left={"0"}
             display={"none"}
           >
             Ativo
@@ -44,8 +44,8 @@ const ProductCard = () => {
             position={"absolute"}
             bg={"grey_scale.grey4"}
             color={"grey_scale.whiteFixed"}
-            top={"30px"}
-            left={"30px"}
+            top={"0"}
+            left={"0"}
             display={"flex"}
           >
             Inativo
@@ -54,8 +54,8 @@ const ProductCard = () => {
             bg={"random_profile.random7"}
             color={"grey_scale.whiteFixed"}
             position={"absolute"}
-            top={"20px"}
-            right={"20px"}
+            top={"0"}
+            right={"0"}
             display={"flex"}
           >
             $
