@@ -1,20 +1,26 @@
-import { Avatar, Box, Button, Container, Image, Tag, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Container, Image, Tag, Text, useMediaQuery } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import car from '../../assets/EXTERIOR-frontSidePilotNear-1653845164710-removebg-preview 1.png'
 import ImageCar from '../../components/ImageCar'
+import AddComments from '../../components/AddComments'
+import Comments from '../../components/Comments'
+import Description from '../../components/Description'
+import Footer from '../../components/Footer'
 
 const ProductPage = () => {
+  const [isLarger] = useMediaQuery('(max-width: 500px)')
+
   return (
-    <Box height={'100vh'} bg={'grey_scale.grey8'}>
+    <Box height={'100%'} bg={'grey_scale.grey8'}>
       <Header />
       <Box bg="brand.brand1" w="full" h="544px" pos="absolute" />
-      <Container pos={'relative'} maxWidth={'container.xl'}>
-        <Box display={'flex'} flexWrap={'wrap'} marginTop={'40px'} columnGap="40px">
+      <Container pos={'relative'} maxWidth={'container.xl'} mb={'73px'}>
+        <Box id="main" display={'flex'} flexWrap={'wrap'} marginTop={'40px'} columnGap="40px">
           <Box w={'60%'} display={'flex'} borderRadius={'4px'} justifyContent={'center'} padding={'40px'} bg="grey_scale.grey10">
             <Image src={car} />
           </Box>
-          <Box p={'40px'} display={'flex'} flexDirection={'column'} flexWrap={'wrap'} w="35%" bg="grey_scale.grey10" borderRadius={'4px'}>
-            <Text fontSize={'1.2rem'} fontWeight={'600'} mb={'30px'}>
+          <Box p={'40px'} display={'flex'} flexDirection={'column'} flexWrap={'wrap'} w={'35%'} bg="grey_scale.grey10" borderRadius={'4px'}>
+            <Text variant="Heading-3-500" fontSize={'1.2rem'} fontWeight={'600'} mb={'30px'}>
               Fotos
             </Text>
             <Box justifyContent={'center'} display={'flex'} flexWrap={'wrap'} gap={'30px'}>
@@ -46,8 +52,12 @@ const ProductPage = () => {
             <Text textAlign={'center'}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</Text>
             <Button variant={'grey1'}>Ver todos anuncios</Button>
           </Box>
+          <Description />
+          <Comments />
+          <AddComments />
         </Box>
       </Container>
+      <Footer />
     </Box>
   )
 }
