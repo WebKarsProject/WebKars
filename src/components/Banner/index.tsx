@@ -20,11 +20,20 @@ const Banner = () => {
         flexDir="column"
         bgGradient="linear(to bottom, #00000029 0%, #000000 100%)"
         position="absolute"
+        p="0 30px"
       >
-        <Text variant="Heading-2-600" color="grey_scale.grey10">
+        <Text
+          variant="Heading-2-600"
+          color="grey_scale.grey10"
+          textAlign="center"
+        >
           Motor Shop
         </Text>
-        <Text variant="Heading-2-600" color="grey_scale.grey10">
+        <Text
+          variant="Heading-2-600"
+          color="grey_scale.grey10"
+          textAlign="center"
+        >
           A melhor plataforma de anúncios de carros do país
         </Text>
       </Flex>
