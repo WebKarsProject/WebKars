@@ -7,7 +7,7 @@ const Inputs = () => {
         Label
       </FormLabel>
       <Input
-        placeholder="Placeholder"
+        placeholder={"Placeholder"}
         display={"flex"}
         flexDirection={"row"}
         alignItems={"center"}
