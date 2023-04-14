@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import Login from "../pages/login";
+import Session from "../pages/Session";
 import Homepage from "../pages/homePage";
 import ProductPage from "../pages/ProductPage";
 
 const Routed = () => (
   <Routes>
-    <Route path="/" element={<Login />} />
-    <Route path="/homepage" element={<Homepage />} />
+    <Route path="/" element={<Homepage />} />
+    <Route path="/session" element={<Session />} />
     <Route path="/product" element={<ProductPage />} />
   </Routes>
 );
