@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, Image, Tag, Text, useMediaQuery } from '@chakra-ui/react'
+import { Avatar, Box, Button, Container, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Tag, Text, useDisclosure, useMediaQuery } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import car from '../../assets/EXTERIOR-frontSidePilotNear-1653845164710-removebg-preview 1.png'
 import ImageCar from '../../components/ImageCar'
@@ -8,7 +8,7 @@ import Description from '../../components/Description'
 import Footer from '../../components/Footer'
 
 const ProductPage = () => {
-  const [isLarger] = useMediaQuery('(max-width: 500px)')
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <Box height={'100%'} bg={'grey_scale.grey8'}>
@@ -24,7 +24,7 @@ const ProductPage = () => {
               Fotos
             </Text>
             <Box justifyContent={'center'} display={'flex'} flexWrap={'wrap'} gap={'30px'}>
-              <ImageCar />
+              <ImageCar onOpen={onOpen} />
             </Box>
           </Box>
           <Box w={['100%', '80%', '100%', '60%']} h={'max-content'} display={'flex'} flexDirection={'column'} borderRadius={'4px'} justifyContent={'center'} padding={'40px'} marginTop={'40px'} bg="grey_scale.grey10">
@@ -58,6 +58,19 @@ const ProductPage = () => {
         </Box>
       </Container>
       <Footer />
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Imagem Veiculos</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Box bg={'grey_scale.grey7'}>
+              <Image src={car} />
+            </Box>
+          </ModalBody>
+          <ModalFooter></ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   )
 }
