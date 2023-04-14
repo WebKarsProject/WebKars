@@ -16,7 +16,14 @@ import ford from "../../assets/ford.png";
 
 const ProductCard = () => {
   return (
-    <Card maxW="300px" maxH={"410px"} padding={"1.5px"} role="group">
+    <Card
+      minW="300px"
+      maxW="300px"
+      maxH={"410px"}
+      padding={"1.5px"}
+      role="group"
+      mb="20px"
+    >
       <CardBody
         alignItems={"center"}
         display={"flex"}
