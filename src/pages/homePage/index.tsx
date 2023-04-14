@@ -14,37 +14,26 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <Box as="main" w="100%" h="100%">
+      <Box as={"main"} w={"100%"} h={"100%"}>
         <Banner />
-        <Flex as="section" p="52px 19px 19px 15px" gap="20px">
+        <Flex as={"section"} p={"52px 15px 19px 15px"} gap={"20px"}>
           {isLarger && <FilterProduct />}
-          <Flex flexDir="column" w="100%">
+          <Flex flexDir={"column"} w={"100%"}>
             <Flex
               flexWrap={isLarger ? "wrap" : "nowrap"}
               overflowY={isLarger ? "unset" : "hidden"}
               overflowX={isLarger ? "unset" : "scroll"}
-              justifyContent="space-between"
-              h="100%"
-              gap={isLarger ? "0" : "20px"}
+              gap={"20px"}
             >
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
               <ProductCard />
               <ProductCard />
               <ProductCard />
               <ProductCard />
             </Flex>
             {!isLarger && <FilterProduct />}
-
-            <Pagination />
           </Flex>
         </Flex>
+        <Pagination />
       </Box>
       <Footer />
     </>
