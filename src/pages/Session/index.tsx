@@ -18,13 +18,14 @@ import { loginSchema } from "../../schemas/Login/loginSchema";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 
-const Login = () => {
+const Session = () => {
   const { login } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IReqLogin>({ resolver: yupResolver(loginSchema) });
+
   return (
     <Card height={"100vh"}>
       <Header />
@@ -37,6 +38,7 @@ const Login = () => {
         height={"100vh"}
       >
         <FormControl
+          as="form"
           display="flex"
           flexDirection={"column"}
           gap={"0.3rem"}
@@ -88,4 +90,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Session;
