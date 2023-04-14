@@ -13,7 +13,7 @@ const Footer = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   return (
     <Card
-      as="footer"
+      as={"footer"}
       width={"100%"}
       backgroundColor={"black"}
       borderRadius={"0"}
@@ -25,11 +25,16 @@ const Footer = () => {
         alignItems={"center"}
         gap={"0.5rem"}
       >
-        <Image src={motorsShop} alt="logo" />
-        <Text fontSize="sm" noOfLines={1} color="grey">
+        <Image src={motorsShop} alt={"logo"} />
+        <Text
+          fontSize={"sm"}
+          noOfLines={1}
+          variant={"body-2-400"}
+          color={"grey"}
+        >
           © 2023 - Todos os direitos reservados.
         </Text>
-        <Button backgroundColor={"gray.400"}>
+        <Button as={"a"} href={`#/`} backgroundColor={"gray.400"}>
           <SlArrowUp />
         </Button>
       </CardFooter>
