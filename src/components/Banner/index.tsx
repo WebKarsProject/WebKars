@@ -20,7 +20,7 @@ const Banner = () => {
         flexDir="column"
         bgGradient="linear(to bottom, #00000029 0%, #000000 100%)"
         position="absolute"
-        p="0 36px"
+        p="0 30px"
       >
         <Text
           variant="Heading-2-600"
