@@ -6,7 +6,6 @@ import {
   CardBody,
   CardFooter,
   HStack,
-  Heading,
   Image,
   Stack,
   Tag,
@@ -17,12 +16,11 @@ import ford from "../../assets/ford.png";
 const ProductCard = () => {
   return (
     <Card
-      minW="300px"
-      maxW="300px"
+      minW={"300px"}
+      maxW={"300px"}
       maxH={"410px"}
       padding={"1.5px"}
-      role="group"
-      mb="20px"
+      role={"group"}
     >
       <CardBody
         alignItems={"center"}
@@ -71,27 +69,31 @@ const ProductCard = () => {
             alignItems={"center"}
             w={"260px"}
             src={ford}
-            alt="Green double couch with wooden legs"
-            borderRadius="lg"
+            alt={"Green double couch with wooden legs"}
+            borderRadius={"lg"}
           />
         </Box>
-        <Stack mt="4" spacing="3">
-          <Heading size="1rem">Ford Ka</Heading>
-          <Text size="0.5rem" noOfLines={3}>
+        <Stack mt={"4"} spacing={"3"}>
+          <Text variant={"Heading-7-600"}>Ford Ka</Text>
+          <Text variant={"body-2-400"} noOfLines={3}>
             This sofa is perfect for modern tropical spaces, baroque inspired
             spaces, earthy toned spaces and for people who love a chic design
             with a sprinkle of vintage design.
           </Text>
-          <Stack mt="5" direction="row" alignItems={"center"}>
-            <Avatar name="anuciante" src="https://bit.ly/tioluwani-kolawole">
+          <Stack mt={"5"} direction={"row"} alignItems={"center"}>
+            <Avatar
+              size={"sm"}
+              name="anuciante"
+              src="https://bit.ly/tioluwani-kolawole"
+            >
               <AvatarBadge bg={"tomato"} />
             </Avatar>
-            <Heading size="1rem">Anunciante</Heading>
+            <Text variant={"body-2-500"}>Anunciante</Text>
           </Stack>
         </Stack>
       </CardBody>
       <CardFooter display={"flex"} justifyContent={"space-between"}>
-        <HStack spacing="24px">
+        <HStack spacing="12px">
           <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
             O Km
           </Tag>
@@ -99,7 +101,7 @@ const ProductCard = () => {
             2023
           </Tag>
         </HStack>
-        <Text>R$100000000</Text>
+        <Text variant={"Heading-7-500"}>R$100000000</Text>
       </CardFooter>
     </Card>
   );

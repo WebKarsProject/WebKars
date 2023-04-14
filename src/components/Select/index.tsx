@@ -7,7 +7,7 @@ const Selects = () => {
         Label
       </FormLabel>
       <Select
-        placeholder="Placeholder"
+        placeholder={"Placeholder"}
         display={"flex"}
         flexDirection={"row"}
         alignItems={"center"}
