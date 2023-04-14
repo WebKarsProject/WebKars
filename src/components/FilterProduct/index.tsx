@@ -29,9 +29,7 @@ const FilterProduct = () => {
     <>
       {isLarger ? (
         <Flex
-          width={"30%"}
-          maxWidth={"400px"}
-          height={"100%"}
+          width={"25%"}
           display={"flex"}
           flexDirection={"column"}
           fontFamily={"Lexend"}
@@ -58,7 +56,7 @@ const FilterProduct = () => {
                 Modelo
               </Heading>
             </Stack>
-            <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
+            <Stack p="10px 10px 0 10px" color={"#868E96"} fontSize={"16px"}>
               <Text>General Motors</Text>
               <Text>Fiat</Text>
               <Text>Ford</Text>
@@ -74,7 +72,7 @@ const FilterProduct = () => {
                 Cor
               </Heading>
             </Stack>
-            <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
+            <Stack p="10px 10px 0 10px" color={"#868E96"} fontSize={"16px"}>
               <Text>General Motors</Text>
               <Text>Fiat</Text>
               <Text>Ford</Text>
@@ -90,7 +88,7 @@ const FilterProduct = () => {
                 Ano
               </Heading>
             </Stack>
-            <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
+            <Stack p="10px 10px 0 10px" color={"#868E96"} fontSize={"16px"}>
               <Text>General Motors</Text>
               <Text>Fiat</Text>
               <Text>Ford</Text>
@@ -106,7 +104,7 @@ const FilterProduct = () => {
                 Combustível
               </Heading>
             </Stack>
-            <Stack padding={"10px"} color={"#868E96"} fontSize={"16px"}>
+            <Stack p="10px 10px 0 10px" color={"#868E96"} fontSize={"16px"}>
               <Text>General Motors</Text>
               <Text>Fiat</Text>
               <Text>Ford</Text>
@@ -162,7 +160,7 @@ const FilterProduct = () => {
               display={"flex"}
               flexDirection={"column"}
               alignItems={"center"}
-              marginBottom={"20px"}
+              marginBottom={"15px"}
               gap={"10px"}
             >
               <Button
@@ -172,6 +170,7 @@ const FilterProduct = () => {
                 color={"white"}
                 onClick={onOpen}
                 width={"60%"}
+                mt="20px"
               >
                 Filtros
               </Button>
@@ -199,7 +198,7 @@ const FilterProduct = () => {
                   <Stack
                     color={"#868E96"}
                     fontSize={"16px"}
-                    marginLeft={"20px"}
+                    marginLeft={"15px"}
                   >
                     <Text>General Motors</Text>
                     <Text>Fiat</Text>

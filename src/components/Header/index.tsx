@@ -24,7 +24,7 @@ const Header = () => {
   const [close, setClose] = useState(true);
   let location = useLocation();
   return (
-    <Card width={"100%"} borderRadius={"0"}>
+    <Card as="header" width={"100%"} borderRadius={"0"}>
       <CardHeader
         display={"flex"}
         flexDirection={"row"}
