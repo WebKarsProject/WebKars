@@ -38,7 +38,6 @@ const Profile = () => {
         }
         display={"flex"}
         alignItems={"center"}
-        p={"2.1rem"}
         background={"none"}
         _hover={{ background: "none" }}
         _focus={{ background: "none" }}
