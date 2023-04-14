@@ -12,7 +12,12 @@ import { SlArrowUp } from "react-icons/sl";
 const Footer = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   return (
-    <Card width={"100%"} backgroundColor={"black"} borderRadius={"0"}>
+    <Card
+      as="footer"
+      width={"100%"}
+      backgroundColor={"black"}
+      borderRadius={"0"}
+    >
       <CardFooter
         display={"flex"}
         flexDirection={isLarger ? "column" : "row"}
