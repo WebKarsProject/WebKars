@@ -1,6 +1,5 @@
 import {
   Avatar,
-  AvatarBadge,
   Heading,
   IconButton,
   Menu,
