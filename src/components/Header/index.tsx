@@ -24,7 +24,7 @@ const Header = () => {
   const [close, setClose] = useState(true);
   let location = useLocation();
   return (
-    <Card as="header" width={"100%"} borderRadius={"0"}>
+    <Card as={"header"} id="/" width={"100%"} borderRadius={"0"}>
       <CardHeader
         display={"flex"}
         flexDirection={"row"}
@@ -32,7 +32,7 @@ const Header = () => {
         alignItems={"center"}
         height={"80px"}
       >
-        <Image src={motorsShop} alt="logo" />
+        <Image src={motorsShop} alt={"logo"} />
         {location.pathname === "/product" ? (
           <Profile />
         ) : isLarger ? (
@@ -40,11 +40,11 @@ const Header = () => {
             <MenuButton
               onClick={() => (close ? setClose(false) : setClose(true))}
               as={IconButton}
-              aria-label="Options"
+              aria-label={"Options"}
               icon={
                 close ? <ImMenu /> : <Text fontFamily={"sans-serif"}>X</Text>
               }
-              variant="outline"
+              variant={"outline"}
             />
             <MenuList>
               <MenuItem>
@@ -79,7 +79,7 @@ const Header = () => {
             <Link
               variant={"outline1"}
               _hover={{ textDecoration: "none" }}
-              href="/register"
+              href={"/register"}
             >
               Cadastrar
             </Link>

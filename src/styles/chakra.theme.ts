@@ -241,6 +241,16 @@ export const theme = extendTheme({
             color: "grey_scale.whiteFixed",
           },
         },
+        brand2: {
+          bg: "grey_scale.grey7",
+          color: "grey_scale.grey3",
+          borderRadius: "24px",
+          p: "0px 12px 0px 12px",
+          _hover: {
+            bg: "brand.brand2",
+            color: "grey_scale.whiteFixed",
+          },
+        },
         disable: {
           bg: "grey_scale.grey5",
           borderRadius: "base",

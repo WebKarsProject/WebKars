@@ -1,6 +1,6 @@
 import {
   Avatar,
-  Heading,
+  Text,
   IconButton,
   Menu,
   MenuButton,
@@ -11,7 +11,6 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
-import { transparentize } from "@chakra-ui/theme-tools";
 
 const Profile = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
@@ -20,19 +19,19 @@ const Profile = () => {
     <Menu>
       <MenuButton
         as={IconButton}
-        aria-label="Options"
+        aria-label={"Options"}
         icon={
           <Stack
-            direction="row"
+            direction={"row"}
             alignItems={"center"}
             margin={0}
             justifyContent={"space-between"}
           >
             <Avatar
-              name="anuciante"
-              src="https://bit.ly/tioluwani-kolawole"
+              name={"anuciante"}
+              src={"https://bit.ly/tioluwani-kolawole"}
             ></Avatar>
-            {!isLarger && <Heading size="1rem">Anunciante</Heading>}
+            {!isLarger && <Text variant={"body-1-400"}>Anunciante</Text>}
           </Stack>
         }
         display={"flex"}
