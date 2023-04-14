@@ -50,7 +50,7 @@ const Header = () => {
               <MenuItem>
                 <Link
                   color={"brand.brand1"}
-                  href="/"
+                  href="/session"
                   _hover={{ textDecoration: "none" }}
                 >
                   Fazer Login
@@ -73,7 +73,7 @@ const Header = () => {
             borderColor={"grey_scale.grey6"}
             padding={"1rem"}
           >
-            <Link variant={"link"} color={"brand.brand1"} href="/">
+            <Link variant={"link"} color={"brand.brand1"} href="/session">
               Fazer Login
             </Link>
             <Link

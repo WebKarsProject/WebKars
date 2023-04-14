@@ -11,7 +11,7 @@ import { instance } from "../../services/axios";
 import { Erro, Success } from "../../services/toast";
 import axios from "axios";
 
-export const AuthContext = createContext({} as IAuthContext);
+export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider = ({ children }: IProviderProps) => {
   const token = localStorage.getItem(`@WebKars:token`);
@@ -23,12 +23,14 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const login = async (body: IReqLogin) => {
     setLoading(true);
     try {
-      const { data } = await instance.post<IToken>("/login", body);
+      const { data } = await instance.post<IToken>("/session", body);
+      console.log(data, "try");
       localStorage.setItem(`@WebKars:token`, data.token);
       localStorage.setItem(`@WebKars:id`, data.user_id);
       Success(`✅Usuário logado com sucesso!`);
-      navigate(`/dashboard`, { replace: true });
+      navigate(`/`, { replace: true });
     } catch (error) {
+      console.log(error, "catch");
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
         Erro(`${data.message}❗❗`);
@@ -40,11 +42,11 @@ const AuthProvider = ({ children }: IProviderProps) => {
   return (
     <AuthContext.Provider
       value={{
+        login,
         token,
         id,
-        loading,
         setLoading,
-        login,
+        loading,
       }}
     >
       {children}
