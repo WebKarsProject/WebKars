@@ -323,6 +323,9 @@ export const theme = extendTheme({
         fontFamily: "inter",
         height: "100vh",
       },
+      "#root": {
+        overflow: "hidden",
+      },
       button: {
         cursor: "pointer",
       },
