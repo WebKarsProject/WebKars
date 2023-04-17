@@ -4,7 +4,6 @@ import {
   Flex,
   FormControl,
   Text,
-  ButtonGroup,
   Button,
   ModalOverlay,
   ModalHeader,
@@ -12,51 +11,135 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
+  Select,
+  FormLabel,
 } from "@chakra-ui/react";
-import { IModal, IReqLogin } from "../../interface";
+import { IModal, ICreateAnnouncementModal } from "../../interface";
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "../../schemas/Login/loginSchema";
+import { CreateAnnouncementModalSchema } from "../../schemas/CreateAnnouncementModal/CreateAnnouncementModalSchema";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IReqLogin>({ resolver: yupResolver(loginSchema) });
-
-  const login = (data: IReqLogin) => {
-    console.log(data);
-  };
+  } = useForm<ICreateAnnouncementModal>({
+    resolver: yupResolver(CreateAnnouncementModalSchema),
+  });
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent m={"80px 0px 64px 0px"}>
+      <ModalContent
+        display={"flex"}
+        justifyContent={"center"}
+        alignContent={"center"}
+      >
         <ModalHeader>Criar anuncio</ModalHeader>
         <ModalCloseButton />
 
-        <ModalBody p={"0px 24px 0px 30px"}>
+        <ModalBody
+          p={"0px 24px 0px 30px"}
+          display={"flex"}
+          flexDir={"column"}
+          gap={"24px"}
+        >
           <Text variant={"body-2-500"} color={"grey_scale.grey0"} pb={"24px"}>
             Infomações do veículo
           </Text>
 
+          <FormControl>
+            <FormLabel>Marca</FormLabel>
+            <Select
+              placeholder={"Mercedes Benz"}
+              {...register("brand")}
+            ></Select>
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>Modelo</FormLabel>
+            <Select
+              placeholder={"A 200 CGI ADVANCE SEDAN"}
+              {...register("model")}
+            ></Select>
+          </FormControl>
+
+          <Flex gap={3}>
+            <FormControl>
+              <FormLabel>Ano</FormLabel>
+              <Select placeholder="2023" {...register("year")}></Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Combustível</FormLabel>
+              <Select
+                placeholder="Gasolina / Etanol"
+                {...register("fuel")}
+              ></Select>
+            </FormControl>
+          </Flex>
+
+          <Flex gap={3}>
+            <FormControl>
+              <FormLabel>Quilometragem</FormLabel>
+              <Select placeholder="30.000" {...register("mileage")}></Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Cor</FormLabel>
+              <Select placeholder="Branco" {...register("color")}></Select>
+            </FormControl>
+          </Flex>
+
+          <Flex gap={3}>
+            <FormControl>
+              <FormLabel>Preço tabela FIPE</FormLabel>
+              <Select placeholder="R$ 48.000,00" {...register("fipe")}></Select>
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Preço</FormLabel>
+              <Select
+                placeholder="R$ 50.000,00"
+                {...register("price")}
+              ></Select>
+            </FormControl>
+          </Flex>
+
           <Inputs
-            label={"email"}
-            type={"email"}
-            placeholder={"Digite aqui seu email"}
+            label={"Imagem da capa"}
+            type={"Imagem da capa"}
+            placeholder={"https://image.com"}
             register={register}
             errors={errors}
           />
 
           <Inputs
-            label={"password"}
-            type={"password"}
-            placeholder={"Digite aqui sua senha"}
+            label={"1° Imagem da galeria"}
+            type={"1° Imagem da galeria"}
+            placeholder={"https://image.com"}
             register={register}
             errors={errors}
           />
+
+          <Inputs
+            label={"2° Imagem da galeria"}
+            type={"2° Imagem da galeria"}
+            placeholder={"https://image.com"}
+            register={register}
+            errors={errors}
+          />
+
+          <Button
+            variant={"brand_opacity"}
+            p={"12px 20px"}
+            maxW={"315px"}
+            noOfLines={1}
+          >
+            Adicionar campo para imagem da galeria
+          </Button>
         </ModalBody>
 
         <ModalFooter p={"42px 24px 18px 0px"}>
@@ -69,9 +152,7 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
           >
             Cancelar
           </Button>
-          <Button variant={"brand_disable"} onClick={handleSubmit(login)}>
-            Criar anúncio
-          </Button>
+          <Button variant={"outline2"}>Criar anúncio</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
@@ -79,80 +160,3 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
 };
 
 export default CreateAnnouncementModal;
-
-{
-  /* <Box
-position={"fixed"}
-top={"0"}
-w={"100vw"}
-h={"100vh"}
-bg={"#00000050"}
-zIndex={"999"}
-pt={"80px"}
->
-<Flex
-  flexDir={"column"}
-  w={"100%"}
-  maxW={"520px"}
-  h={"calc(100% - 80px)"}
-  m={"0 auto"}
-  bg={"grey_scale.whiteFixed"}
->
-  <Text variant={"Heading-7-500"} p={"16px 24px"}>
-    Criar anuncio
-  </Text>
-  <Flex flexDir={"column"} p={"0px 24px 0px 30px"}>
-    <FormControl>
-      <Text variant={"body-2-500"} color={"grey_scale.grey0"} pb={"24px"}>
-        Infomações do veículo
-      </Text>
-      <Inputs
-        label={"Marca"}
-        type={"text"}
-        placeholder={"Mercedes Benz"}
-      />
-
-      <Inputs
-        label={"Marca"}
-        type={"text"}
-        placeholder={"Mercedes Benz"}
-      />
-
-      <Inputs
-        label={"Marca"}
-        type={"text"}
-        placeholder={"Mercedes Benz"}
-      />
-
-      <Inputs
-        label={"Marca"}
-        type={"text"}
-        placeholder={"Mercedes Benz"}
-      />
-    </FormControl>
-    <Button
-      variant={"brand_opacity"}
-      p={"12px 20px"}
-      m={"24px 0px 42px 0px"}
-    >
-      Adicionar campo para imagem da galeria
-    </Button>
-    <ButtonGroup
-      display={"flex"}
-      justifyContent={"end"}
-      w={"100%"}
-      gap={"10px"}
-    >
-      <Button
-        variant={"brand_opacity"}
-        color={"grey_scale.grey2"}
-        onClick={() => setModal(false)}
-      >
-        Cancelar
-      </Button>
-      <Button variant={"brand_disable"}>Criar anúncio</Button>
-    </ButtonGroup>
-  </Flex>
-</Flex>
-</Box> */
-}
