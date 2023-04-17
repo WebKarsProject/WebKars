@@ -35,3 +35,17 @@ export interface IModal {
 export interface IModalCreateAd {
   onOpen: () => void;
 }
+
+export interface ICreateAnnouncementModal {
+  brand: string;
+  model: string;
+  year: Date;
+  fuel: string;
+  mileage: number;
+  color: string;
+  fipe: number;
+  price: number;
+  description: string;
+  published?: boolean;
+  img: [];
+}
