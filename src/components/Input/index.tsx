@@ -1,13 +1,12 @@
 import { FormLabel, Input, Stack } from "@chakra-ui/react";
 
-const Inputs = () => {
+const Inputs = (props: any) => {
   return (
     <Stack spacing={"0px"}>
       <FormLabel fontSize={"14px"} fontWeight={"500"} lineHeight={"17px"}>
-        Label
+        {props.label}
       </FormLabel>
       <Input
-        placeholder="Placeholder"
         display={"flex"}
         flexDirection={"row"}
         alignItems={"center"}
@@ -19,6 +18,8 @@ const Inputs = () => {
         color={"#868E96"}
         focusBorderColor={"#5126EA"}
         _hover={{ background: "#F1F3F5" }}
+        placeholder={props.placeholder}
+        type={props.type}
       />
     </Stack>
   );
