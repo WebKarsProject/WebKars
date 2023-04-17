@@ -25,3 +25,13 @@ export interface IToken {
 export interface IAxiosData {
   message: string;
 }
+
+export interface IModal {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}
+
+export interface IModalCreateAd {
+  onOpen: () => void;
+}
