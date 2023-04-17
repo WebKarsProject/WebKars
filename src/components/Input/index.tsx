@@ -8,7 +8,7 @@ import {
 
 const Inputs = ({ label, type, placeholder, register, errors }: any) => {
   return (
-    <FormControl>
+    <FormControl isInvalid={errors && errors[type]}>
       <FormLabel fontSize={"14px"} fontWeight={"500"} lineHeight={"17px"}>
         {label}
       </FormLabel>
@@ -28,9 +28,9 @@ const Inputs = ({ label, type, placeholder, register, errors }: any) => {
         _hover={{ background: "#F1F3F5" }}
         {...register(`${type}`)}
       />
-      <FormErrorMessage
-        color={"feedback.alert1"}
-      >{`${errors}.${type}?.message`}</FormErrorMessage>
+      <FormErrorMessage color={"feedback.alert1"}>
+        {errors && errors[type] && errors[type].message}
+      </FormErrorMessage>
     </FormControl>
   );
 };
