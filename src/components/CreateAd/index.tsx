@@ -1,6 +1,7 @@
-import { Avatar, Button, Flex, Text, useMediaQuery } from "@chakra-ui/react";
+import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
+import { IModalCreateAd } from "../../interface";
 
-const CreateAd = () => {
+const CreateAd = ({ onOpen }: IModalCreateAd) => {
   return (
     <Flex
       w={"100%"}
@@ -40,6 +41,7 @@ const CreateAd = () => {
           p={"12px 28px"}
           variant={"outline_brand"}
           mt={{ base: "16px", sm: "36px" }}
+          onClick={onOpen}
         >
           Criar anuncio
         </Button>
