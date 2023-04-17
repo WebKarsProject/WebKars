@@ -1,13 +1,20 @@
-import { FormLabel, Input, Stack } from "@chakra-ui/react";
+import {
+  FormLabel,
+  Input,
+  FormControl,
+  Text,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
-const Inputs = () => {
+const Inputs = ({ label, type, placeholder, register, errors }: any) => {
   return (
-    <Stack spacing={"0px"}>
+    <FormControl>
       <FormLabel fontSize={"14px"} fontWeight={"500"} lineHeight={"17px"}>
-        Label
+        {label}
       </FormLabel>
       <Input
-        placeholder={"Placeholder"}
+        type={type}
+        placeholder={placeholder}
         display={"flex"}
         flexDirection={"row"}
         alignItems={"center"}
@@ -19,8 +26,12 @@ const Inputs = () => {
         color={"#868E96"}
         focusBorderColor={"#5126EA"}
         _hover={{ background: "#F1F3F5" }}
+        {...register(`${type}`)}
       />
-    </Stack>
+      <FormErrorMessage
+        color={"feedback.alert1"}
+      >{`${errors}.${type}?.message`}</FormErrorMessage>
+    </FormControl>
   );
 };
 
