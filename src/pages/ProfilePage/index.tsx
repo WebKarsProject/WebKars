@@ -61,11 +61,10 @@ const ProfilePage = () => {
             flexWrap={{ base: "unset", md: "wrap" }}
             h={"100%"}
             w={"100%"}
-            gap={"64px"}
+            gap={{ base: "38px", md: "64px" }}
             pb={{ base: "10px", md: "0px" }}
             overflowY={{ base: "hidden", md: "unset" }}
             overflowX={{ base: "scroll", md: "unset" }}
-            bg={"pink"}
           >
             <ProductCard />
             <ProductCard />
