@@ -1,13 +1,24 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useDisclosure } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CreateAd from "../../components/CreateAd";
 import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
+import { useState } from "react";
+import CreateAnnouncementModal from "../../components/CreateAnnouncementModal";
 
 const ProfilePage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
+      {isOpen && (
+        <CreateAnnouncementModal
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+        />
+      )}
       <Header />
       <Flex
         as={"main"}
@@ -31,14 +42,14 @@ const ProfilePage = () => {
             maxW={"1600px"}
             m={{ base: "0px 25px 0px 10px", md: "0px 30px" }}
           >
-            <CreateAd />
+            <CreateAd onOpen={onOpen} />
           </Flex>
         </Flex>
         <Box
           as={"section"}
           h={"100%"}
           w={{ base: "100%", md: "unset" }}
-          maxWidth={"1600px"}
+          maxWidth={"1392px"}
           p={{
             base: "280px 25px 20px 10px",
             sm: "280px 25px 20px 10px",
@@ -48,13 +59,13 @@ const ProfilePage = () => {
         >
           <Flex
             flexWrap={{ base: "unset", md: "wrap" }}
-            justifyContent={"space-between"}
             h={"100%"}
             w={"100%"}
-            gap={"30px"}
+            gap={"64px"}
             pb={{ base: "10px", md: "0px" }}
             overflowY={{ base: "hidden", md: "unset" }}
             overflowX={{ base: "scroll", md: "unset" }}
+            bg={"pink"}
           >
             <ProductCard />
             <ProductCard />
