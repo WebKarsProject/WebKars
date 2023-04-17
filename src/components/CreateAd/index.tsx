@@ -13,7 +13,7 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
       bg={"grey_scale.grey10"}
       zIndex={"10px"}
       borderRadius={"8px"}
-      p={{ base: "40px 29px", md: "44px 70px 42px 41px" }}
+      p={{ base: "20px 29px", sm: "44px 29px", md: "44px 70px 42px 41px" }}
     >
       <Flex w={"100%"} h={"100%"} flexDir={"column"}>
         <Avatar size={"lg"} name={"S L"} />
