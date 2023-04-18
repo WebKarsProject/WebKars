@@ -26,7 +26,7 @@ const Inputs = ({ label, type, placeholder, register, errors }: any) => {
         color={"#868E96"}
         focusBorderColor={"#5126EA"}
         _hover={{ background: "#F1F3F5" }}
-        {...register(`${type}`)}
+        {...register(`${label}`)}
       />
       <FormErrorMessage color={"feedback.alert1"}>
         {errors && errors[type] && errors[type].message}
