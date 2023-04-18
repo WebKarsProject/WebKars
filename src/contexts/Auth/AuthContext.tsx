@@ -5,9 +5,10 @@ import {
   IProviderProps,
   IReqLogin,
   IToken,
+  IUser,
 } from "../../interface";
 import { useNavigate } from "react-router-dom";
-import { instance } from "../../services/axios";
+import { Instance } from "../../services/axios";
 import { Erro, Success } from "../../services/toast";
 import axios from "axios";
 
@@ -23,7 +24,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const login = async (body: IReqLogin) => {
     setLoading(true);
     try {
-      const { data } = await instance.post<IToken>("/session", body);
+      const { data } = await Instance.post<IToken>("/session", body);
       console.log(data, "try");
       localStorage.setItem(`@WebKars:token`, data.token);
       localStorage.setItem(`@WebKars:id`, data.user_id);
@@ -39,10 +40,28 @@ const AuthProvider = ({ children }: IProviderProps) => {
       setLoading(false);
     }
   };
+
+  const registerUser = async (body: IUser) => {
+    setLoading(true);
+    try {
+      await Instance.post("/users", body);
+      navigate("/session");
+    } catch (error) {
+      console.log(error, "catch");
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        Erro(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
         login,
+        registerUser,
         token,
         id,
         setLoading,
