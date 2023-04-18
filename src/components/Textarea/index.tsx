@@ -1,13 +1,13 @@
 import { FormLabel, Textarea, Stack } from "@chakra-ui/react";
 
-const Textareas = () => {
+const Textareas = ({ label, placeholder }: any) => {
   return (
     <Stack spacing={"0px"}>
       <FormLabel fontSize={"14px"} fontWeight={"500"} lineHeight={"17px"}>
-        Label
+        {label}
       </FormLabel>
       <Textarea
-        placeholder="Placeholder"
+        placeholder={placeholder}
         display={"flex"}
         flexDirection={"row"}
         alignItems={"flex-start"}
