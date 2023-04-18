@@ -2,10 +2,34 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export interface IAuthContext {
   token: string | null;
+  registerUser: (body: IUser) => Promise<void>;
   id: string | null;
   login: (body: IReqLogin) => Promise<void>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface IUserContext {}
+
+export interface IUser {
+  name: string;
+  email: string;
+  cpf: string;
+  phone: string;
+  password: string;
+  birthday: Date;
+  description: string;
+  buyer: boolean;
+  address: IAddress;
+}
+
+export interface IAddress {
+  zipcode: string;
+  city: string;
+  street: string;
+  state: string;
+  number: string;
+  complement: string;
 }
 
 export interface IProviderProps {
