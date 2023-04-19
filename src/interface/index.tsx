@@ -6,9 +6,6 @@ export interface IAuthContext {
   login: (body: IReqLogin) => Promise<void>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-}
-
-export interface IUserContext {
   updateUser: (body: any) => Promise<void>;
   getMyProfile: () => Promise<void>;
   user: IUser;
