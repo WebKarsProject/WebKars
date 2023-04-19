@@ -12,8 +12,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ford from "../../assets/ford.png";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = () => {
+  const navigate = useNavigate();
+
   return (
     <Card
       minW={"300px"}
@@ -21,6 +24,8 @@ const ProductCard = () => {
       maxH={"410px"}
       padding={"1.5px"}
       role={"group"}
+      cursor={"pointer"}
+      onClick={() => navigate(`/product`, { replace: true })}
     >
       <CardBody
         alignItems={"center"}
