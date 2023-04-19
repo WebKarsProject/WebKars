@@ -29,7 +29,9 @@ const AuthProvider = ({ children }: IProviderProps) => {
   }, []);
 
   const getMyProfile = async () => {
-    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    Instance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
+      `@WebKars:token`
+    )}`;
     setLoading(true);
     try {
       const { data } = await Instance.get<IUser>("/users");

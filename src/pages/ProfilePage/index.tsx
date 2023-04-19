@@ -4,7 +4,6 @@ import Footer from "../../components/Footer";
 import CreateAd from "../../components/CreateAd";
 import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
-import { useState } from "react";
 import CreateAnnouncementModal from "../../components/CreateAnnouncementModal";
 
 const ProfilePage = () => {
@@ -59,6 +58,7 @@ const ProfilePage = () => {
         >
           <Flex
             flexWrap={{ base: "unset", md: "wrap" }}
+            justify={"space-between"}
             h={"100%"}
             w={"100%"}
             gap={{ base: "38px", md: "64px" }}
