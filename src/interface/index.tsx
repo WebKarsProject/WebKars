@@ -3,7 +3,6 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 export interface IAuthContext {
   token: string | null;
   registerUser: (body: IUserReq) => Promise<void>;
-  id: string | null;
   login: (body: IReqLogin) => Promise<void>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
