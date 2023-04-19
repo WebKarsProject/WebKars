@@ -41,6 +41,7 @@ const RegisterPage = () => {
         height={"100vh"}
       >
         <FormControl
+          as="form"
           display="flex"
           flexDirection={"column"}
           gap={"2rem"}
@@ -54,6 +55,7 @@ const RegisterPage = () => {
           <Heading fontSize={"1.5rem"}>Cadastro</Heading>
           <Text variant={"body-2-500"}>Informações pessoais</Text>
           <Inputs
+            id={"name"}
             label={"Nome"}
             placeholder={"Ex: Junielson Diniz"}
             type={"text"}
@@ -61,6 +63,7 @@ const RegisterPage = () => {
             errors={errors}
           />
           <Inputs
+            id={"email"}
             label={"Email"}
             placeholder={"Ex: junielson@kenzie.com.br"}
             type={"email"}
@@ -68,6 +71,7 @@ const RegisterPage = () => {
             errors={errors}
           />
           <Inputs
+            id={"cpf"}
             label={"CPF"}
             placeholder={"000.000.000-00"}
             type={"number"}
@@ -75,6 +79,7 @@ const RegisterPage = () => {
             errors={errors}
           />
           <Inputs
+            id={"phone"}
             label={"Celular"}
             placeholder={"(DDD) 90000-0000"}
             type={"number"}
@@ -82,16 +87,30 @@ const RegisterPage = () => {
             errors={errors}
           />
           <Inputs
+            id={"birthday"}
             label={"Data de nascimento"}
             placeholder={"00/00/00"}
             type={"date"}
             register={register}
             errors={errors}
           />
-          <Textareas label="Descrição" placeholder="Digitar descrição" />
+          <Textareas
+            id={"description"}
+            label="Descrição"
+            placeholder="Digitar descrição"
+          />
           <Text variant={"body-2-500"}>Informações de endereço</Text>
+          <Inputs
+            id={"zipcode"}
+            label={"CEP"}
+            placeholder={"00000.000"}
+            type={"number"}
+            register={register}
+            errors={errors}
+          />
           <Stack direction={"row"}>
             <Inputs
+              id={"state"}
               label={"Estado"}
               placeholder={"Digitar estado"}
               type={"text"}
@@ -99,6 +118,7 @@ const RegisterPage = () => {
               errors={errors}
             />
             <Inputs
+              id={"city"}
               label={"Cidade"}
               placeholder={"Digitar cidade"}
               type={"text"}
@@ -107,6 +127,7 @@ const RegisterPage = () => {
             />
           </Stack>
           <Inputs
+            id={"street"}
             label={"Rua"}
             type={"text"}
             placeholder={"Ex: Rua Zenite"}
@@ -115,6 +136,7 @@ const RegisterPage = () => {
           />
           <Stack direction={"row"}>
             <Inputs
+              id={"number"}
               label={"Número"}
               type={"number"}
               placeholder={"Digitar número"}
@@ -122,6 +144,7 @@ const RegisterPage = () => {
               errors={errors}
             />
             <Inputs
+              id={"complement"}
               label={"Complemento"}
               type={"text"}
               placeholder={"Ex: apto 307"}
@@ -151,6 +174,7 @@ const RegisterPage = () => {
             </Button>
           </Stack>
           <Inputs
+            id={"password"}
             label={"Senha"}
             placeholder={"Digitar senha"}
             type={"password"}
@@ -158,6 +182,7 @@ const RegisterPage = () => {
             errors={errors}
           />
           <Inputs
+            id={"confirmPassword"}
             label="Confirmar senha"
             placeholder="Digite novamente sua senha"
             type="password"
