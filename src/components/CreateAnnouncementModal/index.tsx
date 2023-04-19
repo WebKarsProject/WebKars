@@ -22,6 +22,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateAnnouncementModalSchema } from "../../schemas/CreateAnnouncementModal/CreateAnnouncementModalSchema";
 
 import { dataBase } from "../../dataBase.mock.json";
+import { useState } from "react";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
   const {
@@ -32,7 +33,9 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
     resolver: yupResolver(CreateAnnouncementModalSchema),
   });
 
-  const Test = (data: ICreateAnnouncementModal) => console.log(data);
+  const Test = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -157,13 +160,13 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
           <Inputs
             id={"img"}
             label={"Imagem da capa"}
-            type={"text"}
+            type="text"
             placeholder={"https://image.com"}
             register={register}
             errors={errors}
           />
-          {/* 
-          <Inputs
+
+          {/* <Inputs
             id={"img"}
             label={"1° Imagem da galeria"}
             type={"text"}
