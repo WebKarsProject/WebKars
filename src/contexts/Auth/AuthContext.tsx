@@ -33,7 +33,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        Erro(`${data.message}❗❗`);
+        console.log(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -49,7 +49,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        Erro(`${data.message}❗❗`);
+        console.log(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
