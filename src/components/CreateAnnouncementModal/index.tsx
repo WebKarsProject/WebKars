@@ -1,6 +1,5 @@
 import {
   Modal,
-  Box,
   Flex,
   FormControl,
   Text,
@@ -11,14 +10,18 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
+  FormErrorMessage,
   Select,
   FormLabel,
+  Stack,
 } from "@chakra-ui/react";
 import { IModal, ICreateAnnouncementModal } from "../../interface";
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateAnnouncementModalSchema } from "../../schemas/CreateAnnouncementModal/CreateAnnouncementModalSchema";
+
+import { dataBase } from "../../dataBase.mock.json";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
   const {
@@ -28,6 +31,8 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
   } = useForm<ICreateAnnouncementModal>({
     resolver: yupResolver(CreateAnnouncementModalSchema),
   });
+
+  const Test = (data: ICreateAnnouncementModal) => console.log(data);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -41,10 +46,12 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
         <ModalCloseButton />
 
         <ModalBody
-          p={"0px 24px 0px 30px"}
+          as={"form"}
+          p={{ base: "0px 14px 0px 20px", md: "0px 24px 0px 30px" }}
           display={"flex"}
           flexDir={"column"}
           gap={"24px"}
+          onSubmit={handleSubmit(Test)}
         >
           <Text variant={"body-2-500"} color={"grey_scale.grey0"} pb={"24px"}>
             Infomações do veículo
@@ -52,10 +59,13 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
 
           <FormControl>
             <FormLabel>Marca</FormLabel>
-            <Select
-              placeholder={"Mercedes Benz"}
-              {...register("brand")}
-            ></Select>
+            <Select placeholder={"Mercedes Benz"} {...register("brand")}>
+              {dataBase.map((item) => (
+                <option key={item.id} value={item.brand}>
+                  {item.brand}
+                </option>
+              ))}
+            </Select>
           </FormControl>
 
           <FormControl>
@@ -63,97 +73,141 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
             <Select
               placeholder={"A 200 CGI ADVANCE SEDAN"}
               {...register("model")}
-            ></Select>
+            >
+              {dataBase.map((item) => (
+                <option key={item.id} value={item.model}>
+                  {item.model}
+                </option>
+              ))}
+            </Select>
           </FormControl>
 
           <Flex gap={3}>
             <FormControl>
               <FormLabel>Ano</FormLabel>
-              <Select placeholder="2023" {...register("year")}></Select>
+              <Select placeholder={"2023"} {...register("year")}>
+                {dataBase.map((item) => (
+                  <option key={item.id} value={item.year}>
+                    {item.year}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
 
             <FormControl>
               <FormLabel>Combustível</FormLabel>
-              <Select
-                placeholder="Gasolina / Etanol"
-                {...register("fuel")}
-              ></Select>
+              <Select placeholder={"Gasolina / Etanol"} {...register("fuel")}>
+                {dataBase.map((item) => (
+                  <option key={item.id} value={item.fuel}>
+                    {item.fuel}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
           </Flex>
 
           <Flex gap={3}>
             <FormControl>
               <FormLabel>Quilometragem</FormLabel>
-              <Select placeholder="30.000" {...register("mileage")}></Select>
+              <Select placeholder={"30.000"} {...register("mileage")}>
+                {dataBase.map((item) => (
+                  <option key={item.id} value={item.mileage}>
+                    {item.mileage}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
 
-            <FormControl>
-              <FormLabel>Cor</FormLabel>
-              <Select placeholder="Branco" {...register("color")}></Select>
-            </FormControl>
+            <Inputs
+              id={"color"}
+              label={"Cor"}
+              type={"text"}
+              placeholder={"Branco"}
+              register={register}
+              errors={errors}
+            />
           </Flex>
 
           <Flex gap={3}>
             <FormControl>
               <FormLabel>Preço tabela FIPE</FormLabel>
-              <Select placeholder="R$ 48.000,00" {...register("fipe")}></Select>
+              <Select
+                id="fipe"
+                placeholder={"R$ 48.000,00"}
+                {...register("fipe")}
+              >
+                {dataBase.map((item) => (
+                  <option key={item.id} value={item.fipe}>
+                    {item.fipe}
+                  </option>
+                ))}
+              </Select>
             </FormControl>
 
-            <FormControl>
-              <FormLabel>Preço</FormLabel>
-              <Select
-                placeholder="R$ 50.000,00"
-                {...register("price")}
-              ></Select>
-            </FormControl>
+            <Inputs
+              id={"price"}
+              label={"Preço"}
+              type={"text"}
+              placeholder={"R$ 50.000,00"}
+              register={register}
+              errors={errors}
+            />
           </Flex>
 
           <Inputs
+            id={"img"}
             label={"Imagem da capa"}
-            type={"Imagem da capa"}
+            type={"text"}
             placeholder={"https://image.com"}
             register={register}
             errors={errors}
           />
-
+          {/* 
           <Inputs
+            id={"img"}
             label={"1° Imagem da galeria"}
-            type={"1° Imagem da galeria"}
+            type={"text"}
             placeholder={"https://image.com"}
             register={register}
             errors={errors}
           />
 
           <Inputs
+            id={"img"}
             label={"2° Imagem da galeria"}
-            type={"2° Imagem da galeria"}
+            type={"text"}
             placeholder={"https://image.com"}
             register={register}
             errors={errors}
-          />
+          /> */}
 
           <Button
             variant={"brand_opacity"}
-            p={"12px 20px"}
+            alignSelf={"start"}
+            fontSize={{ base: ".75rem", md: "0.875rem" }}
             maxW={"315px"}
-            noOfLines={1}
           >
             Adicionar campo para imagem da galeria
           </Button>
-        </ModalBody>
-
-        <ModalFooter p={"42px 24px 18px 0px"}>
-          <Button
-            variant={"brand_opacity"}
-            color={"grey_scale.grey2"}
-            colorScheme="blue"
-            mr={"10px"}
-            onClick={onClose}
+          <Stack
+            spacing={4}
+            direction="row"
+            alignSelf={"end"}
+            p={"42px 0px 18px 0px"}
           >
-            Cancelar
-          </Button>
-          <Button variant={"outline2"}>Criar anúncio</Button>
-        </ModalFooter>
+            <Button
+              variant={"brand_opacity"}
+              color={"grey_scale.grey2"}
+              colorScheme="blue"
+              onClick={onClose}
+            >
+              Cancelar
+            </Button>
+            <Button type={"submit"} variant={"outline2"}>
+              Criar anúncio
+            </Button>
+          </Stack>
+        </ModalBody>
       </ModalContent>
     </Modal>
   );
