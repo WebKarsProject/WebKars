@@ -16,7 +16,6 @@ export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider = ({ children }: IProviderProps) => {
   const token = localStorage.getItem(`@WebKars:token`);
-  const id = localStorage.getItem(`@WebKars:id`);
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);
