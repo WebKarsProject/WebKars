@@ -15,16 +15,23 @@ import {
   FormLabel,
   Stack,
 } from "@chakra-ui/react";
-import { IModal, ICreateAnnouncementModal } from "../../interface";
+import {
+  IModal,
+  ICreateAnnouncementModal,
+  IAnnouncement,
+} from "../../interface";
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateAnnouncementModalSchema } from "../../schemas/CreateAnnouncementModal/CreateAnnouncementModalSchema";
 
 import { dataBase } from "../../dataBase.mock.json";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
+  const { createAnnouncement } = useContext(AnnouncementContext);
+
   const [inputModal, setInputModal] = useState([
     {
       label: "Imagem da capa",
@@ -41,8 +48,14 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
     resolver: yupResolver(CreateAnnouncementModalSchema),
   });
 
-  const Test = (data: any) => {
-    console.log(data);
+  const Test = (data: ICreateAnnouncementModal) => {
+    const { img } = data;
+
+    delete data.img;
+
+    const newData: IAnnouncement = { ...data, images: [{ img_url: img }] };
+
+    createAnnouncement(newData);
   };
 
   return (
