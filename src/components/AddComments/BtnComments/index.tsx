@@ -5,7 +5,6 @@ interface IBtnCommentsProps {
 }
 
 const BtnComments = ({ text, isLarger }: IBtnCommentsProps) => {
-  console.log(isLarger);
   return (
     <Button
       variant={"brand2"}
