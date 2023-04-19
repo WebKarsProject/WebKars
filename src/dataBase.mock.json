@@ -1,0 +1,22 @@
+{
+  "dataBase": [
+    {
+      "id": 1,
+      "brand": "Citroën",
+      "model": "C4 CACTUS Rip Curl 1.6 16V Flex Aut.",
+      "year": "2022",
+      "fuel": "Flex",
+      "mileage": "50,00",
+      "fipe": "112077"
+    },
+    {
+      "id": 2,
+      "brand": "Fiat",
+      "model": "UNO DRIVE 1.0 Flex 6V 5p",
+      "year": "2021",
+      "fuel": "Elétrico",
+      "mileage": "30,00",
+      "fipe": "53974"
+    }
+  ]
+}
