@@ -12,7 +12,6 @@ import {
   Button,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useLocation } from "react-router-dom";
 import ModalUserUpdate from "../ModalUpdateUser";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
@@ -20,7 +19,6 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [isLarger] = useMediaQuery("(max-width: 500px)");
-  let location = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
