@@ -18,9 +18,10 @@ export interface IUser {
   phone: string;
   password: string;
   birthday: Date;
-  description: string;
-  buyer: boolean;
+  description?: string;
+  buyer?: boolean;
   address: IAddress;
+  confirmPassword?: string;
 }
 
 export interface IAddress {
@@ -63,13 +64,13 @@ export interface IModalCreateAd {
 export interface ICreateAnnouncementModal {
   brand: string;
   model: string;
-  year: Date;
+  year: string;
   fuel: string;
   mileage: number;
   color: string;
   fipe: number;
   price: number;
-  description: string;
-  published?: boolean;
-  img: [];
+  description?: string;
+  published: boolean;
+  img: string;
 }

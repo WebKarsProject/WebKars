@@ -1,6 +1,8 @@
 import * as yup from "yup";
+import { IAddress } from "../../interface";
+import { SchemaOf } from "yup";
 
-export const addressSchema = yup.object().shape({
+export const addressSchema: SchemaOf<IAddress> = yup.object().shape({
   zipcode: yup.string().required(),
   city: yup.string().required(),
   street: yup.string().required(),
