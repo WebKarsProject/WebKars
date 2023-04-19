@@ -58,7 +58,6 @@ const AuthProvider = ({ children }: IProviderProps) => {
         login,
         registerUser,
         token,
-        id,
         setLoading,
         loading,
       }}
