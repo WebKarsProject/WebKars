@@ -3,7 +3,6 @@ import {
   Card,
   CardBody,
   FormControl,
-  FormLabel,
   Heading,
   Input,
   Link,
@@ -17,6 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../schemas/Login/loginSchema";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import Inputs from "../../components/Input";
 
 const Session = () => {
   const { login } = useContext(AuthContext);
@@ -51,22 +51,22 @@ const Session = () => {
           onSubmit={handleSubmit(login)}
         >
           <Heading fontSize={"1.5rem"}>Login</Heading>
-          <FormLabel fontSize={"1rem"}>Usuario</FormLabel>
-          <Input
-            type="email"
-            placeholder="Digite aqui seu email"
-            id="email"
-            {...register("email")}
-          />
-          <Text color={"feedback.alert1"}>{errors.email?.message}</Text>
-          <FormLabel fontSize={"1rem"}>Senha</FormLabel>
-          <Input
-            type="password"
-            id="password"
-            placeholder="Digite aqui sua senha"
-            {...register("password")}
-          />
-          <Text color={"feedback.alert1"}>{errors.password?.message}</Text>
+          <Inputs
+            id={"email"}
+            label={"email"}
+            placeholder={"Digite aqui seu email"}
+            type={"email"}
+            register={register}
+            errors={errors}
+          ></Inputs>
+          <Inputs
+            id={"password"}
+            label={"senha"}
+            placeholder={"Digite aqui sua senha"}
+            type={"password"}
+            register={register}
+            errors={errors}
+          ></Inputs>
           <Link
             textAlign={"end"}
             fontSize={"1rem"}
