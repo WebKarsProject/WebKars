@@ -181,7 +181,7 @@ const RegisterPage = () => {
           <Text variant={"body-2-500"}>Tipo de conta</Text>
           <Stack direction={"row"} justifyContent={"space-between"}>
             <Button
-              variant={"outline2"}
+              variant={btnBuyer ? "brand1" : "outline2"}
               padding={"12px 28px 12px 28px"}
               h={"48px"}
               w={"152px"}
@@ -191,7 +191,7 @@ const RegisterPage = () => {
               Comprador
             </Button>
             <Button
-              variant={"outline2"}
+              variant={btnBuyer ? "outline2" : "brand1"}
               padding={"12px 28px 12px 28px"}
               h={"48px"}
               w={"152px"}
