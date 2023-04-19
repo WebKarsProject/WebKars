@@ -2,7 +2,7 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export interface IAuthContext {
   token: string | null;
-  registerUser: (body: IUser) => Promise<void>;
+  registerUser: (body: IUserReq) => Promise<void>;
   id: string | null;
   login: (body: IReqLogin) => Promise<void>;
   loading: boolean;
@@ -11,7 +11,7 @@ export interface IAuthContext {
 
 export interface IUserContext {}
 
-export interface IUser {
+export interface IUserReq {
   name: string;
   email: string;
   cpf: string;
@@ -20,7 +20,18 @@ export interface IUser {
   birthday: Date;
   description?: string;
   buyer?: boolean;
-  address: IAddress[];
+  address: IAddress;
+}
+
+export interface IUser extends IAddress {
+  name: string;
+  email: string;
+  cpf: string;
+  phone: string;
+  password: string;
+  birthday: Date;
+  description?: string;
+  buyer?: boolean;
   confirmPassword?: string;
 }
 
@@ -30,7 +41,7 @@ export interface IAddress {
   street: string;
   state: string;
   number: string;
-  complement: string;
+  complement?: string;
 }
 
 export interface IProviderProps {
