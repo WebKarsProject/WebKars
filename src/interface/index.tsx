@@ -90,3 +90,21 @@ export interface ICreateAnnouncementModal {
 export interface IImage {
   img?: string;
 }
+
+export interface IAnnouncement {
+  brand: string;
+  model: string;
+  year: string;
+  fuel: string;
+  mileage: number;
+  color: string;
+  fipe: number;
+  price: number;
+  description?: string;
+  published?: boolean;
+  images?: IImages[];
+}
+
+export interface IImages {
+  img_url?: string;
+}
