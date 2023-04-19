@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   IAuthContext,
   IAxiosData,
@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Instance } from "../../services/axios";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
@@ -19,18 +20,27 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<IUser>({} as IUser);
+
+  useEffect(() => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    if (token) {
+      getMyProfile();
+    }
+  }, []);
 
   const login = async (body: IReqLogin) => {
     setLoading(true);
     try {
       const { data } = await Instance.post<IToken>("/session", body);
       localStorage.setItem(`@WebKars:token`, data.token);
-      console.log(`✅Usuário logado com sucesso!`);
+      await getMyProfile();
+      toast.success(`✅Usuário logado com sucesso!`);
       navigate(`/`, { replace: true });
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -41,11 +51,46 @@ const AuthProvider = ({ children }: IProviderProps) => {
     setLoading(true);
     try {
       await Instance.post("/users", body);
+      toast.success("Conta criada com sucesso");
       navigate("/session");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
+        toast.error(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getMyProfile = async () => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    setLoading(true);
+    try {
+      const { data } = await Instance.get<IUser>("/users");
+      setUser(data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
         console.log(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateUser = async (body: IUser) => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    setLoading(true);
+    try {
+      const { data } = await Instance.patch("/users");
+      setUser(data);
+      await getMyProfile();
+      toast.success("Usuário atualizado com sucesso!");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -60,6 +105,10 @@ const AuthProvider = ({ children }: IProviderProps) => {
         token,
         setLoading,
         loading,
+        getMyProfile,
+        updateUser,
+        user,
+        setUser,
       }}
     >
       {children}
