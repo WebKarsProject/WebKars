@@ -16,10 +16,12 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import { ImMenu } from "react-icons/im";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Profile from "../Profile";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const Header = () => {
+  const { token } = useContext(AuthContext);
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   const [close, setClose] = useState(true);
   let location = useLocation();
@@ -33,8 +35,7 @@ const Header = () => {
         height={"80px"}
       >
         <Image src={motorsShop} alt={"logo"} />
-        {location.pathname === "/product" ||
-        location.pathname === "/profile" ? (
+        {token ? (
           <Profile />
         ) : isLarger ? (
           <Menu>
@@ -74,16 +75,22 @@ const Header = () => {
             borderColor={"grey_scale.grey6"}
             padding={"1rem"}
           >
-            <Link variant={"link"} color={"brand.brand1"} href="/session">
-              Fazer Login
-            </Link>
-            <Link
-              variant={"outline1"}
-              _hover={{ textDecoration: "none" }}
-              href={"/register"}
-            >
-              Cadastrar
-            </Link>
+            {token ? (
+              <Profile />
+            ) : (
+              <>
+                <Link variant={"link"} color={"brand.brand1"} href="/session">
+                  Fazer Login
+                </Link>
+                <Link
+                  variant={"outline1"}
+                  _hover={{ textDecoration: "none" }}
+                  href={"/register"}
+                >
+                  Cadastrar
+                </Link>
+              </>
+            )}
           </Box>
         )}
       </CardHeader>
