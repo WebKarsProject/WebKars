@@ -35,9 +35,7 @@ const Header = () => {
         height={"80px"}
       >
         <Image src={motorsShop} alt={"logo"} />
-        {(location.pathname === "/product" ||
-          location.pathname === "/profile") &&
-        token ? (
+        {token ? (
           <Profile />
         ) : isLarger ? (
           <Menu>
