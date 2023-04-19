@@ -9,7 +9,12 @@ export interface IAuthContext {
   setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export interface IUserContext {}
+export interface IUserContext {
+  updateUser: (body: any) => Promise<void>;
+  getMyProfile: () => Promise<void>;
+  user: IUser;
+  setUser: Dispatch<SetStateAction<IUser>>;
+}
 
 export interface IUser {
   name: string;
