@@ -1,7 +1,11 @@
 import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
 import { IModalCreateAd } from "../../interface";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const CreateAd = ({ onOpen }: IModalCreateAd) => {
+  const { user } = useContext(AuthContext);
+
   return (
     <Flex
       w={"100%"}
@@ -16,9 +20,9 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
       p={{ base: "20px 29px", sm: "44px 29px", md: "44px 70px 42px 41px" }}
     >
       <Flex w={"100%"} h={"100%"} flexDir={"column"}>
-        <Avatar size={"lg"} name={"S L"} />
+        <Avatar size={"lg"} name={user.name} />
         <Flex w={"100%"} alignItems={"center"} p={"24px 0px"} gap={"9px"}>
-          <Text variant={"Heading-6-600"}>Samuel Leão</Text>
+          <Text variant={"Heading-6-600"}>{user.name}</Text>
           <Text
             variant={"body-2-500"}
             color={"brand.brand1"}
@@ -27,15 +31,11 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
             textAlign={"center"}
             borderRadius={"4px"}
           >
-            Anunciante
+            {user.buyer ? "Comprador" : "Anunciante"}
           </Text>
         </Flex>
-        <Text variant={"body-1-400"}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
-        </Text>
-
+        <Text variant={"body-1-400"}></Text>
+        {user.description ? "" : "Nada informado"}
         <Button
           w={"160px"}
           p={"12px 28px"}
