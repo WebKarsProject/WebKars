@@ -25,9 +25,7 @@ const RegisterPage = () => {
     resolver: yupResolver(userSchema),
   });
 
-  const test = (data: IUser) => {
-    console.log(data);
-  };
+  const test = (data: IUser) => console.log(data);
 
   return (
     <Card height={"100%"}>

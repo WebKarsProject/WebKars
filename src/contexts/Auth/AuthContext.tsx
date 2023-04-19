@@ -25,13 +25,11 @@ const AuthProvider = ({ children }: IProviderProps) => {
     setLoading(true);
     try {
       const { data } = await Instance.post<IToken>("/session", body);
-      console.log(data, "try");
       localStorage.setItem(`@WebKars:token`, data.token);
       localStorage.setItem(`@WebKars:id`, data.user_id);
       Success(`✅Usuário logado com sucesso!`);
       navigate(`/`, { replace: true });
     } catch (error) {
-      console.log(error, "catch");
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
         Erro(`${data.message}❗❗`);
@@ -47,7 +45,6 @@ const AuthProvider = ({ children }: IProviderProps) => {
       await Instance.post("/users", body);
       navigate("/session");
     } catch (error) {
-      console.log(error, "catch");
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
         Erro(`${data.message}❗❗`);
