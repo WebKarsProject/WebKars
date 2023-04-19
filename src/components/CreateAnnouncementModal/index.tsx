@@ -25,6 +25,14 @@ import { dataBase } from "../../dataBase.mock.json";
 import { useState } from "react";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
+  const [inputModal, setInputModal] = useState([
+    {
+      label: "Imagem da capa",
+      type: "text",
+      placeholder: "https://image.com",
+    },
+  ]);
+
   const {
     register,
     handleSubmit,
@@ -157,6 +165,22 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
             />
           </Flex>
 
+          {inputModal.map((item, index) => {
+            return (
+              <Inputs
+                key={index}
+                id={"img"}
+                label={index !== 0 ? index + " " + item.label : item.label}
+                type={item.type}
+                placeholder={item.placeholder}
+                register={register}
+                errors={errors}
+              />
+            );
+          })}
+
+          {/*
+          
           <Inputs
             id={"img"}
             label={"Imagem da capa"}
@@ -166,7 +190,7 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
             errors={errors}
           />
 
-          {/* <Inputs
+          <Inputs
             id={"img"}
             label={"1° Imagem da galeria"}
             type={"text"}
@@ -189,6 +213,16 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
             alignSelf={"start"}
             fontSize={{ base: ".75rem", md: "0.875rem" }}
             maxW={"315px"}
+            onClick={() =>
+              setInputModal([
+                ...inputModal,
+                {
+                  label: "Imagem da capa",
+                  type: "text",
+                  placeholder: "https://image.com",
+                },
+              ])
+            }
           >
             Adicionar campo para imagem da galeria
           </Button>
