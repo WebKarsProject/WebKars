@@ -10,7 +10,6 @@ import {
 } from "../../interface";
 import { useNavigate } from "react-router-dom";
 import { Instance } from "../../services/axios";
-import { Erro, Success } from "../../services/toast";
 import axios from "axios";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -27,8 +26,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     try {
       const { data } = await Instance.post<IToken>("/session", body);
       localStorage.setItem(`@WebKars:token`, data.token);
-      localStorage.setItem(`@WebKars:id`, data.user_id);
-      Success(`✅Usuário logado com sucesso!`);
+      console.log(`✅Usuário logado com sucesso!`);
       navigate(`/`, { replace: true });
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -41,7 +39,6 @@ const AuthProvider = ({ children }: IProviderProps) => {
   };
 
   const registerUser = async (body: IUserReq) => {
-    console.log(body);
     setLoading(true);
     try {
       await Instance.post("/users", body);
