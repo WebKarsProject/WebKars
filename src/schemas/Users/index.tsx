@@ -18,5 +18,10 @@ export const userSchema: SchemaOf<IUser> = yup.object().shape({
       [yup.ref("password")],
       "Confirmação de senha deve ser igual a senha"
     ),
-  address: yup.array().of(addressSchema).required(),
+  zipcode: yup.string().required(),
+  city: yup.string().required(),
+  street: yup.string().required(),
+  state: yup.string().required(),
+  number: yup.string().required(),
+  complement: yup.string().notRequired(),
 });
