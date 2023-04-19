@@ -19,7 +19,6 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   let location = useLocation();
   const { isOpen, onOpen, onClose } = useDisclosure();
