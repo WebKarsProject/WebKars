@@ -6,6 +6,7 @@ import {
   IReqLogin,
   IToken,
   IUser,
+  IUserReq,
 } from "../../interface";
 import { useNavigate } from "react-router-dom";
 import { Instance } from "../../services/axios";
@@ -39,7 +40,8 @@ const AuthProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  const registerUser = async (body: IUser) => {
+  const registerUser = async (body: IUserReq) => {
+    console.log(body);
     setLoading(true);
     try {
       await Instance.post("/users", body);

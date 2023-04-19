@@ -1,7 +1,7 @@
 import * as yup from "yup";
-import { SchemaOf } from "yup";
 import { addressSchema } from "../address";
 import { IUser } from "../../interface";
+import { SchemaOf } from "yup";
 
 export const userSchema: SchemaOf<IUser> = yup.object().shape({
   name: yup.string().required(),
@@ -18,5 +18,10 @@ export const userSchema: SchemaOf<IUser> = yup.object().shape({
       [yup.ref("password")],
       "Confirmação de senha deve ser igual a senha"
     ),
-  address: yup.array().of(addressSchema).notRequired(),
+  zipcode: yup.string().required(),
+  city: yup.string().required(),
+  street: yup.string().required(),
+  state: yup.string().required(),
+  number: yup.string().required(),
+  complement: yup.string().notRequired(),
 });
