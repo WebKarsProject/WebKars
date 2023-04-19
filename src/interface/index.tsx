@@ -20,7 +20,7 @@ export interface IUser {
   birthday: Date;
   description?: string;
   buyer?: boolean;
-  address: IAddress;
+  address: IAddress[];
   confirmPassword?: string;
 }
 
@@ -71,6 +71,10 @@ export interface ICreateAnnouncementModal {
   fipe: number;
   price: number;
   description?: string;
-  published: boolean;
-  img: string;
+  published?: boolean;
+  img?: string;
+}
+
+export interface IImage {
+  img?: string;
 }
