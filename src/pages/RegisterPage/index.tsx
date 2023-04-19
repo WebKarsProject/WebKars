@@ -17,7 +17,6 @@ import { userSchema } from "../../schemas/Users";
 import { IUser, IUserReq } from "../../interface";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import { boolean } from "yup";
 
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
