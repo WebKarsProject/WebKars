@@ -7,8 +7,11 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import BtnComments from "./BtnComments";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useContext } from "react";
 
 const AddComments = () => {
+  const { token } = useContext(AuthContext);
   const [isLarger] = useMediaQuery("(min-width: 500px)");
 
   return (
@@ -49,11 +52,13 @@ const AddComments = () => {
           resize={"none"}
         />
         <Button
-          variant={"brand1"}
+          disabled
+          variant={token === null ? "disable" : "brand1"}
           zIndex={"999"}
           position={isLarger ? "absolute" : "unset"}
           bottom={isLarger ? "13px" : "0px"}
           right={isLarger ? "25px" : "0px"}
+          cursor={token === null ? "no-drop" : "pointer"}
         >
           Comentar
         </Button>
