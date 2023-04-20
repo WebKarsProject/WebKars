@@ -83,10 +83,16 @@ const Profile = () => {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link _hover={{ textDecoration: "none" }}>Meus anuncios</Link>
+          <Link href="/profile" _hover={{ textDecoration: "none" }}>
+            Meus anuncios
+          </Link>
         </MenuItem>
         <MenuItem>
-          <Link _hover={{ textDecoration: "none", background: "none" }}>
+          <Link
+            href="/"
+            onClick={() => localStorage.clear()}
+            _hover={{ textDecoration: "none", background: "none" }}
+          >
             Sair
           </Link>
         </MenuItem>
