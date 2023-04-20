@@ -4,10 +4,12 @@ import Footer from "../../components/Footer";
 import CreateAd from "../../components/CreateAd";
 import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
-import { useState } from "react";
 import CreateAnnouncementModal from "../../components/CreateAnnouncementModal";
+import { useContext } from "react";
+import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
 
 const ProfilePage = () => {
+  const { ad } = useContext(AnnouncementContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -59,6 +61,7 @@ const ProfilePage = () => {
         >
           <Flex
             flexWrap={{ base: "unset", md: "wrap" }}
+            justify={"space-between"}
             h={"100%"}
             w={"100%"}
             gap={{ base: "38px", md: "64px" }}
@@ -66,13 +69,9 @@ const ProfilePage = () => {
             overflowY={{ base: "hidden", md: "unset" }}
             overflowX={{ base: "scroll", md: "unset" }}
           >
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {ad.length > 0
+              ? ad.map((cars) => <ProductCard key={cars.id} cars={cars} />)
+              : "Não tem nada"}
           </Flex>
         </Box>
       </Flex>

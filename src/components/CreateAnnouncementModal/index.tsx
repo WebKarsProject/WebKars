@@ -15,16 +15,24 @@ import {
   FormLabel,
   Stack,
 } from "@chakra-ui/react";
-import { IModal, ICreateAnnouncementModal } from "../../interface";
+import {
+  IModal,
+  ICreateAnnouncementModal,
+  IAnnouncement,
+} from "../../interface";
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateAnnouncementModalSchema } from "../../schemas/CreateAnnouncementModal/CreateAnnouncementModalSchema";
 
 import { dataBase } from "../../dataBase.mock.json";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
+import Textareas from "../Textarea";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
+  const { createAnnouncement } = useContext(AnnouncementContext);
+
   const [inputModal, setInputModal] = useState([
     {
       label: "Imagem da capa",
@@ -41,8 +49,26 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
     resolver: yupResolver(CreateAnnouncementModalSchema),
   });
 
-  const Test = (data: any) => {
-    console.log(data);
+  const Test = (data: ICreateAnnouncementModal) => {
+    const { image } = data;
+
+    const { brand, model, year, fuel, mileage, color, fipe, price } = data;
+
+    const newData: IAnnouncement = {
+      brand,
+      model,
+      year,
+      fuel,
+      mileage,
+      color,
+      fipe,
+      price,
+      description: "sdkfjkdfmd",
+      published: true,
+      images: [{ img_url: image }],
+    };
+
+    createAnnouncement(newData);
   };
 
   return (
@@ -165,11 +191,17 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
             />
           </Flex>
 
+          {/* <Textareas
+            id={"description"}
+            label="Descrição"
+            placeholder="Digitar descrição"
+          /> */}
+
           {inputModal.map((item, index) => {
             return (
               <Inputs
                 key={index}
-                id={"img"}
+                id={"image"}
                 label={index !== 0 ? index + " " + item.label : item.label}
                 type={item.type}
                 placeholder={item.placeholder}

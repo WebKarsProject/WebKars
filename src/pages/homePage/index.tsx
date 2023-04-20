@@ -6,8 +6,11 @@ import ProductCard from "../../components/ProductCard";
 import FilterProduct from "../../components/FilterProduct";
 import Pagination from "../../components/Pagination";
 import Banner from "../../components/Banner";
+import { useContext } from "react";
+import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
 
 const Homepage = () => {
+  const { ad } = useContext(AnnouncementContext);
   const theme = useTheme();
   const [isLarger] = useMediaQuery("(min-width: 650px)");
 
@@ -25,10 +28,9 @@ const Homepage = () => {
               overflowX={isLarger ? "unset" : "scroll"}
               gap={"20px"}
             >
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {ad.length > 0
+                ? ad.map((cars) => <ProductCard key={cars.id} cars={cars} />)
+                : "Não tem nada"}
             </Flex>
             {!isLarger && <FilterProduct />}
           </Flex>

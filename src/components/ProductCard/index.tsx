@@ -12,8 +12,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ford from "../../assets/ford.png";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard = ({ cars }: any) => {
+  const navigate = useNavigate();
+
   return (
     <Card
       minW={"300px"}
@@ -21,6 +24,8 @@ const ProductCard = () => {
       maxH={"410px"}
       padding={"1.5px"}
       role={"group"}
+      cursor={"pointer"}
+      onClick={() => navigate(`/product`, { replace: true })}
     >
       <CardBody
         alignItems={"center"}
@@ -38,14 +43,14 @@ const ProductCard = () => {
           <Tag
             position={"absolute"}
             color={"grey_scale.whiteFixed"}
-            bg={"brand.brand1"}
+            bg={cars?.published ? "brand.brand1" : "grey_scale.grey4"}
             top={"0"}
             left={"0"}
             display={"none"}
           >
-            Ativo
+            {cars?.published ? "Ativo" : "Inativo"}
           </Tag>
-          <Tag
+          {/* <Tag
             position={"absolute"}
             bg={"grey_scale.grey4"}
             color={"grey_scale.whiteFixed"}
@@ -54,7 +59,7 @@ const ProductCard = () => {
             display={"flex"}
           >
             Inativo
-          </Tag>
+          </Tag> */}
           <Tag
             bg={"random_profile.random7"}
             color={"grey_scale.whiteFixed"}
@@ -68,17 +73,15 @@ const ProductCard = () => {
           <Image
             alignItems={"center"}
             w={"260px"}
-            src={ford}
+            src={cars?.images[0]}
             alt={"Green double couch with wooden legs"}
             borderRadius={"lg"}
           />
         </Box>
         <Stack mt={"4"} spacing={"3"}>
-          <Text variant={"Heading-7-600"}>Ford Ka</Text>
+          <Text variant={"Heading-7-600"}>{cars?.model}</Text>
           <Text variant={"body-2-400"} noOfLines={3}>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design
-            with a sprinkle of vintage design.
+            {cars?.description}
           </Text>
           <Stack mt={"5"} direction={"row"} alignItems={"center"}>
             <Avatar
@@ -95,13 +98,13 @@ const ProductCard = () => {
       <CardFooter display={"flex"} justifyContent={"space-between"}>
         <HStack spacing="12px">
           <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
-            O Km
+            {cars?.mileage} Km
           </Tag>
           <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
-            2023
+            {cars?.year}
           </Tag>
         </HStack>
-        <Text variant={"Heading-7-500"}>R$100000000</Text>
+        <Text variant={"Heading-7-500"}> R$ {cars?.price},00 </Text>
       </CardFooter>
     </Card>
   );

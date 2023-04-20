@@ -79,14 +79,43 @@ export interface ICreateAnnouncementModal {
   year: string;
   fuel: string;
   mileage: number;
+  price: number;
+  fipe: number;
+  description?: string;
+  published?: boolean;
+  color: string;
+  image?: string;
+}
+
+export interface IAnnouncement {
+  brand: string;
+  model: string;
+  year: string;
+  fuel: string;
+  mileage: number;
   color: string;
   fipe: number;
   price: number;
-  description?: string;
-  published?: boolean;
-  img?: string;
+  description: string;
+  published: boolean;
+  images: IImgUrl[];
 }
 
-export interface IImage {
-  img?: string;
+export interface IImgUrl {
+  img_url?: string;
+}
+
+export interface IAnnouncementArray {
+  id: string;
+  brand: string;
+  model: string;
+  year: string;
+  fuel: string;
+  mileage: number;
+  color: string;
+  fipe: number;
+  price: number;
+  description: string;
+  published: boolean;
+  images: IImgUrl[];
 }

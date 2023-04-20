@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import motorsShop from "../../assets/Motors shop.png";
 import {
   Box,
   Card,
   CardHeader,
-  Flex,
   IconButton,
   Image,
   Link,
@@ -24,7 +23,8 @@ const Header = () => {
   const { token } = useContext(AuthContext);
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   const [close, setClose] = useState(true);
-  let location = useLocation();
+
+  const navigate = useNavigate();
   return (
     <Card as={"header"} id="/" width={"100%"} borderRadius={"0"}>
       <CardHeader
@@ -34,7 +34,12 @@ const Header = () => {
         alignItems={"center"}
         height={"80px"}
       >
-        <Image src={motorsShop} alt={"logo"} />
+        <Image
+          cursor={"pointer"}
+          onClick={() => navigate("/")}
+          src={motorsShop}
+          alt={"logo"}
+        />
         {token ? (
           <Profile />
         ) : isLarger ? (
