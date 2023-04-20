@@ -1,6 +1,5 @@
 import {
   Avatar,
-  AvatarBadge,
   Box,
   Card,
   CardBody,
@@ -11,7 +10,6 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import ford from "../../assets/ford.png";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ cars }: any) => {
@@ -50,16 +48,6 @@ const ProductCard = ({ cars }: any) => {
           >
             {cars?.published ? "Ativo" : "Inativo"}
           </Tag>
-          {/* <Tag
-            position={"absolute"}
-            bg={"grey_scale.grey4"}
-            color={"grey_scale.whiteFixed"}
-            top={"0"}
-            left={"0"}
-            display={"flex"}
-          >
-            Inativo
-          </Tag> */}
           <Tag
             bg={"random_profile.random7"}
             color={"grey_scale.whiteFixed"}
@@ -73,7 +61,9 @@ const ProductCard = ({ cars }: any) => {
           <Image
             alignItems={"center"}
             w={"260px"}
-            src={cars?.images[0]}
+            h={"152px"}
+            objectFit={"contain"}
+            src={cars?.images[0]["img_url"]}
             alt={"Green double couch with wooden legs"}
             borderRadius={"lg"}
           />
@@ -86,12 +76,10 @@ const ProductCard = ({ cars }: any) => {
           <Stack mt={"5"} direction={"row"} alignItems={"center"}>
             <Avatar
               size={"sm"}
-              name="anuciante"
               src="https://bit.ly/tioluwani-kolawole"
-            >
-              <AvatarBadge bg={"tomato"} />
-            </Avatar>
-            <Text variant={"body-2-500"}>Anunciante</Text>
+              name={cars?.user.name}
+            ></Avatar>
+            <Text variant={"body-2-500"}>{cars?.user.name}</Text>
           </Stack>
         </Stack>
       </CardBody>
