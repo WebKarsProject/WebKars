@@ -63,7 +63,8 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
       color,
       fipe,
       price,
-      description: "sdkfjkdfmd",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       published: true,
       images: [{ img_url: image }],
     };
