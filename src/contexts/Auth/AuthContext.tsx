@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   IAuthContext,
   IAxiosData,
@@ -6,40 +6,65 @@ import {
   IReqLogin,
   IToken,
   IUser,
+  IUserReq,
 } from "../../interface";
 import { useNavigate } from "react-router-dom";
 import { Instance } from "../../services/axios";
-import { Erro, Success } from "../../services/toast";
 import axios from "axios";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider = ({ children }: IProviderProps) => {
   const token = localStorage.getItem(`@WebKars:token`);
-  const id = localStorage.getItem(`@WebKars:id`);
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<IUser>({} as IUser);
 
-  const login = async (body: IReqLogin) => {
+  useEffect(() => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    if (token) {
+      getMyProfile();
+    }
+  }, []);
+
+  const getMyProfile = async () => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
+      `@WebKars:token`
+    )}`;
     setLoading(true);
     try {
-      const { data } = await Instance.post<IToken>("/session", body);
-      localStorage.setItem(`@WebKars:token`, data.token);
-      localStorage.setItem(`@WebKars:id`, data.user_id);
-      Success(`✅Usuário logado com sucesso!`);
-      navigate(`/`, { replace: true });
+      const { data } = await Instance.get<IUser>("/users");
+      setUser(data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        Erro(`${data.message}❗❗`);
+        console.log(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
     }
   };
 
-  const registerUser = async (body: IUser) => {
+  const login = async (body: IReqLogin) => {
+    setLoading(true);
+    try {
+      const { data } = await Instance.post<IToken>("/session", body);
+      localStorage.setItem(`@WebKars:token`, data.token);
+      await getMyProfile();
+      console.log(`✅Usuário logado com sucesso!`);
+      navigate(`/`, { replace: true });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        console.log(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const registerUser = async (body: IUserReq) => {
     setLoading(true);
     try {
       await Instance.post("/users", body);
@@ -47,7 +72,24 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        Erro(`${data.message}❗❗`);
+        console.log(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateUser = async (body: IUser) => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    setLoading(true);
+    try {
+      const { data } = await Instance.patch("/users");
+      await getMyProfile();
+      setUser(data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        console.log(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -60,9 +102,12 @@ const AuthProvider = ({ children }: IProviderProps) => {
         login,
         registerUser,
         token,
-        id,
         setLoading,
         loading,
+        getMyProfile,
+        updateUser,
+        user,
+        setUser,
       }}
     >
       {children}

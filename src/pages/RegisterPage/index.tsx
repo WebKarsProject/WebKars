@@ -14,9 +14,14 @@ import Textareas from "../../components/Textarea";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userSchema } from "../../schemas/Users";
-import { IUser } from "../../interface";
+import { IUser, IUserReq } from "../../interface";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const RegisterPage = () => {
+  const { registerUser } = useContext(AuthContext);
+  const [btnBuyer, setBtnBuyer] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -25,7 +30,30 @@ const RegisterPage = () => {
     resolver: yupResolver(userSchema),
   });
 
-  const test = (data: IUser) => console.log(data);
+  const registerData = (data: IUser) => {
+    const { zipcode, city, street, state, number, complement } = data;
+
+    const address = { zipcode, city, street, state, number, complement };
+
+    const { name, email, cpf, phone, password, birthday, description, buyer } =
+      data;
+
+    const user: IUserReq = {
+      name,
+      email,
+      cpf,
+      phone,
+      password,
+      birthday,
+      description,
+      buyer,
+      address: address,
+    };
+
+    user.buyer = btnBuyer;
+
+    registerUser(user);
+  };
 
   return (
     <Card height={"100%"}>
@@ -48,7 +76,7 @@ const RegisterPage = () => {
           padding={"44px 48px 44px 48px"}
           backgroundColor={"white"}
           height={"max-content"}
-          onSubmit={handleSubmit(test)}
+          onSubmit={handleSubmit(registerData)}
         >
           <Heading fontSize={"1.5rem"}>Cadastro</Heading>
           <Text variant={"body-2-500"}>Informações pessoais</Text>
@@ -153,20 +181,22 @@ const RegisterPage = () => {
           <Text variant={"body-2-500"}>Tipo de conta</Text>
           <Stack direction={"row"} justifyContent={"space-between"}>
             <Button
-              variant={"outline2"}
+              variant={btnBuyer ? "brand1" : "outline2"}
               padding={"12px 28px 12px 28px"}
               h={"48px"}
               w={"152px"}
               _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
+              onClick={() => setBtnBuyer(true)}
             >
               Comprador
             </Button>
             <Button
-              variant={"outline2"}
+              variant={btnBuyer ? "outline2" : "brand1"}
               padding={"12px 28px 12px 28px"}
               h={"48px"}
               w={"152px"}
               _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
+              onClick={() => setBtnBuyer(false)}
             >
               Anunciante
             </Button>

@@ -6,6 +6,6 @@ export const Instance = axios.create({
 });
 
 export const kenzieKars = axios.create({
-  baseURL: "https://kenzie-kars.herokuapp.com/",
+  baseURL: "https://kenzie-kars.herokuapp.com",
   timeout: 1000,
 });

@@ -1,10 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import motorsShop from "../../assets/Motors shop.png";
 import {
   Box,
   Card,
   CardHeader,
-  Flex,
   IconButton,
   Image,
   Link,
@@ -16,13 +15,16 @@ import {
   useMediaQuery,
 } from "@chakra-ui/react";
 import { ImMenu } from "react-icons/im";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Profile from "../Profile";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const Header = () => {
+  const { token } = useContext(AuthContext);
   const [isLarger] = useMediaQuery("(max-width: 500px)");
   const [close, setClose] = useState(true);
-  let location = useLocation();
+
+  const navigate = useNavigate();
   return (
     <Card as={"header"} id="/" width={"100%"} borderRadius={"0"}>
       <CardHeader
@@ -32,9 +34,13 @@ const Header = () => {
         alignItems={"center"}
         height={"80px"}
       >
-        <Image src={motorsShop} alt={"logo"} />
-        {location.pathname === "/product" ||
-        location.pathname === "/profile" ? (
+        <Image
+          cursor={"pointer"}
+          onClick={() => navigate("/")}
+          src={motorsShop}
+          alt={"logo"}
+        />
+        {token ? (
           <Profile />
         ) : isLarger ? (
           <Menu>
@@ -74,16 +80,22 @@ const Header = () => {
             borderColor={"grey_scale.grey6"}
             padding={"1rem"}
           >
-            <Link variant={"link"} color={"brand.brand1"} href="/session">
-              Fazer Login
-            </Link>
-            <Link
-              variant={"outline1"}
-              _hover={{ textDecoration: "none" }}
-              href={"/register"}
-            >
-              Cadastrar
-            </Link>
+            {token ? (
+              <Profile />
+            ) : (
+              <>
+                <Link variant={"link"} color={"brand.brand1"} href="/session">
+                  Fazer Login
+                </Link>
+                <Link
+                  variant={"outline1"}
+                  _hover={{ textDecoration: "none" }}
+                  href={"/register"}
+                >
+                  Cadastrar
+                </Link>
+              </>
+            )}
           </Box>
         )}
       </CardHeader>
