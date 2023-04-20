@@ -36,15 +36,17 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
         </Flex>
         <Text variant={"body-1-400"}></Text>
         {user.description ? "" : "Nada informado"}
-        <Button
-          w={"160px"}
-          p={"12px 28px"}
-          variant={"outline_brand"}
-          mt={{ base: "16px", sm: "36px" }}
-          onClick={onOpen}
-        >
-          Criar anuncio
-        </Button>
+        {!user.buyer && (
+          <Button
+            w={"160px"}
+            p={"12px 28px"}
+            variant={"outline_brand"}
+            mt={{ base: "16px", sm: "36px" }}
+            onClick={onOpen}
+          >
+            Criar anuncio
+          </Button>
+        )}
       </Flex>
     </Flex>
   );
