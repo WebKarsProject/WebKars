@@ -62,7 +62,7 @@ const Profile = () => {
       />
       <MenuList>
         <MenuItem>
-          <Button
+          <Link
             onClick={openModal}
             _hover={{ textDecoration: "none", background: "none" }}
             bg="none"
@@ -73,7 +73,7 @@ const Profile = () => {
               onClose={closeModal}
             />
             Editar Perfil
-          </Button>
+          </Link>
         </MenuItem>
         <MenuItem>
           <Link _hover={{ textDecoration: "none", background: "none" }}>

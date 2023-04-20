@@ -28,6 +28,7 @@ import { CreateAnnouncementModalSchema } from "../../schemas/CreateAnnouncementM
 import { dataBase } from "../../dataBase.mock.json";
 import { useContext, useState } from "react";
 import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
+import Textareas from "../Textarea";
 
 const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
   const { createAnnouncement } = useContext(AnnouncementContext);
@@ -49,11 +50,23 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
   });
 
   const Test = (data: ICreateAnnouncementModal) => {
-    const { img } = data;
+    const { image } = data;
 
-    delete data.img;
+    const { brand, model, year, fuel, mileage, color, fipe, price } = data;
 
-    const newData: IAnnouncement = { ...data, images: [{ img_url: img }] };
+    const newData: IAnnouncement = {
+      brand,
+      model,
+      year,
+      fuel,
+      mileage,
+      color,
+      fipe,
+      price,
+      description: "sdkfjkdfmd",
+      published: true,
+      images: [{ img_url: image }],
+    };
 
     createAnnouncement(newData);
   };
@@ -178,11 +191,17 @@ const CreateAnnouncementModal = ({ isOpen, onOpen, onClose }: IModal) => {
             />
           </Flex>
 
+          {/* <Textareas
+            id={"description"}
+            label="Descrição"
+            placeholder="Digitar descrição"
+          /> */}
+
           {inputModal.map((item, index) => {
             return (
               <Inputs
                 key={index}
-                id={"img"}
+                id={"image"}
                 label={index !== 0 ? index + " " + item.label : item.label}
                 type={item.type}
                 placeholder={item.placeholder}
