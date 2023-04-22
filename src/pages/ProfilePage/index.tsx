@@ -4,22 +4,18 @@ import Footer from "../../components/Footer";
 import CreateAd from "../../components/CreateAd";
 import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
-import CreateAnnouncementModal from "../../components/CreateAnnouncementModal";
+import VehicleModal from "../../components/AddVehicle";
 import { useContext } from "react";
-import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 
 const ProfilePage = () => {
-  const { ad } = useContext(AnnouncementContext);
+  const { ad } = useContext(VehicleContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
       {isOpen && (
-        <CreateAnnouncementModal
-          isOpen={isOpen}
-          onOpen={onOpen}
-          onClose={onClose}
-        />
+        <VehicleModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
       )}
       <Header />
       <Flex
