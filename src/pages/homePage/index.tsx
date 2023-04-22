@@ -7,10 +7,10 @@ import FilterProduct from "../../components/FilterProduct";
 import Pagination from "../../components/Pagination";
 import Banner from "../../components/Banner";
 import { useContext } from "react";
-import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 
 const Homepage = () => {
-  const { ad } = useContext(AnnouncementContext);
+  const { ad } = useContext(VehicleContext);
   const theme = useTheme();
   const [isLarger] = useMediaQuery("(min-width: 650px)");
 
