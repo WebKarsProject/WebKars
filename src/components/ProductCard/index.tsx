@@ -70,7 +70,7 @@ const ProductCard = ({ cars }: any) => {
         </Box>
         <Stack mt={"4"} spacing={"3"}>
           <Text variant={"Heading-7-600"}>{cars?.model}</Text>
-          <Text variant={"body-2-400"} noOfLines={3}>
+          <Text variant={"body-2-400"} noOfLines={2}>
             {cars?.description}
           </Text>
           <Stack mt={"5"} direction={"row"} alignItems={"center"}>
