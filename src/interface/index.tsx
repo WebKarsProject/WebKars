@@ -73,49 +73,28 @@ export interface IModalCreateAd {
   onOpen: () => void;
 }
 
-export interface ICreateAnnouncementModal {
+export interface IVehicle {
   brand: string;
   model: string;
   year: string;
   fuel: string;
   mileage: number;
-  price: number;
+  color: string;
   fipe: number;
-  description?: string;
+  price: string;
+  description: string;
   published?: boolean;
-  color: string;
-  image?: string;
 }
 
-export interface IAnnouncement {
-  brand: string;
-  model: string;
-  year: string;
-  fuel: string;
-  mileage: number;
-  color: string;
-  fipe: number;
-  price: number;
-  description: string;
-  published: boolean;
-  images: IImgUrl[];
+export interface IVehicleBody extends IVehicle {
+  images: string[];
 }
 
-export interface IImgUrl {
-  img_url?: string;
+export interface IUrlImg {
+  img_url: string;
 }
 
-export interface IAnnouncementArray {
-  id: string;
-  brand: string;
-  model: string;
-  year: string;
-  fuel: string;
-  mileage: number;
-  color: string;
-  fipe: number;
-  price: number;
-  description: string;
-  published: boolean;
-  images: IImgUrl[];
+export interface IVehiclePost extends IVehicle {
+  id?: string | undefined;
+  images: IUrlImg[];
 }
