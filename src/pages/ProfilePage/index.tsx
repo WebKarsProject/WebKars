@@ -4,12 +4,12 @@ import Footer from "../../components/Footer";
 import CreateAd from "../../components/CreateAd";
 import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
-import CreateAnnouncementModal from "../../components/CreateAnnouncementModal";
+import CreateAnnouncementModal from "../../components/AddVehicle";
 import { useContext } from "react";
-import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 
 const ProfilePage = () => {
-  const { ad } = useContext(AnnouncementContext);
+  const { adVehicle } = useContext(VehicleContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -69,8 +69,10 @@ const ProfilePage = () => {
             overflowY={{ base: "hidden", md: "unset" }}
             overflowX={{ base: "scroll", md: "unset" }}
           >
-            {ad.length > 0
-              ? ad.map((cars) => <ProductCard key={cars.id} cars={cars} />)
+            {adVehicle.length > 0
+              ? adVehicle.map((cars) => (
+                  <ProductCard key={cars.id} cars={cars} />
+                ))
               : "Não tem nada"}
           </Flex>
         </Box>
