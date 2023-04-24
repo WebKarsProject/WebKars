@@ -7,11 +7,10 @@ import FilterProduct from "../../components/FilterProduct";
 import Pagination from "../../components/Pagination";
 import Banner from "../../components/Banner";
 import { useContext } from "react";
-import { AnnouncementContext } from "../../contexts/Announcement/AnnouncementContexts";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 
 const Homepage = () => {
-  const { ad } = useContext(AnnouncementContext);
-  const theme = useTheme();
+  const { adVehicle } = useContext(VehicleContext);
   const [isLarger] = useMediaQuery("(min-width: 650px)");
 
   return (
@@ -28,8 +27,10 @@ const Homepage = () => {
               overflowX={isLarger ? "unset" : "scroll"}
               gap={"20px"}
             >
-              {ad.length > 0
-                ? ad.map((cars) => <ProductCard key={cars.id} cars={cars} />)
+              {adVehicle.length > 0
+                ? adVehicle.map((cars) => (
+                    <ProductCard key={cars.id} cars={cars} />
+                  ))
                 : "Não tem nada"}
             </Flex>
             {!isLarger && <FilterProduct />}
