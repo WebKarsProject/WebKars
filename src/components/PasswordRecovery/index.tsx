@@ -13,20 +13,24 @@ import { IEmail, IModal } from "../../interface";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "../../schemas/Users";
+import { useContext } from "react";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm<IEmail>({
-  resolver: yupResolver(emailSchema),
-});
+const PasswordRecovery = () => {
+  const { isOpen, onClose } = useContext(VehicleContext);
 
-const test = (data: any) => {
-  console.log(data);
-};
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IEmail>({
+    resolver: yupResolver(emailSchema),
+  });
 
-const PasswordRecovery = ({ isOpen, onOpen, onClose }: IModal) => {
+  const test = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
