@@ -16,54 +16,20 @@ import {
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  IModal,
-  IVehicleBody,
-  IVehiclePost,
-  IUrlImg,
-  ICar,
-} from "../../interface";
+import { IModal, IVehicleBody, IVehiclePost, IUrlImg } from "../../interface";
 import { IVehicleSchema } from "../../schemas/Vehicle";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import foto from "../../assets/naoDisponivel.jpg";
 import Textareas from "../Textarea";
-import { kenzieKars } from "../../services/axios";
+import { kenzieApiContext } from "../../contexts/kenzieApi/kenzieApiContext";
 
-const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
+const VehicleModal = ({ isOpen, onClose }: IModal) => {
   const { createVehicle } = useContext(VehicleContext);
+  const { brand, carsBrand, filterCar, carMark, carModel } =
+    useContext(kenzieApiContext);
 
   const [inputModal, setInputModal] = useState<number[]>([1]);
-
-  const [brand, setBrand] = useState<string[]>([]);
-  const [allCars, setAllCars] = useState<Array<ICar>>([]);
-  const [carsBrand, setCarsBrand] = useState<any[]>([]);
-  const [filterCar, setFilterCar] = useState<ICar>();
-
-  const [isLoad, setIsLoad] = useState(false);
-
-  useEffect(() => {
-    const getBrands = async () => {
-      try {
-        const { data } = await kenzieKars.get("/cars");
-        const brandsArr = Object.keys(data);
-        setBrand(brandsArr);
-
-        const setData: ICar[] = [];
-        brandsArr.map(async (cars) => {
-          const response = await kenzieKars.get(`/cars?brand=${cars}`);
-          response.data.map((carsBrand: ICar) => {
-            setData.push(carsBrand);
-          });
-
-          setAllCars(setData);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getBrands();
-  }, [filterCar]);
 
   const {
     register,
@@ -99,31 +65,6 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
 
     createVehicle(data);
     onClose();
-  };
-
-  const carMark = (mark: string) => {
-    setFilterCar(undefined);
-    const data = allCars.filter((cars) => cars.brand === mark);
-    setCarsBrand(data);
-  };
-
-  const carModel = (carName: string) => {
-    if (carName.length !== 0) {
-      const data: ICar = carsBrand.find((cars) => cars.name == carName);
-
-      const fuel: any = {
-        1: "Flex",
-        2: "Híbrido",
-        3: "Eletrico",
-      };
-
-      if (fuel[data.fuel]) {
-        data.fuel = fuel[data.fuel];
-      }
-      setFilterCar(data);
-    } else {
-      setFilterCar(undefined);
-    }
   };
 
   return (
