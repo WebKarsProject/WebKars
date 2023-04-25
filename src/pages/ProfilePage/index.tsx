@@ -1,20 +1,19 @@
-import { Box, Flex, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CreateAd from "../../components/CreateAd";
 import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
-import CreateAnnouncementModal from "../../components/AddVehicle";
 import { useContext } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
+import VehicleModal from "../../components/AddVehicle";
 
 const ProfilePage = () => {
-  const { adVehicle } = useContext(VehicleContext);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { adVehicle, isOpen, onOpen } = useContext(VehicleContext);
 
   return (
     <>
-      {isOpen && <CreateAnnouncementModal isOpen={isOpen} onClose={onClose} />}
+      {isOpen && <VehicleModal />}
       <Header />
       <Flex
         as={"main"}
