@@ -153,7 +153,7 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
             <FormLabel>Marca</FormLabel>
             <Select
               opacity={carsBrand.length === 0 ? 0.5 : 1}
-              placeholder="Mercedes Benz"
+              placeholder="Selecione a Marca"
               {...register("brand")}
               onChange={(e) => carMark(e.target.value)}
             >
@@ -169,7 +169,7 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
             <FormLabel>Modelo</FormLabel>
             <Select
               opacity={filterCar === undefined ? 0.5 : 1}
-              placeholder={"A 200 CGI ADVANCE SEDAN"}
+              placeholder={"Selecione o Modelo"}
               {...register("model")}
               onChange={(e) => carModel(e.target.value)}
             >
@@ -187,11 +187,13 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
               <FormLabel>Ano</FormLabel>
               <Select
                 opacity={filterCar === undefined ? 0.5 : 1}
-                defaultValue={"2023"}
+                defaultValue={"DEFAULT"}
                 variant="outline"
                 {...register("year")}
               >
-                <option value={"2023"}>2023</option>
+                <option disabled hidden value={"DEFAULT"}>
+                  Selecione o Ano
+                </option>
                 {filterCar !== undefined && (
                   <option key={filterCar?.id} value={filterCar?.year}>
                     {filterCar?.year}
@@ -202,11 +204,13 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
             <FormControl>
               <FormLabel>Combustível</FormLabel>
               <Select
+                defaultValue={"DEFAULT"}
                 opacity={filterCar === undefined ? 0.5 : 1}
-                defaultValue={"Gasolina / Etanol"}
                 {...register("fuel")}
               >
-                <option value={"Gasolina / Etanol"}>Gasolina / Etanol</option>
+                <option disabled hidden value={"DEFAULT"}>
+                  Selecionar Combustível
+                </option>
                 {filterCar !== undefined && (
                   <option key={filterCar?.id} value={filterCar?.fuel}>
                     {filterCar?.fuel}
@@ -221,7 +225,7 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
               id={"mileage"}
               label={"Quilometragem"}
               type={"text"}
-              placeholder={"R$ 30.000,00"}
+              placeholder={"30.000 km"}
               register={register}
               errors={errors}
             />
@@ -239,11 +243,13 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
             <FormControl>
               <FormLabel>Preço tabela FIPE</FormLabel>
               <Select
+                defaultValue={"DEFAULT"}
                 opacity={filterCar === undefined ? 0.5 : 1}
-                defaultValue={"R$ 48.000,00"}
                 {...register("fipe")}
               >
-                <option value={"R$ 48.000,00"}>R$ 48.000,00</option>
+                <option disabled hidden value={"DEFAULT"}>
+                  Selecione o Preço
+                </option>
                 {filterCar !== undefined && (
                   <option value={filterCar?.value}>
                     R$ {filterCar?.value},00
