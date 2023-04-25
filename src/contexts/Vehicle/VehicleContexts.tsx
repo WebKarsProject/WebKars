@@ -13,7 +13,7 @@ export const VehicleContext = createContext<IVehicleContext>(
   {} as IVehicleContext
 );
 
-export const VehicleProvider = ({ children }: IProviderProps) => {
+const VehicleProvider = ({ children }: IProviderProps) => {
   const { setLoading } = useContext(AuthContext);
   const [adVehicle, setAdVehicle] = useState([] as IVehiclePost[]);
 
@@ -57,3 +57,5 @@ export const VehicleProvider = ({ children }: IProviderProps) => {
     </VehicleContext.Provider>
   );
 };
+
+export default VehicleProvider;

@@ -12,61 +12,24 @@ import {
   Select,
   FormLabel,
   Stack,
-  Input,
 } from "@chakra-ui/react";
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  IModal,
-  IVehicleBody,
-  IVehiclePost,
-  IUrlImg,
-  ICar,
-} from "../../interface";
+import { IModal, IVehicleBody, IVehiclePost, IUrlImg } from "../../interface";
 import { IVehicleSchema } from "../../schemas/Vehicle";
-
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import foto from "../../assets/naoDisponivel.jpg";
 import Textareas from "../Textarea";
-import { kenzieKars } from "../../services/axios";
+import { kenzieApiContext } from "../../contexts/kenzieApi/kenzieApiContext";
 
-import { dataBase } from "../../dataBase.mock.json";
-
-const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
+const VehicleModal = ({ isOpen, onClose }: IModal) => {
   const { createVehicle } = useContext(VehicleContext);
+  const { brand, carsBrand, filterCar, carMark, carModel } =
+    useContext(kenzieApiContext);
 
   const [inputModal, setInputModal] = useState<number[]>([1]);
-
-  const [brand, setBrand] = useState<string[]>([]);
-  const [name, setName] = useState<string[]>([]);
-  const [car, setCar] = useState<ICar>();
-
-  const [optionsSelected, setOptionsSelected] = useState({
-    brand: "",
-    name: "",
-    year: "",
-  });
-
-  const [isLoad, setIsLoad] = useState(false);
-
-  useEffect(() => {
-    const getBrands = async () => {
-      try {
-        const { data } = await kenzieKars.get("/cars");
-        const brandsArr = Object.keys(data);
-        setBrand(brandsArr);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getBrands();
-  }, []);
-
-  useEffect(() => {
-    getModels();
-  }, [optionsSelected]);
 
   const {
     register,
@@ -77,10 +40,9 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
   });
 
   const addVehicle = (body: IVehicleBody) => {
-    console.log(body);
     const newImages: IUrlImg[] = [];
-    const { images } = body;
-    images?.map((imgs) => {
+
+    body.images.map((imgs) => {
       {
         imgs.length !== 0 && newImages.push({ img_url: imgs });
       }
@@ -93,58 +55,16 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
         });
     }
 
-    const {
-      brand,
-      model,
-      year,
-      fuel,
-      mileage,
-      color,
-      fipe,
-      price,
-      description,
-    } = body;
+    Reflect.deleteProperty(body, "images");
 
     const data: IVehiclePost = {
-      brand,
-      model,
-      year,
-      fuel,
-      mileage,
-      color,
-      fipe,
-      description,
-      price,
+      ...body,
       images: newImages,
       published: true,
     };
 
-    // createVehicle(data);
-  };
-
-  const getModels = async () => {
-    try {
-      const { data } = await kenzieKars.get(
-        `/cars?brand=${optionsSelected.brand}`
-      );
-
-      const nameArr: string[] = [];
-      data?.forEach((e: any) => nameArr.push(e.name));
-      setName(nameArr);
-      const carFiltred = data.filter(
-        (e: any) => e.name === optionsSelected.name
-      );
-      if (carFiltred[0].fuel == 1) {
-        carFiltred[0].fuel = "Flex";
-      } else if (carFiltred[0].fuel == 2) {
-        carFiltred[0].fuel = "Híbrido";
-      } else {
-        carFiltred[0].fuel = "Eletrico";
-      }
-      setCar(carFiltred[0]);
-    } catch (error) {
-      console.log(error);
-    }
+    createVehicle(data);
+    onClose();
   };
 
   return (
@@ -173,14 +93,10 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
           <FormControl>
             <FormLabel>Marca</FormLabel>
             <Select
-              placeholder={"Mercedes Benz"}
+              opacity={carsBrand.length === 0 ? 0.5 : 1}
+              placeholder="Selecione a Marca"
               {...register("brand")}
-              onChange={(e) => {
-                setOptionsSelected({
-                  ...optionsSelected,
-                  brand: e.target.value,
-                });
-              }}
+              onChange={(e) => carMark(e.target.value)}
             >
               {brand.map((item) => (
                 <option key={item} value={item}>
@@ -193,44 +109,55 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
           <FormControl>
             <FormLabel>Modelo</FormLabel>
             <Select
-              placeholder={"A 200 CGI ADVANCE SEDAN"}
+              opacity={filterCar === undefined ? 0.5 : 1}
+              placeholder={"Selecione o Modelo"}
               {...register("model")}
-              onChange={(e) => {
-                setOptionsSelected({
-                  ...optionsSelected,
-                  name: e.target.value,
-                });
-              }}
+              onChange={(e) => carModel(e.target.value)}
             >
-              {name.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
+              {carsBrand.length !== 0 &&
+                carsBrand.map((item) => (
+                  <option key={item.id} value={item.name}>
+                    {item.name}
+                  </option>
+                ))}
             </Select>
           </FormControl>
 
           <Flex gap={3}>
             <FormControl>
               <FormLabel>Ano</FormLabel>
-              <Input
-                id="year"
-                placeholder={"2023"}
-                type="text"
-                value={car?.year}
+              <Select
+                opacity={filterCar === undefined ? 0.5 : 1}
+                defaultValue={"DEFAULT"}
+                variant="outline"
                 {...register("year")}
-              />
+              >
+                <option disabled hidden value={"DEFAULT"}>
+                  Selecione o Ano
+                </option>
+                {filterCar !== undefined && (
+                  <option key={filterCar?.id} value={filterCar?.year}>
+                    {filterCar?.year}
+                  </option>
+                )}
+              </Select>
             </FormControl>
-
             <FormControl>
               <FormLabel>Combustível</FormLabel>
-              <Input
-                id="fuel"
-                placeholder={"Flex"}
-                type="text"
-                value={car?.fuel}
+              <Select
+                defaultValue={"DEFAULT"}
+                opacity={filterCar === undefined ? 0.5 : 1}
                 {...register("fuel")}
-              />
+              >
+                <option disabled hidden value={"DEFAULT"}>
+                  Selecionar Combustível
+                </option>
+                {filterCar !== undefined && (
+                  <option key={filterCar?.id} value={filterCar?.fuel}>
+                    {filterCar?.fuel}
+                  </option>
+                )}
+              </Select>
             </FormControl>
           </Flex>
 
@@ -239,7 +166,7 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
               id={"mileage"}
               label={"Quilometragem"}
               type={"text"}
-              placeholder={"30.000"}
+              placeholder={"30.000 km"}
               register={register}
               errors={errors}
             />
@@ -256,14 +183,20 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
           <Flex gap={3}>
             <FormControl>
               <FormLabel>Preço tabela FIPE</FormLabel>
-              <Input
-                id="fipe"
-                placeholder={"R$ 48.000,00"}
-                value={
-                  car?.value && `R$ ${car?.value.toLocaleString("pt-BR")},00`
-                }
+              <Select
+                defaultValue={"DEFAULT"}
+                opacity={filterCar === undefined ? 0.5 : 1}
                 {...register("fipe")}
-              />
+              >
+                <option disabled hidden value={"DEFAULT"}>
+                  Selecione o Preço
+                </option>
+                {filterCar !== undefined && (
+                  <option value={filterCar?.value}>
+                    R$ {filterCar?.value},00
+                  </option>
+                )}
+              </Select>
             </FormControl>
 
             <Inputs
