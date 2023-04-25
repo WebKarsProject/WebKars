@@ -11,8 +11,8 @@ export const IVehicleSchema: SchemaOf<IVehicleBody> = yup.object().shape({
   id: yup.string().notRequired(),
   brand: yup.string().required("Campo obrigatório"),
   model: yup.string().required("Campo obrigatório"),
-  year: yup.string().notRequired(),
-  fuel: yup.string().notRequired(),
+  year: yup.string().required("Campo obrigatório!"),
+  fuel: yup.string().required("Campo obrigatório!"),
   mileage: yup
     .string()
     .required("Campo obrigatório!")
@@ -21,7 +21,7 @@ export const IVehicleSchema: SchemaOf<IVehicleBody> = yup.object().shape({
     .string()
     .required("Campo obrigatório!")
     .matches(/^[0-9]*$/, "Digite apenas numeros"),
-  fipe: yup.string().notRequired(),
+  fipe: yup.string().required("Campo obrigatório!"),
   description: yup.string().required("Campo obrigatório"),
   published: yup.boolean().notRequired(),
   color: yup.string().required("Campo obrigatório"),
