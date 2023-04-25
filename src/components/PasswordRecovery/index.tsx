@@ -7,7 +7,7 @@ import {
   ModalOverlay,
   Stack,
 } from "@chakra-ui/react";
-import { IEmail, IModal } from "../../interface";
+import { IEmail } from "../../interface";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "../../schemas/Users";
