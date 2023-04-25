@@ -102,6 +102,7 @@ const VehicleModal = ({ isOpen, onOpen, onClose }: IModal) => {
   };
 
   const carMark = (mark: string) => {
+    setFilterCar(undefined);
     const data = allCars.filter((cars) => cars.brand === mark);
     setCarsBrand(data);
   };
