@@ -27,6 +27,8 @@ const PasswordRecovery = () => {
   });
 
   const test = (data: any) => {
+    // precisa da logica com a api
+    onClose();
     console.log(data);
   };
 
