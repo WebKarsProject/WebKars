@@ -5,7 +5,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./styles/chakra.theme";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./contexts/Auth/AuthContext";
-import { VehicleProvider } from "./contexts/Vehicle/VehicleContexts";
+import VehicleProvider from "./contexts/Vehicle/VehicleContexts";
+import KenzieApiProvider from "./contexts/kenzieApi/kenzieApiContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ChakraProvider theme={theme}>
         <AuthProvider>
           <VehicleProvider>
-            <App />
+            <KenzieApiProvider>
+              <App />
+            </KenzieApiProvider>
           </VehicleProvider>
         </AuthProvider>
       </ChakraProvider>

@@ -76,11 +76,11 @@ export interface IModalCreateAd {
 export interface IVehicle {
   brand: string;
   model: string;
-  year?: string | undefined;
-  fuel?: string | undefined;
+  year: string;
+  fuel: string;
   mileage: string;
   color: string;
-  fipe?: string | undefined;
+  fipe: string;
   price: string;
   description: string;
   published?: boolean;

@@ -14,13 +14,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      {isOpen && (
-        <CreateAnnouncementModal
-          isOpen={isOpen}
-          onOpen={onOpen}
-          onClose={onClose}
-        />
-      )}
+      {isOpen && <CreateAnnouncementModal isOpen={isOpen} onClose={onClose} />}
       <Header />
       <Flex
         as={"main"}
