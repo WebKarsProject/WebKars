@@ -108,3 +108,7 @@ export interface ICar {
   value: number;
   brand: string;
 }
+
+export interface IEmail {
+  email: string;
+}
