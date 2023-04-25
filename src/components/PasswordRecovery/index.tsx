@@ -1,32 +1,35 @@
 import {
   Button,
-  Input,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
   Stack,
 } from "@chakra-ui/react";
-import { IEmail, IModal } from "../../interface";
+import { IEmail } from "../../interface";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "../../schemas/Users";
+import { useContext } from "react";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
+import Inputs from "../Input";
 
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm<IEmail>({
-  resolver: yupResolver(emailSchema),
-});
+const PasswordRecovery = () => {
+  const { isOpen, onClose } = useContext(VehicleContext);
 
-const test = (data: any) => {
-  console.log(data);
-};
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IEmail>({
+    resolver: yupResolver(emailSchema),
+  });
 
-const PasswordRecovery = ({ isOpen, onOpen, onClose }: IModal) => {
+  const test = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -36,14 +39,21 @@ const PasswordRecovery = ({ isOpen, onOpen, onClose }: IModal) => {
         alignContent={"center"}
       >
         <ModalHeader>Recupere sua senha</ModalHeader>
-        <ModalCloseButton />
         <ModalBody
           as={"form"}
           display={"flex"}
           flexDir={"column"}
           onSubmit={handleSubmit(test)}
+          gap={"1rem"}
         >
-          <Input placeholder="informe o seu email aqui"></Input>
+          <Inputs
+            label={""}
+            id={"email"}
+            placeholder={"informe o seu email aqui"}
+            type={"email"}
+            register={register}
+            errors={errors}
+          />
           <Stack spacing={4} direction="row" alignSelf={"end"}>
             <Button
               variant={"brand_opacity"}

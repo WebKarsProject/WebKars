@@ -17,9 +17,12 @@ import { loginSchema } from "../../schemas/Login/loginSchema";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import Inputs from "../../components/Input";
+import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
+import PasswordRecovery from "../../components/PasswordRecovery";
 
 const Session = () => {
   const { login } = useContext(AuthContext);
+  const { isOpen, onClose, onOpen } = useContext(VehicleContext);
   const {
     register,
     handleSubmit,
@@ -27,67 +30,71 @@ const Session = () => {
   } = useForm<IReqLogin>({ resolver: yupResolver(loginSchema) });
 
   return (
-    <Card height={"100vh"}>
-      <Header />
-      <CardBody
-        display={"flex"}
-        flexDirection={"column"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        backgroundColor={"grey_scale.grey8"}
-        height={"100vh"}
-      >
-        <FormControl
-          as="form"
-          display="flex"
+    <>
+      {isOpen && <PasswordRecovery />}
+      <Card height={"100vh"}>
+        <Header />
+        <CardBody
+          display={"flex"}
           flexDirection={"column"}
-          gap={"0.3rem"}
-          width={"98%"}
-          maxWidth={"500px"}
-          borderRadius={"15px"}
-          padding={"2rem"}
-          backgroundColor={"white"}
-          height={"max-content"}
-          onSubmit={handleSubmit(login)}
+          alignItems={"center"}
+          justifyContent={"center"}
+          backgroundColor={"grey_scale.grey8"}
+          height={"100vh"}
         >
-          <Heading fontSize={"1.5rem"}>Login</Heading>
-          <Inputs
-            id={"email"}
-            label={"email"}
-            placeholder={"Digite aqui seu email"}
-            type={"email"}
-            register={register}
-            errors={errors}
-          ></Inputs>
-          <Inputs
-            id={"password"}
-            label={"senha"}
-            placeholder={"Digite aqui sua senha"}
-            type={"password"}
-            register={register}
-            errors={errors}
-          ></Inputs>
-          <Text
-            textAlign={"end"}
-            fontSize={"1rem"}
-            _hover={{ textDecoration: "none" }}
-            cursor={"pointer"}
+          <FormControl
+            as="form"
+            display="flex"
+            flexDirection={"column"}
+            gap={"0.3rem"}
+            width={"98%"}
+            maxWidth={"500px"}
+            borderRadius={"15px"}
+            padding={"2rem"}
+            backgroundColor={"white"}
+            height={"max-content"}
+            onSubmit={handleSubmit(login)}
           >
-            Esqueci minha senha
-          </Text>
-          <Button variant={"brand1"} type="submit">
-            Entrar
-          </Button>
-          <Text textAlign={"center"} fontSize={"1rem"}>
-            Ainda não possui conta?
-          </Text>
-          <Link href="/register" variant={"outline1"}>
-            Cadastrar
-          </Link>
-        </FormControl>
-      </CardBody>
-      <Footer />
-    </Card>
+            <Heading fontSize={"1.5rem"}>Login</Heading>
+            <Inputs
+              id={"email"}
+              label={"email"}
+              placeholder={"Digite aqui seu email"}
+              type={"email"}
+              register={register}
+              errors={errors}
+            ></Inputs>
+            <Inputs
+              id={"password"}
+              label={"senha"}
+              placeholder={"Digite aqui sua senha"}
+              type={"password"}
+              register={register}
+              errors={errors}
+            ></Inputs>
+            <Text
+              textAlign={"end"}
+              fontSize={"1rem"}
+              _hover={{ textDecoration: "none" }}
+              cursor={"pointer"}
+              onClick={onOpen}
+            >
+              Esqueci minha senha
+            </Text>
+            <Button variant={"brand1"} type="submit">
+              Entrar
+            </Button>
+            <Text textAlign={"center"} fontSize={"1rem"}>
+              Ainda não possui conta?
+            </Text>
+            <Link href="/register" variant={"outline1"}>
+              Cadastrar
+            </Link>
+          </FormControl>
+        </CardBody>
+        <Footer />
+      </Card>
+    </>
   );
 };
 
