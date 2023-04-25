@@ -35,24 +35,22 @@ const RegisterPage = () => {
 
     const address = { zipcode, city, street, state, number, complement };
 
-    const { name, email, cpf, phone, password, birthday, description, buyer } =
-      data;
+    Reflect.deleteProperty(data, "zipcode");
+    Reflect.deleteProperty(data, "city");
+    Reflect.deleteProperty(data, "street");
+    Reflect.deleteProperty(data, "state");
+    Reflect.deleteProperty(data, "number");
+    Reflect.deleteProperty(data, "complement");
 
     const user: IUserReq = {
-      name,
-      email,
-      cpf,
-      phone,
-      password,
-      birthday,
-      description,
-      buyer,
+      ...data,
       address: address,
     };
 
     user.buyer = btnBuyer;
+    console.log(user);
 
-    registerUser(user);
+    // registerUser(user);
   };
 
   return (

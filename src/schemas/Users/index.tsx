@@ -25,3 +25,7 @@ export const userSchema: SchemaOf<IUser> = yup.object().shape({
   number: yup.string().required(),
   complement: yup.string().notRequired(),
 });
+
+export const emailSchema = yup.object().shape({
+  email: yup.string().required(),
+});

@@ -67,13 +67,14 @@ const Session = () => {
             register={register}
             errors={errors}
           ></Inputs>
-          <Link
+          <Text
             textAlign={"end"}
             fontSize={"1rem"}
             _hover={{ textDecoration: "none" }}
+            cursor={"pointer"}
           >
-            esqueci minha senha
-          </Link>
+            Esqueci minha senha
+          </Text>
           <Button variant={"brand1"} type="submit">
             Entrar
           </Button>
