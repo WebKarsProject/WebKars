@@ -1,14 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import { ICar, IProviderProps } from "../../interface";
+import { ICar, IProviderProps, IkenzieApiContext } from "../../interface";
 import { kenzieKars } from "../../services/axios";
-
-export interface IkenzieApiContext {
-  brand: string[];
-  carsBrand: any[];
-  filterCar: ICar | undefined;
-  carMark: (mark: string) => void;
-  carModel: (carName: string) => void;
-}
 
 export const kenzieApiContext = createContext<IkenzieApiContext>(
   {} as IkenzieApiContext
