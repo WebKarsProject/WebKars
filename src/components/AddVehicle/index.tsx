@@ -16,20 +16,18 @@ import {
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IModal, IVehicleBody, IVehiclePost, IUrlImg } from "../../interface";
+import { IVehicleBody } from "../../interface";
 import { IVehicleSchema } from "../../schemas/Vehicle";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
-import foto from "../../assets/naoDisponivel.jpg";
 import Textareas from "../Textarea";
 import { kenzieApiContext } from "../../contexts/kenzieApi/kenzieApiContext";
 
-const VehicleModal = ({ isOpen, onClose }: IModal) => {
-  const { createVehicle } = useContext(VehicleContext);
+const VehicleModal = () => {
+  const { addVehicle, isOpen, onClose, inputModal, setInputModal } =
+    useContext(VehicleContext);
   const { brand, carsBrand, filterCar, carMark, carModel } =
     useContext(kenzieApiContext);
-
-  const [inputModal, setInputModal] = useState<number[]>([1]);
 
   const {
     register,
@@ -38,34 +36,6 @@ const VehicleModal = ({ isOpen, onClose }: IModal) => {
   } = useForm<IVehicleBody>({
     resolver: yupResolver(IVehicleSchema),
   });
-
-  const addVehicle = (body: IVehicleBody) => {
-    const newImages: IUrlImg[] = [];
-
-    body.images.map((imgs) => {
-      {
-        imgs.length !== 0 && newImages.push({ img_url: imgs });
-      }
-    });
-
-    {
-      newImages.length === 0 &&
-        newImages.push({
-          img_url: foto,
-        });
-    }
-
-    Reflect.deleteProperty(body, "images");
-
-    const data: IVehiclePost = {
-      ...body,
-      images: newImages,
-      published: true,
-    };
-
-    createVehicle(data);
-    onClose();
-  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>

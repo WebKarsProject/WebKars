@@ -12,6 +12,25 @@ export interface IAuthContext {
   setUser: Dispatch<SetStateAction<IUser>>;
 }
 
+export interface IVehicleContext {
+  adVehicle: IVehiclePost[];
+  addVehicle: (body: IVehicleBody) => void;
+  createVehicle: (body: IVehiclePost) => Promise<void>;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  inputModal: number[];
+  setInputModal: Dispatch<SetStateAction<number[]>>;
+}
+
+export interface IkenzieApiContext {
+  brand: string[];
+  carsBrand: any[];
+  filterCar: ICar | undefined;
+  carMark: (mark: string) => void;
+  carModel: (carName: string) => void;
+}
+
 export interface IUserReq {
   name: string;
   email: string;
@@ -65,7 +84,7 @@ export interface IAxiosData {
 
 export interface IModal {
   isOpen: boolean;
-  onOpen: () => void;
+  onOpen?: () => void;
   onClose: () => void;
 }
 
