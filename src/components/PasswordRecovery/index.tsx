@@ -1,9 +1,7 @@
 import {
   Button,
-  Input,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalHeader,
   ModalOverlay,
@@ -15,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { emailSchema } from "../../schemas/Users";
 import { useContext } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
+import Inputs from "../Input";
 
 const PasswordRecovery = () => {
   const { isOpen, onClose } = useContext(VehicleContext);
@@ -40,14 +39,21 @@ const PasswordRecovery = () => {
         alignContent={"center"}
       >
         <ModalHeader>Recupere sua senha</ModalHeader>
-        <ModalCloseButton />
         <ModalBody
           as={"form"}
           display={"flex"}
           flexDir={"column"}
           onSubmit={handleSubmit(test)}
+          gap={"1rem"}
         >
-          <Input placeholder="informe o seu email aqui"></Input>
+          <Inputs
+            label={""}
+            id={"email"}
+            placeholder={"informe o seu email aqui"}
+            type={"email"}
+            register={register}
+            errors={errors}
+          />
           <Stack spacing={4} direction="row" alignSelf={"end"}>
             <Button
               variant={"brand_opacity"}
