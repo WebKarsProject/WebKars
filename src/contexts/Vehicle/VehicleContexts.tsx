@@ -1,13 +1,17 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { IAxiosData, IProviderProps, IVehiclePost } from "../../interface";
+import {
+  IAxiosData,
+  IProviderProps,
+  IUrlImg,
+  IVehicleBody,
+  IVehicleContext,
+  IVehiclePost,
+} from "../../interface";
 import { Instance } from "../../services/axios";
 import axios from "axios";
 import { AuthContext } from "../Auth/AuthContext";
-
-export interface IVehicleContext {
-  adVehicle: IVehiclePost[];
-  createVehicle: (body: IVehiclePost) => Promise<void>;
-}
+import foto from "../../assets/naoDisponivel.jpg";
+import { useDisclosure } from "@chakra-ui/react";
 
 export const VehicleContext = createContext<IVehicleContext>(
   {} as IVehicleContext
@@ -16,6 +20,8 @@ export const VehicleContext = createContext<IVehicleContext>(
 const VehicleProvider = ({ children }: IProviderProps) => {
   const { setLoading } = useContext(AuthContext);
   const [adVehicle, setAdVehicle] = useState([] as IVehiclePost[]);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [inputModal, setInputModal] = useState<number[]>([1]);
 
   useEffect(() => {
     getVehicle();
@@ -51,8 +57,47 @@ const VehicleProvider = ({ children }: IProviderProps) => {
     }
   };
 
+  const addVehicle = (body: IVehicleBody) => {
+    const newImages: IUrlImg[] = [];
+
+    body.images.map((imgs) => {
+      {
+        imgs.length !== 0 && newImages.push({ img_url: imgs });
+      }
+    });
+
+    {
+      newImages.length === 0 &&
+        newImages.push({
+          img_url: foto,
+        });
+    }
+
+    Reflect.deleteProperty(body, "images");
+
+    const data: IVehiclePost = {
+      ...body,
+      images: newImages,
+      published: true,
+    };
+
+    createVehicle(data);
+    onClose();
+  };
+
   return (
-    <VehicleContext.Provider value={{ createVehicle, adVehicle }}>
+    <VehicleContext.Provider
+      value={{
+        createVehicle,
+        adVehicle,
+        addVehicle,
+        isOpen,
+        onOpen,
+        onClose,
+        inputModal,
+        setInputModal,
+      }}
+    >
       {children}
     </VehicleContext.Provider>
   );
