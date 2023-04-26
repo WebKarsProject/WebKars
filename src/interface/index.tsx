@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export interface IAuthContext {
   token: string | null;
@@ -44,6 +44,7 @@ export interface IUserReq {
 }
 
 export interface IUser extends IAddress {
+  id: string;
   name: string;
   email: string;
   cpf: string;
