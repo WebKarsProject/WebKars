@@ -11,16 +11,18 @@ import {
   useMediaQuery,
   Button,
   useDisclosure,
-} from "@chakra-ui/react";
-import ModalUserUpdate from "../ModalUpdateUser";
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../contexts/Auth/AuthContext";
+} from '@chakra-ui/react';
+import ModalUserUpdate from '../ModalUpdateUser';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../contexts/Auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-  const [isLarger] = useMediaQuery("(max-width: 500px)");
+  const [isLarger] = useMediaQuery('(max-width: 500px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -33,38 +35,42 @@ const Profile = () => {
   return (
     <Menu>
       {isOpen && (
-        <ModalUserUpdate isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+        <ModalUserUpdate
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+        />
       )}
       <MenuButton
         as={IconButton}
-        aria-label={"Options"}
+        aria-label={'Options'}
         icon={
           <Stack
-            direction={"row"}
-            alignItems={"center"}
+            direction={'row'}
+            alignItems={'center'}
             margin={0}
-            justifyContent={"space-between"}
+            justifyContent={'space-between'}
           >
             <Avatar
               name={`${user.name}`}
-              src={"https://bit.ly/tioluwani-kolawole"}
+              src={'https://bit.ly/tioluwani-kolawole'}
             ></Avatar>
-            {!isLarger && <Text variant={"body-1-400"}>{user.name}</Text>}
+            {!isLarger && <Text variant={'body-1-400'}>{user.name}</Text>}
           </Stack>
         }
-        display={"flex"}
-        alignItems={"center"}
-        background={"none"}
-        _hover={{ background: "none" }}
-        _focus={{ background: "none" }}
-        _active={{ background: "none" }}
-        border={"none"}
+        display={'flex'}
+        alignItems={'center'}
+        background={'none'}
+        _hover={{ background: 'none' }}
+        _focus={{ background: 'none' }}
+        _active={{ background: 'none' }}
+        border={'none'}
       />
       <MenuList>
         <MenuItem>
           <Link
             onClick={openModal}
-            _hover={{ textDecoration: "none", background: "none" }}
+            _hover={{ textDecoration: 'none', background: 'none' }}
             bg="none"
           >
             <ModalUserUpdate
@@ -76,12 +82,15 @@ const Profile = () => {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link _hover={{ textDecoration: "none", background: "none" }}>
+          <Link _hover={{ textDecoration: 'none', background: 'none' }}>
             Editar Endereço
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link href="/profile" _hover={{ textDecoration: "none" }}>
+          <Link
+            onClick={() => navigate(`/profile/${user.id}`)}
+            _hover={{ textDecoration: 'none' }}
+          >
             Meus anuncios
           </Link>
         </MenuItem>
@@ -89,7 +98,7 @@ const Profile = () => {
           <Link
             href="/"
             onClick={() => localStorage.clear()}
-            _hover={{ textDecoration: "none", background: "none" }}
+            _hover={{ textDecoration: 'none', background: 'none' }}
           >
             Sair
           </Link>
