@@ -90,38 +90,6 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
             </Button>
           )}
         </Flex>
-        {/* <Box
-          as={'section'}
-          h={'100%'}
-          w={{ base: '100%', md: 'unset' }}
-          maxWidth={'1392px'}
-          p={{
-            base: '280px 25px 20px 10px',
-            sm: '280px 25px 20px 10px',
-            md: '280px 0px 20px 0px',
-          }}
-          m={'0px 30px'}
-        >
-          <Flex
-            flexWrap={{ base: 'unset', md: 'wrap' }}
-            justify={'space-between'}
-            h={'100%'}
-            w={'100%'}
-            gap={{ base: '38px', md: '64px' }}
-            pb={{ base: '10px', md: '0px' }}
-            overflowY={{ base: 'hidden', md: 'unset' }}
-            overflowX={{ base: 'scroll', md: 'unset' }}
-          >
-            {dataUser.vehicle
-              ? dataUser.vehicle.map((cars: { id: any }) => (
-                  <ProductCard
-                    key={cars.id}
-                    cars={cars}
-                  />
-                ))
-              : 'Usuário ainda não possuí anuncios'}
-          </Flex>
-        </Box> */}
       </Flex>
     </Flex>
   );
