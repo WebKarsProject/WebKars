@@ -4,6 +4,7 @@ import {
   CardBody,
   FormControl,
   Heading,
+  Input,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -94,6 +95,7 @@ const RegisterPage = () => {
             register={register}
             errors={errors}
           />
+
           <Inputs
             id={"cpf"}
             label={"CPF"}
@@ -122,6 +124,8 @@ const RegisterPage = () => {
             id={"description"}
             label="Descrição"
             placeholder="Digitar descrição"
+            register={register}
+            errors={errors}
           />
           <Text variant={"body-2-500"}>Informações de endereço</Text>
           <Inputs
