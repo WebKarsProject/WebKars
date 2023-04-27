@@ -8,12 +8,14 @@ import {
 } from "../../interface";
 import { Instance } from "../../services/axios";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export const ResetPasswordContext = createContext<IResetPasswordContext>(
   {} as IResetPasswordContext
 );
 
 const ResetPasswordProvider = ({ children }: IProviderProps) => {
+  const { token } = useParams();
   const sendEmailResetPassword = async (body: IEmail) => {
     try {
       const { data } = await Instance.post<any>("/users/resetPassword", body);
@@ -27,11 +29,11 @@ const ResetPasswordProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  const sendPasswordReset = async (body: IPassword) => {
+  const sendPasswordReset = async (body: IPassword, token: string) => {
     console.log(body);
     try {
       const { data } = await Instance.patch<any>(
-        "/users/resetPassword/:token",
+        `/users/resetPassword/${token}`,
         body
       );
       console.log(data.message);
