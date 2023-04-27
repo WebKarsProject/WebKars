@@ -16,12 +16,17 @@ export const ResetPasswordContext = createContext<IResetPasswordContext>(
 const ResetPasswordProvider = ({ children }: IProviderProps) => {
   const { onClose } = useContext(VehicleContext);
 
+  const sendEmail = async (data: any) => {
+    onClose();
+    await sendEmailResetPassword(data);
+  };
+
   const sendEmailResetPassword = async (body: IEmail) => {
     console.log(body);
-    onClose;
     try {
-      const data = await Instance.post<any>("/users/resetPassword", body);
-      console.log(data);
+      const { data } = await Instance.post<any>("/users/resetPassword", body);
+      console.log(data.message);
+      // cria um toast pra aparecer a mensagem
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
@@ -34,6 +39,7 @@ const ResetPasswordProvider = ({ children }: IProviderProps) => {
     <ResetPasswordContext.Provider
       value={{
         sendEmailResetPassword,
+        sendEmail,
       }}
     >
       {children}
