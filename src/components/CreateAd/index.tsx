@@ -77,7 +77,7 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
             </Text>
           </Flex>
           <Text variant={'body-1-400'}></Text>
-          {dataUser.description ? '' : 'Nada informado'}
+          {dataUser.description ? dataUser.description : 'Nada informado'}
           {!dataUser.buyer && userVerify() && (
             <Button
               w={'160px'}
