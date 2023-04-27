@@ -1,4 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from 'react';
+
 
 export interface IAuthContext {
   token: string | null;
@@ -10,6 +11,7 @@ export interface IAuthContext {
   getMyProfile: () => Promise<void>;
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
+  deleteUser: () => Promise<void>;
 }
 
 export interface IResetPasswordContext {
@@ -50,7 +52,7 @@ export interface IUserReq {
 }
 
 export interface IUser extends IAddress {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   cpf: string;
@@ -60,6 +62,16 @@ export interface IUser extends IAddress {
   description?: string;
   buyer?: boolean;
   confirmPassword?: string;
+}
+
+export interface IUserUpdateRequest {
+  name?: string;
+  email?: string;
+  password?: string;
+  cpf?: string;
+  phone?: string;
+  birthday?: Date;
+  description?: string;
 }
 
 export interface IAddress {

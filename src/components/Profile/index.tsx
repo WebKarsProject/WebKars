@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import ModalUserUpdate from '../ModalUpdateUser';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,6 +30,11 @@ const Profile = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleClick = () => {
+    localStorage.removeItem('@WebKars:token');
+    navigate('/');
   };
 
   return (
@@ -72,6 +77,7 @@ const Profile = () => {
             onClick={openModal}
             _hover={{ textDecoration: 'none', background: 'none' }}
             bg="none"
+            w={'100%'}
           >
             <ModalUserUpdate
               isOpen={isModalOpen}
@@ -96,8 +102,8 @@ const Profile = () => {
         </MenuItem>
         <MenuItem>
           <Link
-            href="/"
-            onClick={() => localStorage.clear()}
+            onClick={handleClick}
+            w={'100%'}
             _hover={{ textDecoration: 'none', background: 'none' }}
           >
             Sair
