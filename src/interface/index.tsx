@@ -17,7 +17,7 @@ export interface IAuthContext {
 
 export interface IResetPasswordContext {
   sendEmailResetPassword: (body: IEmail) => Promise<void>;
-  sendPasswordReset: (body: IPassword) => Promise<void>;
+  sendPasswordReset: (body: IPassword, token: string) => Promise<void>;
 }
 
 export interface IVehicleContext {
