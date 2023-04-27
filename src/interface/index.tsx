@@ -13,7 +13,6 @@ export interface IAuthContext {
 }
 
 export interface IResetPasswordContext {
-  sendEmail: (data: any) => Promise<void>;
   sendEmailResetPassword: (body: IEmail) => Promise<void>;
 }
 
