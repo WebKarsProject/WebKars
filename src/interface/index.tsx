@@ -1,4 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
+import { NavigateFunction } from "react-router-dom";
 
 export interface IAuthContext {
   token: string | null;
@@ -10,10 +11,12 @@ export interface IAuthContext {
   getMyProfile: () => Promise<void>;
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
+  navigate: NavigateFunction;
 }
 
 export interface IResetPasswordContext {
   sendEmailResetPassword: (body: IEmail) => Promise<void>;
+  sendPasswordReset: (body: IPassword) => Promise<void>;
 }
 
 export interface IVehicleContext {
