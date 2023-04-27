@@ -14,9 +14,11 @@ import { emailSchema } from "../../schemas/Users";
 import { useContext } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import Inputs from "../Input";
+import { ResetPasswordContext } from "../../contexts/ResetPassword/ResetPasswordContext";
 
 const PasswordRecovery = () => {
   const { isOpen, onClose } = useContext(VehicleContext);
+  const { sendEmailResetPassword } = useContext(ResetPasswordContext);
 
   const {
     register,
@@ -26,10 +28,9 @@ const PasswordRecovery = () => {
     resolver: yupResolver(emailSchema),
   });
 
-  const test = (data: any) => {
-    // precisa da logica com a api
+  const test = async (data: any) => {
     onClose();
-    console.log(data);
+    await sendEmailResetPassword(data);
   };
 
   return (
