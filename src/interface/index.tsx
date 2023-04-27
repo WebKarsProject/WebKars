@@ -1,5 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
+
 export interface IAuthContext {
   token: string | null;
   registerUser: (body: IUserReq) => Promise<void>;
@@ -11,6 +12,10 @@ export interface IAuthContext {
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
   deleteUser: () => Promise<void>;
+}
+
+export interface IResetPasswordContext {
+  sendEmailResetPassword: (body: IEmail) => Promise<void>;
 }
 
 export interface IVehicleContext {

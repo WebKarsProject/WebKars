@@ -49,7 +49,6 @@ const RegisterPage = () => {
     };
 
     user.buyer = btnBuyer;
-    console.log(user);
 
     registerUser(user);
   };
