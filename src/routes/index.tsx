@@ -13,7 +13,7 @@ const Routed = () => (
     <Route path="/product/:id" element={<ProductPage />} />
     <Route path="/profile/:id" element={<ProfilePage />} />
     <Route path="/register" element={<RegisterPage />} />
-    <Route path="/resetPassword/:token" element={<RecoveryPassword />} />
+    <Route path="users/resetPassword/:token" element={<RecoveryPassword />} />
   </Routes>
 );
 export default Routed;
