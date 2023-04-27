@@ -12,9 +12,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IPassword } from "../../interface";
 import { passwordSchema } from "../../schemas/Users";
+import { useContext } from "react";
+import { ResetPasswordContext } from "../../contexts/ResetPassword/ResetPasswordContext";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const RecoveryPassword = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
+  const { sendPasswordReset } = useContext(ResetPasswordContext);
+  const { navigate } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -23,7 +28,10 @@ const RecoveryPassword = () => {
     resolver: yupResolver(passwordSchema),
   });
 
-  const test = (data: any) => console.log(data);
+  const sendPassword = async (data: any) => {
+    await sendPasswordReset(data);
+    navigate("/session");
+  };
 
   return (
     <Box height={"100vh"}>
@@ -36,7 +44,7 @@ const RecoveryPassword = () => {
       >
         <FormControl
           as={"form"}
-          onSubmit={handleSubmit(test)}
+          onSubmit={handleSubmit(sendPassword)}
           height={"100%"}
           maxWidth={"400px"}
           width={"90%"}
