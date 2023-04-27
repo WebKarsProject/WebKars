@@ -35,6 +35,7 @@ export const passwordSchema: SchemaOf<IPassword> = yup.object().shape({
     .string()
     .oneOf(
       [yup.ref("password")],
-      "Confirmação de senha deve ser igual a senha"
-    ),
+      "confirmação de senha deve ser igual a senha "
+    )
+    .required(),
 });
