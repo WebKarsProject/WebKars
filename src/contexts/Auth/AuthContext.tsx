@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   IAuthContext,
   IAxiosData,
@@ -7,11 +7,10 @@ import {
   IToken,
   IUser,
   IUserReq,
-  IUserUpdateRequest,
-} from '../../interface';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Instance } from '../../services/axios';
-import axios from 'axios';
+} from "../../interface";
+import { useNavigate, useParams } from "react-router-dom";
+import { Instance } from "../../services/axios";
+import axios from "axios";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
@@ -36,7 +35,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     )}`;
     setLoading(true);
     try {
-      const { data } = await Instance.get<IUser>('/users');
+      const { data } = await Instance.get<IUser>("/users");
       setUser(data);
       setUserId(data!.id);
     } catch (error) {
@@ -52,7 +51,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const login = async (body: IReqLogin) => {
     setLoading(true);
     try {
-      const { data } = await Instance.post<IToken>('/session', body);
+      const { data } = await Instance.post<IToken>("/session", body);
       localStorage.setItem(`@WebKars:token`, data.token);
       console.log(data);
       await getMyProfile();
@@ -71,8 +70,8 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const registerUser = async (body: IUserReq) => {
     setLoading(true);
     try {
-      await Instance.post('/users', body);
-      navigate('/session');
+      await Instance.post("/users", body);
+      navigate("/session");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
@@ -129,7 +128,9 @@ const AuthProvider = ({ children }: IProviderProps) => {
         updateUser,
         user,
         setUser,
+        navigate,
         deleteUser,
+
       }}
     >
       {children}
