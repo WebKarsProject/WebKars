@@ -1,6 +1,5 @@
 import * as yup from "yup";
-import { addressSchema } from "../address";
-import { IUser } from "../../interface";
+import { IPassword, IUser } from "../../interface";
 import { SchemaOf } from "yup";
 
 export const userSchema: SchemaOf<IUser> = yup.object().shape({
@@ -28,4 +27,15 @@ export const userSchema: SchemaOf<IUser> = yup.object().shape({
 
 export const emailSchema = yup.object().shape({
   email: yup.string().required(),
+});
+
+export const passwordSchema: SchemaOf<IPassword> = yup.object().shape({
+  password: yup.string().required(),
+  confirmPassword: yup
+    .string()
+    .oneOf(
+      [yup.ref("password")],
+      "confirmação de senha deve ser igual a senha "
+    )
+    .required(),
 });

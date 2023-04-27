@@ -46,15 +46,16 @@ export interface IUserReq {
 }
 
 export interface IUser extends IAddress {
-  name: string
-  email: string
-  cpf: string
-  phone: string
-  password: string
-  birthday: Date
-  description?: string
-  buyer?: boolean
-  confirmPassword?: string
+  id: string;
+  name: string;
+  email: string;
+  cpf: string;
+  phone: string;
+  password: string;
+  birthday: Date;
+  description?: string;
+  buyer?: boolean;
+  confirmPassword?: string;
 }
 
 export interface IAddress {
@@ -140,4 +141,9 @@ export interface IFiltred {
   model: string
   year: string
   fuel: string
+}
+
+export interface IPassword {
+  password: string;
+  confirmPassword: string;
 }
