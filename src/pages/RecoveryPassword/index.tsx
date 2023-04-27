@@ -1,4 +1,4 @@
-import { Box, FormControl, FormLabel } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel } from "@chakra-ui/react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Inputs from "../../components/Input";
@@ -15,28 +15,52 @@ const RecoveryPassword = () => {
   } = useForm<IPassword>({
     resolver: yupResolver(passwordSchema),
   });
+
+  const test = (data: any) => console.log(data);
+
   return (
     <Box height={"100vh"}>
       <Header />
-      <FormControl>
-        <FormLabel>Reset de senha</FormLabel>
-        <Inputs
-          id={"password"}
-          label={""}
-          type={"password"}
-          placeholder={"informe sua nova senha aqui"}
-          register={register}
-          errors={errors}
-        />
-        <Inputs
-          id={"confirmPassword"}
-          label={""}
-          type={"confirmPassword"}
-          placeholder={"confirme sua nova senha aqui"}
-          register={register}
-          errors={errors}
-        />
-      </FormControl>
+      <Box
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        height={"80%"}
+      >
+        <FormControl
+          as={"form"}
+          onSubmit={handleSubmit(test)}
+          height={"100%"}
+          width={"30%"}
+          display={"flex"}
+          flexDirection={"column"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          gap={"1rem"}
+        >
+          <FormLabel>Reset da senha</FormLabel>
+          <Inputs
+            id={"password"}
+            label={""}
+            type={"password"}
+            placeholder={"informe sua nova senha aqui"}
+            register={register}
+            errors={errors}
+          />
+          <Inputs
+            id={"confirmPassword"}
+            label={""}
+            type={"password"}
+            placeholder={"confirme sua nova senha aqui"}
+            register={register}
+            errors={errors}
+          />
+          <Button type={"submit"} variant={"outline2"}>
+            Resetar
+            {/* quando aperta aqui precisa direcionar para o login */}
+          </Button>
+        </FormControl>
+      </Box>
       <Footer />
     </Box>
   );
