@@ -7,6 +7,7 @@ import {
   IToken,
   IUser,
   IUserReq,
+  IUserUpdateRequest,
 } from "../../interface";
 import { useNavigate, useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
@@ -130,7 +131,6 @@ const AuthProvider = ({ children }: IProviderProps) => {
         setUser,
         navigate,
         deleteUser,
-
       }}
     >
       {children}
