@@ -31,7 +31,8 @@ const RecoveryPassword = () => {
           as={"form"}
           onSubmit={handleSubmit(test)}
           height={"100%"}
-          width={"30%"}
+          maxWidth={"400px"}
+          width={"90%"}
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
