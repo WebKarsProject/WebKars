@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel } from "@chakra-ui/react";
+import { Box, Button, FormControl, Text } from "@chakra-ui/react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Inputs from "../../components/Input";
@@ -38,7 +38,13 @@ const RecoveryPassword = () => {
           justifyContent={"center"}
           gap={"1rem"}
         >
-          <FormLabel>Reset da senha</FormLabel>
+          <Text
+            variant={"Heading-2-600"}
+            color={"brand.brand1"}
+            textAlign={"center"}
+          >
+            Redefinição de senha
+          </Text>
           <Inputs
             id={"password"}
             label={""}
@@ -56,7 +62,7 @@ const RecoveryPassword = () => {
             errors={errors}
           />
           <Button type={"submit"} variant={"outline2"}>
-            Resetar
+            Redefinir
             {/* quando aperta aqui precisa direcionar para o login */}
           </Button>
         </FormControl>
