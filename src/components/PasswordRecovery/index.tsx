@@ -28,10 +28,11 @@ const PasswordRecovery = () => {
     resolver: yupResolver(emailSchema),
   });
 
-  const test = async (data: any) => {
+  const sendEmail = async (data: any) => {
     onClose();
     await sendEmailResetPassword(data);
   };
+  // Precisa ver por que não consigo deixa essa função em cima no contexto dela
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -46,7 +47,7 @@ const PasswordRecovery = () => {
           as={"form"}
           display={"flex"}
           flexDir={"column"}
-          onSubmit={handleSubmit(test)}
+          onSubmit={handleSubmit(sendEmail)}
           gap={"1rem"}
         >
           <Inputs
