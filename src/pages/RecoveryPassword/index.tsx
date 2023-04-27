@@ -1,4 +1,10 @@
-import { Box, Button, FormControl, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  Text,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Inputs from "../../components/Input";
@@ -8,6 +14,7 @@ import { IPassword } from "../../interface";
 import { passwordSchema } from "../../schemas/Users";
 
 const RecoveryPassword = () => {
+  const [isLarger] = useMediaQuery("(max-width: 500px)");
   const {
     register,
     handleSubmit,
@@ -25,7 +32,7 @@ const RecoveryPassword = () => {
         display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
-        height={"80%"}
+        height={isLarger ? "68%" : "80%"}
       >
         <FormControl
           as={"form"}
