@@ -1,5 +1,4 @@
 import * as yup from "yup";
-import { addressSchema } from "../address";
 import { IPassword, IUser } from "../../interface";
 import { SchemaOf } from "yup";
 
