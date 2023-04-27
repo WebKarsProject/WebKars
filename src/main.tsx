@@ -7,17 +7,20 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./contexts/Auth/AuthContext";
 import VehicleProvider from "./contexts/Vehicle/VehicleContexts";
 import KenzieApiProvider from "./contexts/kenzieApi/kenzieApiContext";
+import ResetPasswordProvider from "./contexts/ResetPassword/ResetPasswordContext";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider theme={theme}>
         <AuthProvider>
-          <VehicleProvider>
-            <KenzieApiProvider>
-              <App />
-            </KenzieApiProvider>
-          </VehicleProvider>
+          <ResetPasswordProvider>
+            <VehicleProvider>
+              <KenzieApiProvider>
+                <App />
+              </KenzieApiProvider>
+            </VehicleProvider>
+          </ResetPasswordProvider>
         </AuthProvider>
       </ChakraProvider>
     </BrowserRouter>
