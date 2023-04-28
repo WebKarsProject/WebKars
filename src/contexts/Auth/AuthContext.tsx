@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
+  IAddress,
   IAuthContext,
   IAxiosData,
   IProviderProps,
@@ -7,6 +8,7 @@ import {
   IToken,
   IUser,
   IUserReq,
+  IUserUpdateRequest,
 } from "../../interface";
 import { useNavigate, useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
@@ -116,6 +118,22 @@ const AuthProvider = ({ children }: IProviderProps) => {
     }
   };
 
+  const updateAddress = async (body: IAddress) => {
+    Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    setLoading(true);
+    try {
+      await Instance.patch(`/users/address/`, body);
+      await getMyProfile();
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        console.log(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -126,11 +144,11 @@ const AuthProvider = ({ children }: IProviderProps) => {
         loading,
         getMyProfile,
         updateUser,
+        updateAddress,
         user,
         setUser,
         navigate,
         deleteUser,
-
       }}
     >
       {children}

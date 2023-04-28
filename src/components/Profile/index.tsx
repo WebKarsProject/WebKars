@@ -11,91 +11,108 @@ import {
   useMediaQuery,
   Button,
   useDisclosure,
-} from '@chakra-ui/react';
-import ModalUserUpdate from '../ModalUpdateUser';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../contexts/Auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
+} from "@chakra-ui/react";
+import ModalUserUpdate from "../ModalUpdateUser";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
+import ModalAddressUpdate from "../ModalEditAddress";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-  const [isLarger] = useMediaQuery('(max-width: 500px)');
+  const [isLarger] = useMediaQuery("(max-width: 500px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserModalOpen, setIsUserModalOpen] = useState(false);
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openUserModal = () => {
+    setIsUserModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeUserModal = () => {
+    setIsUserModalOpen(false);
+  };
+
+  const openAddressModal = () => {
+    setIsAddressModalOpen(true);
+  };
+
+  const closeAddressModal = () => {
+    setIsAddressModalOpen(false);
   };
 
   const handleClick = () => {
-    localStorage.removeItem('@WebKars:token');
-    navigate('/');
+    localStorage.removeItem("@WebKars:token");
+    navigate("/");
   };
 
   return (
     <Menu>
       {isOpen && (
-        <ModalUserUpdate
-          isOpen={isOpen}
-          onOpen={onOpen}
-          onClose={onClose}
-        />
+        <ModalUserUpdate isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+      )}
+      {isOpen && (
+        <ModalAddressUpdate isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
       )}
       <MenuButton
         as={IconButton}
-        aria-label={'Options'}
+        aria-label={"Options"}
         icon={
           <Stack
-            direction={'row'}
-            alignItems={'center'}
+            direction={"row"}
+            alignItems={"center"}
             margin={0}
-            justifyContent={'space-between'}
+            justifyContent={"space-between"}
           >
             <Avatar
               name={`${user.name}`}
-              src={'https://bit.ly/tioluwani-kolawole'}
+              src={"https://bit.ly/tioluwani-kolawole"}
             ></Avatar>
-            {!isLarger && <Text variant={'body-1-400'}>{user.name}</Text>}
+            {!isLarger && <Text variant={"body-1-400"}>{user.name}</Text>}
           </Stack>
         }
-        display={'flex'}
-        alignItems={'center'}
-        background={'none'}
-        _hover={{ background: 'none' }}
-        _focus={{ background: 'none' }}
-        _active={{ background: 'none' }}
-        border={'none'}
+        display={"flex"}
+        alignItems={"center"}
+        background={"none"}
+        _hover={{ background: "none" }}
+        _focus={{ background: "none" }}
+        _active={{ background: "none" }}
+        border={"none"}
       />
       <MenuList>
         <MenuItem>
           <Link
-            onClick={openModal}
-            _hover={{ textDecoration: 'none', background: 'none' }}
+            onClick={openUserModal}
+            _hover={{ textDecoration: "none", background: "none" }}
             bg="none"
-            w={'100%'}
+            w={"100%"}
           >
             <ModalUserUpdate
-              isOpen={isModalOpen}
-              onOpen={openModal}
-              onClose={closeModal}
+              isOpen={isUserModalOpen}
+              onOpen={openUserModal}
+              onClose={closeUserModal}
             />
             Editar Perfil
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link _hover={{ textDecoration: 'none', background: 'none' }}>
+          <Link
+            onClick={openAddressModal}
+            _hover={{ textDecoration: "none", background: "none" }}
+          >
+            <ModalAddressUpdate
+              isOpen={isAddressModalOpen}
+              onOpen={openAddressModal}
+              onClose={closeAddressModal}
+            />
             Editar Endereço
           </Link>
         </MenuItem>
         <MenuItem>
           <Link
             onClick={() => navigate(`/profile/${user.id}`)}
-            _hover={{ textDecoration: 'none' }}
+            _hover={{ textDecoration: "none" }}
           >
             Meus anuncios
           </Link>
@@ -103,8 +120,8 @@ const Profile = () => {
         <MenuItem>
           <Link
             onClick={handleClick}
-            w={'100%'}
-            _hover={{ textDecoration: 'none', background: 'none' }}
+            w={"100%"}
+            _hover={{ textDecoration: "none", background: "none" }}
           >
             Sair
           </Link>
