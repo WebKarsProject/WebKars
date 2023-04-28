@@ -66,17 +66,13 @@ const ProductCard = ({ cars }: any) => {
             w={"260px"}
             h={"152px"}
             objectFit={"contain"}
-            src={
-              cars?.images && cars.images.length > 0
-                ? cars.images[0]["img_url"]
-                : "path/to/default/image"
-            }
+            src={cars.images[0]["img_url"]}
             alt={"Green double couch with wooden legs"}
             borderRadius={"lg"}
           />
         </Box>
         <Stack mt={"4"} spacing={"3"}>
-          <Text variant={"Heading-7-600"}>
+          <Text variant={"Heading-7-600"} noOfLines={1}>
             {cars?.model.replace(/(^\w{1})|(\s+\w{1})/g, (letra: string) =>
               letra.toUpperCase()
             )}
@@ -85,11 +81,7 @@ const ProductCard = ({ cars }: any) => {
             {cars?.description}
           </Text>
           <Stack mt={"5"} direction={"row"} alignItems={"center"}>
-            <Avatar
-              size={"sm"}
-              src="https://bit.ly/tioluwani-kolawole"
-              name={cars?.user?.name}
-            ></Avatar>
+            <Avatar size={"sm"} name={cars?.user?.name} />
             <Text variant={"body-2-500"}>{cars?.user?.name}</Text>
           </Stack>
         </Stack>
