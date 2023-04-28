@@ -13,6 +13,7 @@ export interface IAuthContext {
   setUser: Dispatch<SetStateAction<IUser>>;
   navigate: NavigateFunction;
   deleteUser: () => Promise<void>;
+  updateAddress: (body: IAddress) => Promise<void>;
 }
 
 export interface IResetPasswordContext {
