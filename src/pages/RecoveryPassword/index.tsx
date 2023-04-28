@@ -15,6 +15,7 @@ import { passwordSchema } from "../../schemas/Users";
 import { useContext } from "react";
 import { ResetPasswordContext } from "../../contexts/ResetPassword/ResetPasswordContext";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useParams } from "react-router-dom";
 
 const RecoveryPassword = () => {
   const [isLarger] = useMediaQuery("(max-width: 500px)");
@@ -27,9 +28,10 @@ const RecoveryPassword = () => {
   } = useForm<IPassword>({
     resolver: yupResolver(passwordSchema),
   });
+  const { token } = useParams();
 
   const sendPassword = async (data: any) => {
-    await sendPasswordReset(data);
+    await sendPasswordReset(data, token!);
     navigate("/session");
   };
 
