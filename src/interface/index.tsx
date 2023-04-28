@@ -1,4 +1,8 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
+<<<<<<< HEAD
+=======
+import { NavigateFunction } from "react-router-dom";
+>>>>>>> 69ad3059a09dbc16d8cfcc98cb54dd160455b9c6
 
 export interface IAuthContext {
   token: string | null;
@@ -10,19 +14,38 @@ export interface IAuthContext {
   getMyProfile: () => Promise<void>;
   user: IUser;
   setUser: Dispatch<SetStateAction<IUser>>;
+<<<<<<< HEAD
+=======
+  navigate: NavigateFunction;
+  deleteUser: () => Promise<void>;
+  updateAddress: (body: IAddress) => Promise<void>;
+}
+
+export interface IResetPasswordContext {
+  sendEmailResetPassword: (body: IEmail) => Promise<void>;
+  sendPasswordReset: (body: IPassword) => Promise<void>;
+>>>>>>> 69ad3059a09dbc16d8cfcc98cb54dd160455b9c6
 }
 
 export interface IVehicleContext {
   adVehicle: IVehiclePost[];
   addVehicle: (body: IVehicleBody) => void;
   createVehicle: (body: IVehiclePost) => Promise<void>;
+<<<<<<< HEAD
   allCars: IVehiclePost[];
   setAllCars: Dispatch<SetStateAction<IVehiclePost[]>>;
+=======
+>>>>>>> 69ad3059a09dbc16d8cfcc98cb54dd160455b9c6
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   inputModal: number[];
   setInputModal: Dispatch<SetStateAction<number[]>>;
+<<<<<<< HEAD
+=======
+  setFiltred: any;
+  filtred: any;
+>>>>>>> 69ad3059a09dbc16d8cfcc98cb54dd160455b9c6
 }
 
 export interface IkenzieApiContext {
@@ -46,7 +69,7 @@ export interface IUserReq {
 }
 
 export interface IUser extends IAddress {
-  id: string;
+  id?: string;
   name: string;
   email: string;
   cpf: string;
@@ -56,6 +79,16 @@ export interface IUser extends IAddress {
   description?: string;
   buyer?: boolean;
   confirmPassword?: string;
+}
+
+export interface IUserUpdateRequest {
+  name?: string;
+  email?: string;
+  password?: string;
+  cpf?: string;
+  phone?: string;
+  birthday?: Date;
+  description?: string;
 }
 
 export interface IAddress {
@@ -133,6 +166,17 @@ export interface ICar {
 
 export interface IEmail {
   email: string;
+<<<<<<< HEAD
+=======
+}
+
+export interface IFiltred {
+  brand: string;
+  color: string;
+  model: string;
+  year: string;
+  fuel: string;
+>>>>>>> 69ad3059a09dbc16d8cfcc98cb54dd160455b9c6
 }
 
 export interface IPassword {

@@ -1,8 +1,9 @@
 import * as yup from "yup";
-import { IPassword, IUser } from "../../interface";
+import { IPassword, IUser, IUserUpdateRequest } from "../../interface";
 import { SchemaOf } from "yup";
 
 export const userSchema: SchemaOf<IUser> = yup.object().shape({
+  id: yup.string().notRequired(),
   name: yup.string().required(),
   email: yup.string().required(),
   cpf: yup.string().required(),
@@ -39,3 +40,15 @@ export const passwordSchema: SchemaOf<IPassword> = yup.object().shape({
     )
     .required(),
 });
+
+export const userUpdateSchema: SchemaOf<IUserUpdateRequest> = yup
+  .object()
+  .shape({
+    name: yup.string().notRequired(),
+    email: yup.string().notRequired(),
+    cpf: yup.string().notRequired(),
+    phone: yup.string().notRequired(),
+    password: yup.string().notRequired(),
+    birthday: yup.date().notRequired(),
+    description: yup.string().notRequired(),
+  });
