@@ -12,6 +12,8 @@ import axios from "axios";
 import { AuthContext } from "../Auth/AuthContext";
 import foto from "../../assets/naoDisponivel.jpg";
 import { useDisclosure } from "@chakra-ui/react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const VehicleContext = createContext<IVehicleContext>(
   {} as IVehicleContext
@@ -34,7 +36,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const data = error.response?.data as IAxiosData;
-          console.log(`${data.message}❗❗`);
+          toast.error(`${data.message}❗❗`);
         }
       } finally {
         setLoading(false);
@@ -50,7 +52,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
