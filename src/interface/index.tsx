@@ -32,8 +32,6 @@ export interface IVehicleContext {
   onClose: () => void;
   inputModal: number[];
   setInputModal: Dispatch<SetStateAction<number[]>>;
-  setFiltred: any;
-  filtred: any;
 }
 
 export interface IkenzieApiContext {
