@@ -65,10 +65,7 @@ const Profile = () => {
             margin={0}
             justifyContent={"space-between"}
           >
-            <Avatar
-              name={`${user.name}`}
-              src={"https://bit.ly/tioluwani-kolawole"}
-            ></Avatar>
+            <Avatar name={`${user.name}`} />
             {!isLarger && <Text variant={"body-1-400"}>{user.name}</Text>}
           </Stack>
         }
