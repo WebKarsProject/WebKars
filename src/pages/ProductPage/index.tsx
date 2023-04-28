@@ -83,7 +83,11 @@ const ProductPage = () => {
             padding={"40px"}
             bg="grey_scale.grey10"
           >
-            <Image w={"400px"} src={dataCar.images[0].img_url} />
+            <Image
+              w={"400px"}
+              src={dataCar.images[0].img_url}
+              objectFit={"contain"}
+            />
           </Box>
           <Box
             w={["100%", "80%", "100%", "35%"]}
