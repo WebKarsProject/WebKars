@@ -1,6 +1,6 @@
-import * as yup from 'yup';
-import { IPassword, IUser, IUserUpdateRequest } from '../../interface';
-import { SchemaOf } from 'yup';
+import * as yup from "yup";
+import { IPassword, IUser, IUserUpdateRequest } from "../../interface";
+import { SchemaOf } from "yup";
 
 export const userSchema: SchemaOf<IUser> = yup.object().shape({
   id: yup.string().notRequired(),
@@ -15,8 +15,8 @@ export const userSchema: SchemaOf<IUser> = yup.object().shape({
   confirmPassword: yup
     .string()
     .oneOf(
-      [yup.ref('password')],
-      'Confirmação de senha deve ser igual a senha'
+      [yup.ref("password")],
+      "Confirmação de senha deve ser igual a senha"
     ),
   zipcode: yup.string().required(),
   city: yup.string().required(),
@@ -35,8 +35,8 @@ export const passwordSchema: SchemaOf<IPassword> = yup.object().shape({
   confirmPassword: yup
     .string()
     .oneOf(
-      [yup.ref('password')],
-      'confirmação de senha deve ser igual a senha '
+      [yup.ref("password")],
+      "confirmação de senha deve ser igual a senha "
     )
     .required(),
 });

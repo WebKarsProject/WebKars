@@ -8,38 +8,39 @@ import {
 } from "../../interface";
 import { Instance } from "../../services/axios";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ResetPasswordContext = createContext<IResetPasswordContext>(
   {} as IResetPasswordContext
 );
 
 const ResetPasswordProvider = ({ children }: IProviderProps) => {
+  const { token } = useParams();
   const sendEmailResetPassword = async (body: IEmail) => {
     try {
       const { data } = await Instance.post<any>("/users/resetPassword", body);
-      console.log(data.message);
-      // cria um toast pra aparecer a mensagem
+      toast.success(`${data.message}❗❗`);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     }
   };
 
-  const sendPasswordReset = async (body: IPassword) => {
-    console.log(body);
+  const sendPasswordReset = async (body: IPassword, token: string) => {
     try {
       const { data } = await Instance.patch<any>(
-        "/users/resetPassword/:token",
+        `/users/resetPassword/${token}`,
         body
       );
-      console.log(data.message);
-      // cria um toast pra aparecer a mensagem
+      toast.success(`${data.message}❗❗`);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     }
   };

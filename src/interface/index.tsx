@@ -18,20 +18,20 @@ export interface IAuthContext {
 
 export interface IResetPasswordContext {
   sendEmailResetPassword: (body: IEmail) => Promise<void>;
-  sendPasswordReset: (body: IPassword) => Promise<void>;
+  sendPasswordReset: (body: IPassword, token: string) => Promise<void>;
 }
 
 export interface IVehicleContext {
   adVehicle: IVehiclePost[];
   addVehicle: (body: IVehicleBody) => void;
   createVehicle: (body: IVehiclePost) => Promise<void>;
+  allCars: IVehiclePost[];
+  setAllCars: Dispatch<SetStateAction<IVehiclePost[]>>;
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   inputModal: number[];
   setInputModal: Dispatch<SetStateAction<number[]>>;
-  setFiltred: any;
-  filtred: any;
 }
 
 export interface IkenzieApiContext {
@@ -165,4 +165,9 @@ export interface IFiltred {
 export interface IPassword {
   password: string;
   confirmPassword: string;
+}
+
+export interface ICarImages {
+  image: IUrlImg;
+  modalCarImg: (data: IUrlImg) => void;
 }

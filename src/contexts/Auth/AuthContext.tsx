@@ -13,6 +13,8 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
@@ -43,7 +45,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -55,14 +57,13 @@ const AuthProvider = ({ children }: IProviderProps) => {
     try {
       const { data } = await Instance.post<IToken>("/session", body);
       localStorage.setItem(`@WebKars:token`, data.token);
-      console.log(data);
       await getMyProfile();
-      console.log(`✅Usuário logado com sucesso!`);
+      toast.success(`✅ Usuário logado com sucesso!`);
       navigate(`/`, { replace: true });
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -73,11 +74,12 @@ const AuthProvider = ({ children }: IProviderProps) => {
     setLoading(true);
     try {
       await Instance.post("/users", body);
+      toast.success(`✅ Usuário cadastrado com sucesso!`);
       navigate("/session");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -94,7 +96,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -111,7 +113,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);
@@ -127,7 +129,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
-        console.log(`${data.message}❗❗`);
+        toast.error(`${data.message}❗❗`);
       }
     } finally {
       setLoading(false);

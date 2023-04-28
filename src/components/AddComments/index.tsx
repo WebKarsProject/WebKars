@@ -23,11 +23,7 @@ const AddComments = () => {
       borderRadius={"4px"}
     >
       <Box display={"flex"} alignItems={"center"} gap={"8px"} mb={"15px"}>
-        <Avatar
-          size={"sm"}
-          name={`${user.name}`}
-          bg={"random_profile.random4"}
-        />
+        <Avatar size={"sm"} name={`${user.name}`} />
         <Text variant={"body-2-500"}>{user.name}</Text>
       </Box>
       <Box

@@ -1,6 +1,14 @@
 import { createContext, useEffect, useState } from "react";
-import { ICar, IProviderProps, IkenzieApiContext } from "../../interface";
+import {
+  IAxiosData,
+  ICar,
+  IProviderProps,
+  IkenzieApiContext,
+} from "../../interface";
 import { kenzieKars } from "../../services/axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 export const kenzieApiContext = createContext<IkenzieApiContext>(
   {} as IkenzieApiContext
@@ -29,7 +37,10 @@ const KenzieApiProvider = ({ children }: IProviderProps) => {
           setAllCars(setData);
         });
       } catch (error) {
-        console.log(error);
+        if (axios.isAxiosError(error)) {
+          const data = error.response?.data as IAxiosData;
+          toast.error(`${data.message}❗❗`);
+        }
       }
     };
     getBrands();
