@@ -92,13 +92,13 @@ const FilterProduct = () => {
           flexDirection={"column"}
           fontFamily={"Lexend"}
         >
-          <Flex display={"flex"} flexDirection={"column"}>
+          <Flex display={"flex"} flexDirection={"column"} position={"relative"}>
             <Button
               p={"0 10px"}
               h={"30px"}
               fontSize={"12px"}
               position={"absolute"}
-              left={"150px"}
+              right={"0"}
               onClick={limpar}
             >
               Limpar
