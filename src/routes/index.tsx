@@ -10,8 +10,8 @@ const Routed = () => (
   <Routes>
     <Route path="/" element={<Homepage />} />
     <Route path="/session" element={<Session />} />
-    <Route path="/product" element={<ProductPage />} />
-    <Route path="/profile" element={<ProfilePage />} />
+    <Route path="/product/:id" element={<ProductPage />} />
+    <Route path="/profile/:id" element={<ProfilePage />} />
     <Route path="/register" element={<RegisterPage />} />
     <Route path="users/resetPassword/:token" element={<RecoveryPassword />} />
   </Routes>
