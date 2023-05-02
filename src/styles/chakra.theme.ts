@@ -155,6 +155,7 @@ export const theme = extendTheme({
           _hover: {
             bg: "grey_scale.grey1",
             color: "grey_scale.grey10",
+            textDecoration: "none",
           },
         },
       },
