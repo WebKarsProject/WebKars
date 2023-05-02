@@ -7,9 +7,8 @@ import { Instance } from "../../services/axios";
 import ProductCard from "../ProductCard";
 
 const CreateAd = ({ onOpen }: IModalCreateAd) => {
-  const { user } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
   const [dataUser, setDataUser] = useState<any | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const { id } = useParams<{ id: string }>();
 
   const userVerify = () => {
