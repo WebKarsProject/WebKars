@@ -166,21 +166,21 @@ export const theme = extendTheme({
           color: "brand.brand4",
         },
         sucess: {
-          bg: "Feedback.sucess3",
-          color: "Feedback.sucess1",
+          bg: "feedback.sucess3",
+          color: "feedback.sucess1",
           borderRadius: "base",
           _hover: {
-            bg: "Feedback.sucess2",
-            color: "Feedback.sucess1",
+            bg: "feedback.sucess2",
+            color: "feedback.sucess1",
           },
         },
         alert: {
-          bg: "Feedback.alert3",
-          color: "Feedback.alert1",
+          bg: "feedback.alert3",
+          color: "feedback.alert1",
           borderRadius: "base",
           _hover: {
-            bg: "Feedback.alert2",
-            color: "Feedback.alert1",
+            bg: "feedback.alert2",
+            color: "feedback.alert1",
           },
         },
         outline_brand: {
