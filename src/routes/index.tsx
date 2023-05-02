@@ -5,6 +5,7 @@ import ProductPage from "../pages/ProductPage";
 import ProfilePage from "../pages/ProfilePage";
 import RegisterPage from "../pages/RegisterPage";
 import RecoveryPassword from "../pages/RecoveryPassword";
+import NotFound from "../pages/NotFound";
 
 const Routed = () => (
   <Routes>
@@ -14,6 +15,7 @@ const Routed = () => (
     <Route path="/profile/:id" element={<ProfilePage />} />
     <Route path="/register" element={<RegisterPage />} />
     <Route path="users/resetPassword/:token" element={<RecoveryPassword />} />
+    <Route path="/notFound" element={<NotFound />}></Route>
   </Routes>
 );
 export default Routed;
