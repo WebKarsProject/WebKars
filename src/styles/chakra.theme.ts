@@ -153,7 +153,8 @@ export const theme = extendTheme({
           textAlign: "center",
           fontWeight: "bold",
           _hover: {
-            textDecoration: "none",
+            bg: "grey_scale.grey1",
+            color: "grey_scale.grey10",
           },
         },
       },
