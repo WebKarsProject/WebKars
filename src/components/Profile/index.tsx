@@ -106,14 +106,16 @@ const Profile = () => {
             Editar Endereço
           </Link>
         </MenuItem>
-        <MenuItem>
-          <Link
-            onClick={() => navigate(`/profile/${user.id}`)}
-            _hover={{ textDecoration: "none" }}
-          >
-            Meus anuncios
-          </Link>
-        </MenuItem>
+        {!user.buyer && (
+          <MenuItem>
+            <Link
+              onClick={() => navigate(`/profile/${user.id}`)}
+              _hover={{ textDecoration: "none" }}
+            >
+              Meus anuncios
+            </Link>
+          </MenuItem>
+        )}
         <MenuItem>
           <Link
             onClick={handleClick}

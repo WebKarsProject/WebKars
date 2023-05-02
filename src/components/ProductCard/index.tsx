@@ -10,10 +10,14 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import AvatarCard from "../AvatarCard";
+import EditProduct from "../EditProduct";
 
 const ProductCard = ({ cars }: any) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { id } = useParams<{ id: string }>();
 
   return (
     <Card
@@ -24,6 +28,9 @@ const ProductCard = ({ cars }: any) => {
       role={"group"}
       cursor={"pointer"}
       onClick={() => navigate(`/product/${cars.id}`, { replace: true })}
+      display={"flex"}
+      alignItems={"center"}
+      paddingBottom={"1rem"}
     >
       <CardBody
         alignItems={"center"}
@@ -71,7 +78,7 @@ const ProductCard = ({ cars }: any) => {
             borderRadius={"lg"}
           />
         </Box>
-        <Stack mt={"4"} spacing={"3"}>
+        <Stack mt={"4"} spacing={"3"} w={"100%"}>
           <Text variant={"Heading-7-600"} noOfLines={1}>
             {cars?.model.replace(/(^\w{1})|(\s+\w{1})/g, (letra: string) =>
               letra.toUpperCase()
@@ -80,13 +87,16 @@ const ProductCard = ({ cars }: any) => {
           <Text variant={"body-2-400"} noOfLines={3}>
             {cars?.description}
           </Text>
-          <Stack mt={"5"} direction={"row"} alignItems={"center"}>
-            <Avatar size={"sm"} name={cars?.user?.name} />
-            <Text variant={"body-2-500"}>{cars?.user?.name}</Text>
-          </Stack>
+          {location.pathname !== `/profile/${id}` && (
+            <AvatarCard name={cars!.user.name} />
+          )}
         </Stack>
       </CardBody>
-      <CardFooter display={"flex"} justifyContent={"space-between"}>
+      <CardFooter
+        display={"flex"}
+        justifyContent={"space-between"}
+        gap={"0.5rem"}
+      >
         <HStack spacing="12px">
           <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
             {cars?.mileage} Km
@@ -97,6 +107,7 @@ const ProductCard = ({ cars }: any) => {
         </HStack>
         <Text variant={"Heading-7-500"}> R$ {cars?.price},00 </Text>
       </CardFooter>
+      {location.pathname === `/profile/${id}` && <EditProduct id={cars.id} />}
     </Card>
   );
 };
