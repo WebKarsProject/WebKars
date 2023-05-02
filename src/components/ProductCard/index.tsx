@@ -51,7 +51,6 @@ const ProductCard = ({ cars }: any) => {
             bg={cars?.published ? "brand.brand1" : "grey_scale.grey4"}
             top={"0"}
             left={"0"}
-            display={"none"}
           >
             {cars?.published ? "Ativo" : "Inativo"}
           </Tag>

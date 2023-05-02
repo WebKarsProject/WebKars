@@ -14,7 +14,7 @@ const EditProduct = ({ id }: IId) => {
         variant={"outline1"}
         onClick={() => navigate(`/product/${id}`, { replace: true })}
       >
-        Ver detalhe
+        Ver detalhes
       </Button>
     </ButtonGroup>
   );
