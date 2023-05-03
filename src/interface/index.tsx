@@ -32,6 +32,9 @@ export interface IVehicleContext {
   onClose: () => void;
   inputModal: number[];
   setInputModal: Dispatch<SetStateAction<number[]>>;
+  page: number;
+  setPage: Dispatch<SetStateAction<number>>;
+  infoPage: IPageInfo;
 }
 
 export interface IkenzieApiContext {
@@ -170,4 +173,10 @@ export interface IPassword {
 export interface ICarImages {
   image: IUrlImg;
   modalCarImg: (data: IUrlImg) => void;
+}
+
+export interface IPageInfo {
+  nextPage: number | null;
+  totalPages: number | null;
+  previusPage: number | null;
 }
