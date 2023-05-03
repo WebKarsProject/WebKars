@@ -10,15 +10,15 @@ import {
   FormControl,
   FormLabel,
   Input,
-} from '@chakra-ui/react';
-import { IModal } from '../../interface';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { userUpdateSchema } from '../../schemas/Users';
-import Inputs from '../Input';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/Auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
+} from "@chakra-ui/react";
+import { IModal } from "../../interface";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { userUpdateSchema } from "../../schemas/Users";
+import Inputs from "../Input";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
   const { updateUser, deleteUser } = useContext(AuthContext);
@@ -36,14 +36,11 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
   const handleClick = async () => {
     await deleteUser();
     localStorage.clear();
-    navigate('/');
+    navigate("/");
   };
   return (
     <>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-      >
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Editar perfil</ModalHeader>
@@ -52,9 +49,9 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
             <form onSubmit={handleSubmit(updateUser)}>
               <FormLabel>Nome</FormLabel>
               <Inputs
-                placeholder="Primeiro nome"
-                id={'name'}
-                type={'text'}
+                placeholder="Digite seu nome"
+                id={"name"}
+                type={"text"}
                 register={register}
                 errors={errors}
               ></Inputs>
@@ -62,8 +59,8 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
               <FormLabel>Email</FormLabel>
               <Inputs
                 placeholder="Digite seu e-mail"
-                id={'email'}
-                type={'email'}
+                id={"email"}
+                type={"email"}
                 register={register}
                 errors={errors}
               ></Inputs>
@@ -71,8 +68,8 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
               <FormLabel>CPF</FormLabel>
               <Inputs
                 placeholder="Digite seu cpf"
-                id={'cpf'}
-                type={'number'}
+                id={"cpf"}
+                type={"number"}
                 register={register}
                 errors={errors}
               ></Inputs>
@@ -80,8 +77,8 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
               <FormLabel>Celular</FormLabel>
               <Inputs
                 placeholder="Digite o numero do seu celular"
-                id={'phone'}
-                type={'tel'}
+                id={"phone"}
+                type={"tel"}
                 register={register}
                 errors={errors}
               ></Inputs>
@@ -89,8 +86,8 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
               <FormLabel>Data de nascimento</FormLabel>
               <Inputs
                 placeholder="Data de nascimento"
-                id={'birthday'}
-                type={'date'}
+                id={"birthday"}
+                type={"date"}
                 register={register}
                 errors={errors}
               ></Inputs>
@@ -98,8 +95,8 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
               <FormLabel>Descrição</FormLabel>
               <Inputs
                 placeholder="Descrição do seu perfil"
-                id={'description'}
-                type={'text'}
+                id={"description"}
+                type={"text"}
                 register={register}
                 errors={errors}
               ></Inputs>
@@ -116,7 +113,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 <Button
                   colorScheme="blue"
                   mr={3}
-                  type={'submit'}
+                  type={"submit"}
                   onClick={onClose}
                 >
                   Salvar alterações
