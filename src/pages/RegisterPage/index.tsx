@@ -87,7 +87,7 @@ const RegisterPage = () => {
             <Inputs
               id={"name"}
               label={"Nome"}
-              placeholder={"Ex: Junielson Diniz"}
+              placeholder="Digite seu nome"
               type={"text"}
               register={register}
               errors={errors}
@@ -95,7 +95,7 @@ const RegisterPage = () => {
             <Inputs
               id={"email"}
               label={"Email"}
-              placeholder={"Ex: junielson@kenzie.com.br"}
+              placeholder="Digite seu e-mail"
               type={"email"}
               register={register}
               errors={errors}
@@ -104,7 +104,7 @@ const RegisterPage = () => {
             <Inputs
               id={"cpf"}
               label={"CPF"}
-              placeholder={"000.000.000-00"}
+              placeholder="Digite seu cpf"
               type={"number"}
               register={register}
               errors={errors}
@@ -112,7 +112,7 @@ const RegisterPage = () => {
             <Inputs
               id={"phone"}
               label={"Celular"}
-              placeholder={"(DDD) 90000-0000"}
+              placeholder="Digite o numero do seu celular"
               type={"number"}
               register={register}
               errors={errors}
@@ -128,7 +128,7 @@ const RegisterPage = () => {
             <Textareas
               id={"description"}
               label="Descrição"
-              placeholder="Digitar descrição"
+              placeholder="Descrição do seu perfil"
               register={register}
               errors={errors}
             />
@@ -136,7 +136,7 @@ const RegisterPage = () => {
             <Inputs
               id={"zipcode"}
               label={"CEP"}
-              placeholder={"00000.000"}
+              placeholder="Digite seu cep"
               type={"number"}
               register={register}
               errors={errors}
@@ -145,7 +145,7 @@ const RegisterPage = () => {
               <Inputs
                 id={"state"}
                 label={"Estado"}
-                placeholder={"Digitar estado"}
+                placeholder="Digite seu estado"
                 type={"text"}
                 register={register}
                 errors={errors}
@@ -153,7 +153,7 @@ const RegisterPage = () => {
               <Inputs
                 id={"city"}
                 label={"Cidade"}
-                placeholder={"Digitar cidade"}
+                placeholder="Digite seu cidade"
                 type={"text"}
                 register={register}
                 errors={errors}
@@ -163,7 +163,7 @@ const RegisterPage = () => {
               id={"street"}
               label={"Rua"}
               type={"text"}
-              placeholder={"Ex: Rua Zenite"}
+              placeholder="Digite seu rua"
               register={register}
               errors={errors}
             />
@@ -172,7 +172,7 @@ const RegisterPage = () => {
                 id={"number"}
                 label={"Número"}
                 type={"number"}
-                placeholder={"Digitar número"}
+                placeholder="Digite seu numero do endereço"
                 register={register}
                 errors={errors}
               />
@@ -180,7 +180,7 @@ const RegisterPage = () => {
                 id={"complement"}
                 label={"Complemento"}
                 type={"text"}
-                placeholder={"Ex: apto 307"}
+                placeholder="Digite o complemento"
                 register={register}
                 errors={errors}
               />
@@ -211,7 +211,7 @@ const RegisterPage = () => {
             <Inputs
               id={"password"}
               label={"Senha"}
-              placeholder={"Digitar senha"}
+              placeholder="Digite sua senha"
               type={"password"}
               register={register}
               errors={errors}
