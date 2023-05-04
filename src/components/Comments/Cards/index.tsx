@@ -42,7 +42,7 @@ const CardLi = ({ cars }: any) => {
             <Text variant={"body-2-500"}>
               {specificComment?.data.user?.name}
             </Text>
-            <Text
+            {/* <Text
               variant={"body-2-500"}
               color={"brand.brand1"}
               p={"4px 8px"}
@@ -51,7 +51,7 @@ const CardLi = ({ cars }: any) => {
               borderRadius={"4px"}
             >
               {"Comprador" ? "Comprador" : "Anunciante"}
-            </Text>
+            </Text> */}
             <Icon viewBox={"0 0 500 120"} color={"grey_scale.grey3"}>
               <path
                 fill={"currentColor"}
