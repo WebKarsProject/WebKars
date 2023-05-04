@@ -151,6 +151,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
         setUser,
         navigate,
         deleteUser,
+        userId,
       }}
     >
       {children}
