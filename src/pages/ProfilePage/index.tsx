@@ -10,6 +10,7 @@ import VehicleModal from "../../components/AddVehicle";
 import { useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import NoAdFound from "../../components/NoAdFound";
 
 const ProfilePage = () => {
   const { isOpen, onOpen } = useContext(VehicleContext);
@@ -22,7 +23,6 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         const { data } = await Instance.get<any>(`/vehicle/user/${id}`);
-        console.log(data);
         setDataUser(data);
       } catch (err) {
         console.log(err);
@@ -87,11 +87,13 @@ const ProfilePage = () => {
             overflowY={{ base: "hidden", md: "unset" }}
             overflowX={{ base: "scroll", md: "unset" }}
           >
-            {dataUser
-              ? dataUser.map((cars: { id: any }) => (
-                  <ProductCard key={cars.id} cars={cars} />
-                ))
-              : "Usuário ainda não possuí anuncios"}
+            {dataUser.length !== 0 ? (
+              dataUser.map((cars: { id: any }) => (
+                <ProductCard key={cars.id} cars={cars} />
+              ))
+            ) : (
+              <NoAdFound />
+            )}
           </Flex>
         </Box>
       </Flex>
