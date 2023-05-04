@@ -22,7 +22,6 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         const { data } = await Instance.get<any>(`/vehicle/user/${id}`);
-        console.log(data);
         setDataUser(data);
       } catch (err) {
         console.log(err);
