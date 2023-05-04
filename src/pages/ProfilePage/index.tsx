@@ -9,23 +9,23 @@ import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import VehicleModal from "../../components/AddVehicle";
 import { useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const ProfilePage = () => {
   const { isOpen, onOpen } = useContext(VehicleContext);
+  const { setLoading } = useContext(AuthContext);
 
   const [dataUser, setDataUser] = useState<any | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Instance.get<any>(`/users/${id}`);
-        setDataUser(response.data);
+        const { data } = await Instance.get<any>(`/vehicle/user/${id}`);
+        console.log(data);
+        setDataUser(data);
       } catch (err) {
         console.log(err);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -87,8 +87,8 @@ const ProfilePage = () => {
             overflowY={{ base: "hidden", md: "unset" }}
             overflowX={{ base: "scroll", md: "unset" }}
           >
-            {dataUser.vehicle
-              ? dataUser.vehicle.map((cars: { id: any }) => (
+            {dataUser
+              ? dataUser.map((cars: { id: any }) => (
                   <ProductCard key={cars.id} cars={cars} />
                 ))
               : "Usuário ainda não possuí anuncios"}

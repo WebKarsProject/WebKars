@@ -1,9 +1,11 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import { useContext } from "react";
+import { useLocation } from "react-router-dom";
 
 const Pagination = () => {
   const { page, setPage, infoPage } = useContext(VehicleContext);
+  const { pathname } = useLocation();
   return (
     <Flex
       display={"flex"}
@@ -11,9 +13,9 @@ const Pagination = () => {
       gap={"30px"}
       alignItems={"center"}
       justifyContent={"center"}
+      bg={pathname.includes(`profile`) ? "grey_scale.grey6" : "whiteFixed"}
       w={"100%"}
       h={"66px"}
-      m={"30px 0"}
     >
       {page !== 1 ? (
         <Text

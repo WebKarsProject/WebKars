@@ -11,6 +11,7 @@ const ImageCar = ({ image, modalCarImg }: ICarImages) => {
       alignItems={"center"}
       bg="grey_scale.grey7"
       boxSize={"24"}
+      cursor={"pointer"}
     >
       <Image src={image.img_url} objectFit={"cover"} />
     </Box>
