@@ -10,12 +10,13 @@ export const commentContext = createContext<ICommentContext>(
 );
 
 const commentProvider = ({ children }: IProviderProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const { setLoading } = useContext(AuthContext);
   const [comments, setComments] = useState<any>({});
-  const [description, setDescription] = useState<any>();
+  const [listComment, setListComment] = useState<boolean>(false);
 
   const createComment = async (idVehicle: string, body: any) => {
     setLoading(true);
+    setListComment(true);
     try {
       await Instance.post(`/vehicle/${idVehicle}/comment`, body);
       toast.success(`Comentário postado com sucesso!`);
@@ -26,6 +27,7 @@ const commentProvider = ({ children }: IProviderProps) => {
       }
     } finally {
       setLoading(false);
+      setListComment(false);
     }
   };
 
@@ -50,6 +52,7 @@ const commentProvider = ({ children }: IProviderProps) => {
         createComment,
         getComment,
         comments,
+        listComment,
       }}
     >
       {children}
