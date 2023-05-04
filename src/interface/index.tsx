@@ -1,5 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
-import { NavigateFunction } from "react-router-dom";
+import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { NavigateFunction } from 'react-router-dom';
 
 export interface IAuthContext {
   token: string | null;
@@ -35,6 +35,8 @@ export interface IVehicleContext {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
   infoPage: IPageInfo;
+  dataCar: any;
+  setDataCar: React.Dispatch<any>;
 }
 
 export interface IkenzieApiContext {
@@ -43,6 +45,12 @@ export interface IkenzieApiContext {
   filterCar: ICar | undefined;
   carMark: (mark: string) => void;
   carModel: (carName: string) => void;
+}
+
+export interface ICommentContext {
+  createComment: (idVehicle: string, body: any) => Promise<void>;
+  getComment: (id: string) => Promise<void>;
+  comments: any;
 }
 
 export interface IUserReq {
@@ -179,4 +187,8 @@ export interface IPageInfo {
   nextPage: number | null;
   totalPages: number | null;
   previusPage: number | null;
+}
+
+export interface IRegisterComment {
+  description: string;
 }

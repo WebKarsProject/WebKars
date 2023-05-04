@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext, useEffect } from 'react';
 import {
   IAxiosData,
   IPageInfo,
@@ -7,14 +7,14 @@ import {
   IVehicleBody,
   IVehicleContext,
   IVehiclePost,
-} from "../../interface";
-import { Instance } from "../../services/axios";
-import axios from "axios";
-import { AuthContext } from "../Auth/AuthContext";
-import foto from "../../assets/naoDisponivel.jpg";
-import { useDisclosure } from "@chakra-ui/react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+} from '../../interface';
+import { Instance } from '../../services/axios';
+import axios from 'axios';
+import { AuthContext } from '../Auth/AuthContext';
+import foto from '../../assets/naoDisponivel.jpg';
+import { useDisclosure } from '@chakra-ui/react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const VehicleContext = createContext<IVehicleContext>(
   {} as IVehicleContext
@@ -28,6 +28,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
   const { setLoading } = useContext(AuthContext);
   const [page, setPage] = useState<number>(1);
   const [infoPage, setinfoPage] = useState<IPageInfo>({} as IPageInfo);
+  const [dataCar, setDataCar] = useState<any | null>(null);
 
   useEffect(() => {
     const getVehicle = async () => {
@@ -57,7 +58,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
   const createVehicle = async (body: IVehiclePost) => {
     setLoading(true);
     try {
-      await Instance.post("/vehicle", body);
+      await Instance.post('/vehicle', body);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
@@ -84,7 +85,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
         });
     }
 
-    Reflect.deleteProperty(body, "images");
+    Reflect.deleteProperty(body, 'images');
 
     const data: IVehiclePost = {
       ...body,
@@ -112,6 +113,8 @@ const VehicleProvider = ({ children }: IProviderProps) => {
         page,
         setPage,
         infoPage,
+        dataCar,
+        setDataCar,
       }}
     >
       {children}
