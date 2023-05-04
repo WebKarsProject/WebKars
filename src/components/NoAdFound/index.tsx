@@ -10,7 +10,7 @@ const NoAdFound = () => {
         alignItems="center"
         justifyContent="center"
         textAlign="center"
-        height="calc(100vh - 80px - 80px)"
+        h="300px"
         backgroundColor={"transparent"}
         gap={"1rem"}
       >
