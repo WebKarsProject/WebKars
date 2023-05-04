@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from 'react';
-import { IAxiosData, ICommentContext, IProviderProps } from '../../interface';
-import { Instance } from '../../services/axios';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { AuthContext } from '../Auth/AuthContext';
+import { createContext, useContext, useState } from "react";
+import { IAxiosData, ICommentContext, IProviderProps } from "../../interface";
+import { Instance } from "../../services/axios";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { AuthContext } from "../Auth/AuthContext";
 
 export const commentContext = createContext<ICommentContext>(
   {} as ICommentContext
