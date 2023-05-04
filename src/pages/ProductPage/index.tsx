@@ -27,13 +27,14 @@ import { Instance } from "../../services/axios";
 import { IUrlImg } from "../../interface";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { commentContext } from "../../contexts/Comment/commentContext";
 
 const ProductPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
   const { dataCar, setDataCar } = useContext(VehicleContext);
+  const { listComment } = useContext(commentContext);
   const { token, setLoading, userId } = useContext(AuthContext);
-
   const { id } = useParams<{ id: string }>();
   const [imgUrl, setImgUrl] = useState({} as IUrlImg);
 
@@ -53,7 +54,7 @@ const ProductPage = () => {
       }
     };
     fetchData();
-  }, [id]);
+  }, [id, listComment]);
 
   if (!dataCar) {
     return <p></p>;
