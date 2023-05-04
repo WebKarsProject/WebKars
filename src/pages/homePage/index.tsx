@@ -8,6 +8,7 @@ import Pagination from "../../components/Pagination";
 import Banner from "../../components/Banner";
 import { useContext } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
+import NoAdFound from "../../components/NoAdFound";
 
 const Homepage = () => {
   const { adVehicle, allCars } = useContext(VehicleContext);
@@ -27,11 +28,11 @@ const Homepage = () => {
               overflowX={isLarger ? "unset" : "scroll"}
               gap={"20px"}
             >
-              {adVehicle.length > 0
-                ? allCars.map((cars) => (
-                    <ProductCard key={cars.id} cars={cars} />
-                  ))
-                : "Não tem nada"}
+              {adVehicle.length > 0 ? (
+                allCars.map((cars) => <ProductCard key={cars.id} cars={cars} />)
+              ) : (
+                <NoAdFound />
+              )}
             </Flex>
             {!isLarger && <FilterProduct />}
           </Flex>
