@@ -52,6 +52,7 @@ export interface ICommentContext {
   createComment: (idVehicle: string, body: any) => Promise<void>;
   getComment: (id: string) => Promise<void>;
   comments: any;
+  listComment: boolean;
 }
 
 export interface IUserReq {
