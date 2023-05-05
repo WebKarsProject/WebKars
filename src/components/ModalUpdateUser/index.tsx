@@ -21,7 +21,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
-  const { updateUser, deleteUser } = useContext(AuthContext);
+  const { updateUser, deleteUser, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -54,8 +54,8 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"text"}
                 register={register}
                 errors={errors}
+                defaultValue={user.name}
               ></Inputs>
-
               <FormLabel>Email</FormLabel>
               <Inputs
                 placeholder="Digite seu e-mail"
@@ -63,15 +63,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"email"}
                 register={register}
                 errors={errors}
-              ></Inputs>
-
-              <FormLabel>CPF</FormLabel>
-              <Inputs
-                placeholder="Digite seu cpf"
-                id={"cpf"}
-                type={"number"}
-                register={register}
-                errors={errors}
+                defaultValue={user.email}
               ></Inputs>
 
               <FormLabel>Celular</FormLabel>
@@ -81,6 +73,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"tel"}
                 register={register}
                 errors={errors}
+                defaultValue={user.phone}
               ></Inputs>
 
               <FormLabel>Data de nascimento</FormLabel>
@@ -90,6 +83,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"date"}
                 register={register}
                 errors={errors}
+                defaultValue={user.birthday}
               ></Inputs>
 
               <FormLabel>Descrição</FormLabel>
@@ -99,6 +93,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"text"}
                 register={register}
                 errors={errors}
+                defaultValue={user.description}
               ></Inputs>
 
               <ModalFooter gap="20px">
