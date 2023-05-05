@@ -37,7 +37,8 @@ export interface IVehicleContext {
   setPage: Dispatch<SetStateAction<number>>;
   infoPage: IPageInfo;
   dataCar: any;
-  setDataCar: React.Dispatch<any>;
+  setDataCar: Dispatch<any>;
+  setInfoPage: Dispatch<SetStateAction<IPageInfo>>;
 }
 
 export interface IkenzieApiContext {
