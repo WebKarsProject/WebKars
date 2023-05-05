@@ -102,6 +102,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                   bg="feedback.alert2"
                   color="feedback.alert1"
                   onClick={handleClick}
+                  p="0 1.5rem  0 1.5rem"
                 >
                   Excluir Perfil
                 </Button>
@@ -110,6 +111,7 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                   mr={3}
                   type={"submit"}
                   onClick={onClose}
+                  p="0 2rem  0 2rem"
                 >
                   Salvar alterações
                 </Button>
