@@ -83,7 +83,13 @@ const ProductCard = ({ cars }: any) => {
               letra.toUpperCase()
             )}
           </Text>
-          <Text h={"72px"} variant={"body-2-400"} noOfLines={3}>
+          <Text
+            h={"72px"}
+            textOverflow={"ellipsis"}
+            overflow={"hidden"}
+            variant={"body-2-400"}
+            noOfLines={3}
+          >
             {cars?.description}
           </Text>
           {location.pathname !== `/profile/${id}` && (

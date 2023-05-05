@@ -63,7 +63,12 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
               {dataUser.buyer ? "Comprador" : "Anunciante"}
             </Text>
           </Flex>
-          <Text variant={"body-1-400"} h={"100px"}>
+          <Text
+            variant={"body-1-400"}
+            h={"100px"}
+            textOverflow={"ellipsis"}
+            overflow={"hidden"}
+          >
             {dataUser.description ? dataUser.description : "Nada informado"}
           </Text>
           {!dataUser.buyer && userVerify() && (
