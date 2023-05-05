@@ -16,12 +16,13 @@ import {
 import Inputs from "../Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { IVehicleBody } from "../../interface";
+import { IUrlImg, IVehicleBody, IVehiclePost } from "../../interface";
 import { IVehicleSchema } from "../../schemas/Vehicle";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import Textareas from "../Textarea";
 import { kenzieApiContext } from "../../contexts/kenzieApi/kenzieApiContext";
+import foto from "../../assets/naoDisponivel.jpg";
 
 interface IEditVehicle {
   id: string;
@@ -30,9 +31,10 @@ interface IEditVehicle {
 }
 
 const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
-  const { allCars, setInputModal, inputModal } = useContext(VehicleContext);
+  const { allCars, updateVehicle, deleteVehicle } = useContext(VehicleContext);
   const { brand, filterCar, carsBrand, carMark, carModel } =
     useContext(kenzieApiContext);
+  const [inputModal, setInputModal] = useState<number[]>([]);
 
   const {
     register,
@@ -44,18 +46,52 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
 
   const car = allCars.find((item) => item.id === id);
 
-  console.log(car?.images);
-
   useEffect(() => {
     if (!!car) {
       carMark(car?.brand);
+      const imgs: number[] = [];
+
+      car?.images.map((i, index) => {
+        imgs.push(index);
+      });
+      setInputModal(imgs);
     }
   }, []);
 
-  const editVehicle = (data: any) => {
-    console.log(data);
+  const editVehicle = (body: IVehicleBody) => {
+    const newImages: IUrlImg[] = [];
+
+    body.images.map((imgs) => {
+      {
+        imgs.length !== 0 && newImages.push({ img_url: imgs });
+      }
+    });
+
+    {
+      newImages.length === 0 &&
+        newImages.push({
+          img_url: foto,
+        });
+    }
+
+    Reflect.deleteProperty(body, "images");
+
+    const data: IVehiclePost = {
+      ...body,
+      images: newImages,
+      published: true,
+    };
+
+    updateVehicle(data, car?.id);
+    onClose();
   };
 
+  const delVehicle = () => {
+    if (!!car) {
+      deleteVehicle(car.id);
+      onClose();
+    }
+  };
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -109,12 +145,11 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
               defaultValue={car?.model}
               onChange={(e) => carModel(e.target.value)}
             >
-              {carsBrand.length !== 0 &&
-                carsBrand.map((item) => (
-                  <option key={item.id} value={item.name}>
-                    {item.name}
-                  </option>
-                ))}
+              {carsBrand.map((item) => (
+                <option key={item.id} value={item.name}>
+                  {item.name}
+                </option>
+              ))}
             </Select>
           </FormControl>
 
@@ -130,11 +165,9 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
                 <option disabled hidden>
                   Selecione o Ano
                 </option>
-                {filterCar !== undefined && (
-                  <option key={filterCar?.id} value={filterCar?.year}>
-                    {filterCar?.year}
-                  </option>
-                )}
+                <option key={filterCar?.id} value={filterCar?.year}>
+                  {filterCar?.year}
+                </option>
               </Select>
             </FormControl>
             <FormControl>
@@ -147,11 +180,9 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
                 <option disabled hidden>
                   Selecionar Combustível
                 </option>
-                {filterCar !== undefined && (
-                  <option key={filterCar?.id} value={filterCar?.fuel}>
-                    {filterCar?.fuel}
-                  </option>
-                )}
+                <option key={filterCar?.id} value={filterCar?.fuel}>
+                  {filterCar?.fuel}
+                </option>
               </Select>
             </FormControl>
           </Flex>
@@ -181,9 +212,10 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
             <FormControl>
               <FormLabel>Preço tabela FIPE</FormLabel>
               <Select
-                defaultValue={car?.fipe}
+                // defaultValue={"DEFAULT"}
                 opacity={filterCar === undefined ? 0.5 : 1}
                 {...register("fipe")}
+                defaultValue={car?.fipe}
               >
                 <option disabled hidden>
                   Selecione o Preço
@@ -257,6 +289,9 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
               onClick={onClose}
             >
               Cancelar
+            </Button>
+            <Button bg={"red.500"} variant={"outline2"} onClick={delVehicle}>
+              Excluir
             </Button>
             <Button type={"submit"} variant={"outline2"}>
               Salvar

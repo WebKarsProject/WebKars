@@ -5,7 +5,14 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-const Textareas = ({ id, label, placeholder, register, errors }: any) => {
+const Textareas = ({
+  id,
+  label,
+  placeholder,
+  register,
+  errors,
+  defaultValue,
+}: any) => {
   return (
     <FormControl isInvalid={errors && errors[id]}>
       <FormLabel fontSize={"14px"} fontWeight={"500"} lineHeight={"17px"}>
@@ -24,6 +31,7 @@ const Textareas = ({ id, label, placeholder, register, errors }: any) => {
         border={"1.5px solid #F1F3F5"}
         borderRadius={"4px"}
         color={"grey_scale.grey0"}
+        defaultValue={defaultValue}
         focusBorderColor={"#5126EA"}
         _hover={{ background: "#F1F3F5" }}
         {...register(id)}
