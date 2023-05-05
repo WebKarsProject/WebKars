@@ -95,6 +95,8 @@ const ProductCard = ({ cars }: any) => {
         display={"flex"}
         justifyContent={"space-between"}
         gap={"0.5rem"}
+        p={"none"}
+        margin={"1rem 0"}
       >
         <HStack spacing="12px">
           <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>
