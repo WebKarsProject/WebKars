@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const Instance = axios.create({
-  baseURL: "http://localhost:3000/",
-  // baseURL: "https://web-kars-api.onrender.com",
+  baseURL: "https://web-kars-api.onrender.com",
   timeout: 5000,
 });
 

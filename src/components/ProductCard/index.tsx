@@ -27,7 +27,6 @@ const ProductCard = ({ cars }: any) => {
       padding={"1.5px"}
       role={"group"}
       cursor={"pointer"}
-      onClick={() => navigate(`/product/${cars.id}`, { replace: true })}
       display={"flex"}
       alignItems={"center"}
       paddingBottom={"1rem"}
@@ -37,6 +36,7 @@ const ProductCard = ({ cars }: any) => {
         display={"flex"}
         flexDirection={"column"}
         paddingBottom={0}
+        onClick={() => navigate(`/product/${cars.id}`, { replace: true })}
       >
         <Box
           bg={"grey_scale.grey7"}
