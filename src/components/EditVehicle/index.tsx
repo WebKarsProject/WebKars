@@ -86,9 +86,9 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
     onClose();
   };
 
-  const delVehicle = () => {
+  const delVehicle = (id: string | undefined) => {
     if (!!car) {
-      deleteVehicle(car.id);
+      deleteVehicle(id);
       onClose();
     }
   };
@@ -212,7 +212,6 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
             <FormControl>
               <FormLabel>Preço tabela FIPE</FormLabel>
               <Select
-                // defaultValue={"DEFAULT"}
                 opacity={filterCar === undefined ? 0.5 : 1}
                 {...register("fipe")}
                 defaultValue={car?.fipe}
@@ -260,7 +259,9 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
                 }
                 type={"text"}
                 placeholder={"https://image.com"}
-                defaultValue={car?.images[index].img_url}
+                defaultValue={
+                  inputModal.length <= index ? car!.images[index].img_url : ""
+                }
                 register={register}
                 errors={errors}
               />
@@ -290,7 +291,11 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
             >
               Cancelar
             </Button>
-            <Button bg={"red.500"} variant={"outline2"} onClick={delVehicle}>
+            <Button
+              bg={"red.500"}
+              variant={"outline2"}
+              onClick={() => delVehicle(car!.id)}
+            >
               Excluir
             </Button>
             <Button type={"submit"} variant={"outline2"}>
