@@ -48,8 +48,6 @@ const VehicleProvider = ({ children }: IProviderProps) => {
           const data = error.response?.data as IAxiosData;
           toast.error(`${data.message}❗❗`);
         }
-      } finally {
-        setLoading(false);
       }
     };
     getVehicle();
