@@ -23,10 +23,7 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
         const response = await Instance.get<any>(`/users/${id}`);
         setDataUser(response.data);
       } catch (err) {
-        if (axios.isAxiosError(err)) {
-          const data = err.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(err);
       }
     };
 
