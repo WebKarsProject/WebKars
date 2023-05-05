@@ -90,9 +90,10 @@ const AuthProvider = ({ children }: IProviderProps) => {
     Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     setLoading(true);
     try {
-      const { data } = await Instance.patch(`/users/${userId}`, body);
+      const { data } = await Instance.patch(`/users/`, body);
       await getMyProfile();
       setUser(data);
+      toast.success(`Usuário atualizado com sucesso❗❗`);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
