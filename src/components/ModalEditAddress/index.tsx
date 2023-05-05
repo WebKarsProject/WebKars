@@ -11,25 +11,26 @@ import {
   FormControl,
   Text,
 } from "@chakra-ui/react";
-import { IModal } from "../../interface";
+import { IAddressUpdate, IModal } from "../../interface";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { userUpdateSchema } from "../../schemas/Users";
 import Inputs from "../Input";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { addressUpdateSchema } from "../../schemas/address";
 
 const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
   const { updateAddress, user } = useContext(AuthContext);
-  // console.log(user);
-  // const { city, number, state, street, zipcode, complement } = user.address;
+  console.log(user);
+  console.log(user.address);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<any>({
-    resolver: yupResolver(userUpdateSchema),
+  } = useForm<IAddressUpdate>({
+    resolver: yupResolver(addressUpdateSchema),
   });
 
   return (
@@ -59,7 +60,7 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"number"}
                 register={register}
                 errors={errors}
-                // defaultValue={zipcode}
+                defaultValue={user?.address?.zipcode}
               ></Inputs>
 
               <Stack direction={"row"} justifyContent={"space-between"}>
@@ -70,7 +71,7 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                   type={"text"}
                   register={register}
                   errors={errors}
-                  // defaultValue={state}
+                  defaultValue={user?.address?.state}
                 />
 
                 <Inputs
@@ -80,7 +81,7 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                   type={"text"}
                   register={register}
                   errors={errors}
-                  // defaultValue={city}
+                  defaultValue={user?.address?.city}
                 />
               </Stack>
 
@@ -91,7 +92,7 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                 type={"text"}
                 register={register}
                 errors={errors}
-                // defaultValue={street}
+                defaultValue={user?.address?.street}
               ></Inputs>
 
               <Stack direction={"row"} justifyContent={"space-between"}>
@@ -102,7 +103,7 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                   type={"number"}
                   register={register}
                   errors={errors}
-                  // defaultValue={number}
+                  defaultValue={user?.address?.number}
                 />
 
                 <Inputs
@@ -112,7 +113,7 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
                   type={"text"}
                   register={register}
                   errors={errors}
-                  // defaultValue={complement}
+                  defaultValue={user?.address?.complement}
                 />
               </Stack>
 
