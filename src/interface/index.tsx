@@ -9,8 +9,8 @@ export interface IAuthContext {
   setLoading: Dispatch<SetStateAction<boolean>>;
   updateUser: (body: any) => Promise<void>;
   getMyProfile: () => Promise<void>;
-  user: IUser;
-  setUser: Dispatch<SetStateAction<IUser>>;
+  user: IUserRes;
+  setUser: Dispatch<SetStateAction<IUserRes>>;
   navigate: NavigateFunction;
   deleteUser: () => Promise<void>;
   updateAddress: (body: IAddress) => Promise<void>;
@@ -62,6 +62,18 @@ export interface IUserReq {
   cpf: string;
   phone: string;
   password: string;
+  birthday: Date;
+  description?: string;
+  buyer?: boolean;
+  address: IAddress;
+}
+
+export interface IUserRes {
+  id?: string;
+  name: string;
+  email: string;
+  cpf: string;
+  phone: string;
   birthday: Date;
   description?: string;
   buyer?: boolean;
