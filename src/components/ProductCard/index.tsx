@@ -23,7 +23,7 @@ const ProductCard = ({ cars }: any) => {
     <Card
       minW={"300px"}
       maxW={"300px"}
-      maxH={"410px"}
+      maxH={"430px"}
       padding={"1.5px"}
       role={"group"}
       cursor={"pointer"}
