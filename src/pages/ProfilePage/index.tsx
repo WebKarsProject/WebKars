@@ -45,7 +45,7 @@ const ProfilePage = () => {
     };
 
     fetchData();
-  }, [id, page]);
+  }, [id, page, dataUser]);
 
   if (!dataUser) {
     return <p></p>;

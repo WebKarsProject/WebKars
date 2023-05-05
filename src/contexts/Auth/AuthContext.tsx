@@ -138,7 +138,6 @@ const AuthProvider = ({ children }: IProviderProps) => {
       setLoading(false);
     }
   };
-  console.log(user);
 
   return (
     <AuthContext.Provider
