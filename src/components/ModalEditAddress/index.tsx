@@ -22,8 +22,6 @@ import { addressUpdateSchema } from "../../schemas/address";
 
 const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
   const { updateAddress, user } = useContext(AuthContext);
-  console.log(user);
-  console.log(user.address);
 
   const {
     register,
