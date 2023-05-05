@@ -6,7 +6,15 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 
-const Inputs = ({ id, label, type, placeholder, register, errors }: any) => {
+const Inputs = ({
+  id,
+  label,
+  type,
+  placeholder,
+  register,
+  errors,
+  defaultValue,
+}: any) => {
   return (
     <FormControl isInvalid={errors && errors[id]}>
       <FormLabel fontSize={"14px"} fontWeight={"500"} lineHeight={"17px"}>
@@ -27,6 +35,7 @@ const Inputs = ({ id, label, type, placeholder, register, errors }: any) => {
         borderRadius={"4px"}
         focusBorderColor={"#5126EA"}
         _hover={{ background: "#F1F3F5" }}
+        defaultValue={defaultValue}
         {...register(id)}
       />
       <FormErrorMessage color={"feedback.alert1"}>
