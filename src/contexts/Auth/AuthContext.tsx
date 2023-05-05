@@ -8,6 +8,7 @@ import {
   IToken,
   IUser,
   IUserReq,
+  IUserRes,
   IUserUpdateRequest,
 } from "../../interface";
 import { useNavigate, useParams } from "react-router-dom";
@@ -23,7 +24,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [user, setUser] = useState<IUserRes>({} as IUserRes);
   const [userId, setUserId] = useState<string | undefined>();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     )}`;
     setLoading(true);
     try {
-      const { data } = await Instance.get<IUser>("/users");
+      const { data } = await Instance.get<IUserRes>("/users");
       setUser(data);
       setUserId(data!.id);
     } catch (error) {
@@ -136,6 +137,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
       setLoading(false);
     }
   };
+  console.log(user);
 
   return (
     <AuthContext.Provider
