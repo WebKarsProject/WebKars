@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
   IAddress,
+  IAddressUpdate,
   IAuthContext,
   IAxiosData,
   IProviderProps,
@@ -122,7 +123,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
     }
   };
 
-  const updateAddress = async (body: IAddress) => {
+  const updateAddress = async (body: IAddressUpdate) => {
     Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     setLoading(true);
     try {

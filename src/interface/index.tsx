@@ -13,7 +13,7 @@ export interface IAuthContext {
   setUser: Dispatch<SetStateAction<IUserRes>>;
   navigate: NavigateFunction;
   deleteUser: () => Promise<void>;
-  updateAddress: (body: IAddress) => Promise<void>;
+  updateAddress: (body: IAddressUpdate) => Promise<void>;
   userId: string | undefined;
 }
 
@@ -109,6 +109,15 @@ export interface IAddress {
   street: string;
   state: string;
   number: string;
+  complement?: string;
+}
+
+export interface IAddressUpdate {
+  zipcode?: string;
+  city?: string;
+  street?: string;
+  state?: string;
+  number?: string;
   complement?: string;
 }
 
