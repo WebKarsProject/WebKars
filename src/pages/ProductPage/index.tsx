@@ -24,10 +24,12 @@ import Footer from "../../components/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { Instance } from "../../services/axios";
-import { IUrlImg } from "../../interface";
+import { IAxiosData, IUrlImg } from "../../interface";
 import { VehicleContext } from "../../contexts/Vehicle/VehicleContexts";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { commentContext } from "../../contexts/Comment/commentContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ProductPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,7 +52,10 @@ const ProductPage = () => {
         const response = await Instance.get<any>(`/vehicle/${id}`);
         setDataCar(response.data);
       } catch (err) {
-        console.log(err);
+        if (axios.isAxiosError(err)) {
+          const data = err.response?.data as IAxiosData;
+          toast.error(`${data.message}❗❗`);
+        }
       }
     };
     fetchData();

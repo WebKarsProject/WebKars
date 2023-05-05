@@ -37,7 +37,7 @@ const Homepage = () => {
             {!isLarger && <FilterProduct />}
           </Flex>
         </Flex>
-        <Pagination />
+        {adVehicle.length > 0 && <Pagination />}
       </Box>
       <Footer />
     </>

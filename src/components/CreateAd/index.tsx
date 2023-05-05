@@ -1,10 +1,12 @@
 import { Avatar, Box, Button, Flex, Text } from "@chakra-ui/react";
-import { IModalCreateAd } from "../../interface";
+import { IAxiosData, IModalCreateAd } from "../../interface";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
 import ProductCard from "../ProductCard";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const CreateAd = ({ onOpen }: IModalCreateAd) => {
   const { user, loading, setLoading } = useContext(AuthContext);
@@ -21,14 +23,15 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
         const response = await Instance.get<any>(`/users/${id}`);
         setDataUser(response.data);
       } catch (err) {
-        console.log(err);
-      } finally {
-        setLoading(false);
+        if (axios.isAxiosError(err)) {
+          const data = err.response?.data as IAxiosData;
+          toast.error(`${data.message}❗❗`);
+        }
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, user]);
 
   if (!dataUser) {
     return <p></p>;

@@ -7,7 +7,6 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-  FormLabel,
   Stack,
   FormControl,
   Text,
@@ -21,7 +20,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
-  const { updateAddress } = useContext(AuthContext);
+  const { updateAddress, user } = useContext(AuthContext);
+  // console.log(user);
+  // const { city, number, state, street, zipcode, complement } = user.address;
 
   const {
     register,
@@ -53,59 +54,65 @@ const ModalAddressUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
             >
               <Inputs
                 label={"CEP"}
-                placeholder="89888.888"
+                placeholder="Informe seu CEP"
                 id={"zipcode"}
                 type={"number"}
                 register={register}
                 errors={errors}
+                // defaultValue={zipcode}
               ></Inputs>
 
               <Stack direction={"row"} justifyContent={"space-between"}>
                 <Inputs
                   label={"Estado"}
-                  placeholder="Paraná"
+                  placeholder="Informe seu estado"
                   id={"state"}
                   type={"text"}
                   register={register}
                   errors={errors}
+                  // defaultValue={state}
                 />
 
                 <Inputs
                   label={"Cidade"}
-                  placeholder="Curitiba"
+                  placeholder="Informe sua cidade"
                   id={"city"}
                   type={"text"}
                   register={register}
                   errors={errors}
+                  // defaultValue={city}
                 />
               </Stack>
 
               <Inputs
                 label={"Rua"}
-                placeholder="Rua do paraná"
+                placeholder="Informe sua rua"
                 id={"street"}
                 type={"text"}
                 register={register}
                 errors={errors}
+                // defaultValue={street}
               ></Inputs>
 
               <Stack direction={"row"} justifyContent={"space-between"}>
                 <Inputs
                   label={"Número"}
-                  placeholder="1029"
+                  placeholder="Informe o numero"
                   id={"number"}
                   type={"number"}
                   register={register}
                   errors={errors}
+                  // defaultValue={number}
                 />
 
                 <Inputs
                   label={"Complemento"}
-                  placeholder="Apto 12"
+                  placeholder="Informe comp"
                   id={"complement"}
                   type={"text"}
                   register={register}
                   errors={errors}
+                  // defaultValue={complement}
                 />
               </Stack>
 

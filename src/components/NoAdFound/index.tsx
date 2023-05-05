@@ -17,7 +17,7 @@ const NoAdFound = () => {
         <AlertIcon boxSize="40px" mr={0} />
         <Text variant={"Heading-1-700"}>Nenhum anúncio encontrado</Text>
         <Text variant={"Heading-6-500"}>
-          Parece que não há nenhum anúncio no momento :/
+          Parece que não há nenhum anúncio no momento
         </Text>
       </Alert>
     </>

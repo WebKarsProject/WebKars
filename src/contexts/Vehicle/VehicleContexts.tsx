@@ -27,7 +27,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { setLoading } = useContext(AuthContext);
   const [page, setPage] = useState<number>(1);
-  const [infoPage, setinfoPage] = useState<IPageInfo>({} as IPageInfo);
+  const [infoPage, setInfoPage] = useState<IPageInfo>({} as IPageInfo);
   const [dataCar, setDataCar] = useState<any | null>(null);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
       try {
         const { data } = await Instance.get(`/vehicle?page=${page}`);
         const { nextPage, totalPages, previusPage } = data.pagination;
-        setinfoPage({
+        setInfoPage({
           nextPage,
           totalPages,
           previusPage,
@@ -48,8 +48,6 @@ const VehicleProvider = ({ children }: IProviderProps) => {
           const data = error.response?.data as IAxiosData;
           toast.error(`${data.message}❗❗`);
         }
-      } finally {
-        setLoading(false);
       }
     };
     getVehicle();
@@ -115,6 +113,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
         infoPage,
         dataCar,
         setDataCar,
+        setInfoPage,
       }}
     >
       {children}
