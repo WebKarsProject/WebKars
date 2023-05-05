@@ -13,7 +13,8 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import NoAdFound from "../../components/NoAdFound";
 
 const ProfilePage = () => {
-  const { isOpen, onOpen } = useContext(VehicleContext);
+  const { isOpen, onOpen, page, setPage, infoPage, setInfoPage } =
+    useContext(VehicleContext);
   const { setLoading } = useContext(AuthContext);
 
   const [dataUser, setDataUser] = useState<any | null>(null);
@@ -23,7 +24,13 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         const { data } = await Instance.get<any>(`/vehicle/user/${id}`);
-        setDataUser(data);
+        const { vehicles, nextPage, totalPages, previusPage } = data.pagination;
+        setInfoPage({
+          nextPage,
+          totalPages,
+          previusPage,
+        });
+        setDataUser(vehicles);
       } catch (err) {
         console.log(err);
       }
@@ -97,7 +104,7 @@ const ProfilePage = () => {
           </Flex>
         </Box>
       </Flex>
-      <Pagination />
+      {dataUser.length !== 0 && <Pagination />}
       <Footer />
     </>
   );
