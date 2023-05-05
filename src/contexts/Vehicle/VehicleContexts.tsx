@@ -44,10 +44,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
         setAllCars(data.pagination.vehicles);
         return data.pagination.vehicles;
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const data = error.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(error);
       }
     };
     getVehicle();

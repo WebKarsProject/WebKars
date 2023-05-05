@@ -37,15 +37,12 @@ const ProfilePage = () => {
         });
         setDataUser(vehicles);
       } catch (err) {
-        if (axios.isAxiosError(err)) {
-          const data = err.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(err);
       }
     };
 
     fetchData();
-  }, [id, page, dataUser]);
+  }, [id, page]);
 
   if (!dataUser) {
     return <p></p>;
