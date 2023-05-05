@@ -11,6 +11,9 @@ import { useParams } from "react-router-dom";
 import { Instance } from "../../services/axios";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import NoAdFound from "../../components/NoAdFound";
+import axios from "axios";
+import { IAxiosData } from "../../interface";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { isOpen, onOpen, page, setPage, infoPage, setInfoPage } =
@@ -23,7 +26,9 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await Instance.get<any>(`/vehicle/user/${id}`);
+        const { data } = await Instance.get<any>(
+          `/vehicle/user/${id}?page=${page}`
+        );
         const { vehicles, nextPage, totalPages, previusPage } = data.pagination;
         setInfoPage({
           nextPage,
@@ -32,12 +37,15 @@ const ProfilePage = () => {
         });
         setDataUser(vehicles);
       } catch (err) {
-        console.log(err);
+        if (axios.isAxiosError(err)) {
+          const data = err.response?.data as IAxiosData;
+          toast.error(`${data.message}❗❗`);
+        }
       }
     };
 
     fetchData();
-  }, [id]);
+  }, [id, page]);
 
   if (!dataUser) {
     return <p></p>;
