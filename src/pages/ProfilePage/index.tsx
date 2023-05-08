@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 const ProfilePage = () => {
   const { isOpen, onOpen, page, setPage, infoPage, setInfoPage } =
     useContext(VehicleContext);
-  const { setLoading } = useContext(AuthContext);
+  const { setLoading, loading } = useContext(AuthContext);
 
   const [dataUser, setDataUser] = useState<any | null>(null);
   const { id } = useParams<{ id: string }>();
@@ -42,7 +42,7 @@ const ProfilePage = () => {
     };
 
     fetchData();
-  }, [id, page]);
+  }, [id, page, loading]);
 
   if (!dataUser) {
     return <p></p>;

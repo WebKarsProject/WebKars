@@ -136,7 +136,7 @@ const VehicleModal = () => {
               id={"mileage"}
               label={"Quilometragem"}
               type={"text"}
-              placeholder={"30.000 km"}
+              placeholder={"Informe o KM do carro"}
               register={register}
               errors={errors}
             />
@@ -144,7 +144,7 @@ const VehicleModal = () => {
               id={"color"}
               label={"Cor"}
               type={"text"}
-              placeholder={"Branco"}
+              placeholder={"Informe a cor"}
               register={register}
               errors={errors}
             />
@@ -173,7 +173,7 @@ const VehicleModal = () => {
               id={"price"}
               label={"Preço"}
               type={"text"}
-              placeholder={"R$ 50.000,00"}
+              placeholder={"Informe o preço"}
               register={register}
               errors={errors}
             />
