@@ -51,7 +51,7 @@ const CardLi = ({ cars }: any) => {
             <Text variant={'body-2-400'} fontSize={'12px'}>
               {timeAgo(cars.createdAt)}
             </Text>
-            <ModalEditComment idUser={specificComment?.data.user.id} />
+            <ModalEditComment idUser={specificComment?.data.user.id} idComment={specificComment?.data.id} />
           </Box>
           <Text variant={'body-2-400'} textAlign={'justify'}>
             {cars.description}
