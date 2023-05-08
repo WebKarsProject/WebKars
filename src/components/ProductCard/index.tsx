@@ -1,5 +1,7 @@
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import AvatarCard from "../AvatarCard";
+import EditProduct from "../EditProduct";
 import {
-  Avatar,
   Box,
   Card,
   CardBody,
@@ -10,9 +12,6 @@ import {
   Tag,
   Text,
 } from "@chakra-ui/react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import AvatarCard from "../AvatarCard";
-import EditProduct from "../EditProduct";
 
 const ProductCard = ({ cars }: any) => {
   const navigate = useNavigate();

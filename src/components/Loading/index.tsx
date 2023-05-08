@@ -1,6 +1,6 @@
-import { Box, Spinner, Text } from "@chakra-ui/react";
 import Header from "../Header";
 import Footer from "../Footer";
+import { Box, Spinner, Text } from "@chakra-ui/react";
 
 const Loading = () => {
   return (
