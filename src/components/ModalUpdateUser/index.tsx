@@ -28,7 +28,6 @@ const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
     navigate('/')
   }
 
-  console.log()
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>

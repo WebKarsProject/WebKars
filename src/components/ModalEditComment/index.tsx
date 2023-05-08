@@ -11,8 +11,6 @@ interface IProps {
 const ModalEditComment = ({ idUser }: IProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { user } = useContext(AuthContext)
-  console.log(idUser === user.id)
-
   return (
     <>
       {idUser === user.id && <IconButton aria-label="Editar descrição" icon={<AiOutlineEdit />} onClick={onOpen} bg={'none'} />}
