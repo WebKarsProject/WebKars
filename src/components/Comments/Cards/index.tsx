@@ -1,11 +1,3 @@
-import {
-  Avatar,
-  Box,
-  Icon,
-  IconButton,
-  ListItem,
-  Text,
-} from "@chakra-ui/react";
 import { useCallback, useContext, useEffect } from "react";
 import { commentContext } from "../../../contexts/Comment/commentContext";
 import { Spinner } from "@chakra-ui/react";
@@ -13,7 +5,7 @@ import { AuthContext } from "../../../contexts/Auth/AuthContext";
 import { formatDistance } from "date-fns";
 import { pt } from "date-fns/locale";
 import ModalEditComment from "../../ModalEditComment";
-import { AiOutlineEdit } from "react-icons/ai";
+import { Avatar, Box, Icon, ListItem, Text } from "@chakra-ui/react";
 
 const timeAgo = (timestamp: string) => {
   const commentDate = new Date(timestamp);
