@@ -1,27 +1,11 @@
-import {
-  Avatar,
-  Box,
-  Icon,
-  IconButton,
-  ListItem,
-  Text,
-} from '@chakra-ui/react';
-import { useCallback, useContext, useEffect } from 'react';
-import { commentContext } from '../../../contexts/Comment/commentContext';
-import { Spinner } from '@chakra-ui/react';
-import { AuthContext } from '../../../contexts/Auth/AuthContext';
-import { formatDistance } from 'date-fns';
-import { pt } from 'date-fns/locale';
-import ModalEditComment from '../../ModalEditComment';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { Avatar, Box, Icon, ListItem, Text } from "@chakra-ui/react";
 import { useCallback, useContext, useEffect } from "react";
 import { commentContext } from "../../../contexts/Comment/commentContext";
 import { Spinner } from "@chakra-ui/react";
 import { AuthContext } from "../../../contexts/Auth/AuthContext";
 import { formatDistance } from "date-fns";
 import { pt } from "date-fns/locale";
-
+import ModalEditComment from "../../ModalEditComment";
+import { Avatar, Box, Icon, ListItem, Text } from "@chakra-ui/react";
 
 const timeAgo = (timestamp: string) => {
   const commentDate = new Date(timestamp);
@@ -68,10 +52,7 @@ const CardLi = ({ cars }: any) => {
             <Text variant={"body-2-500"}>
               {specificComment?.data.user?.name}
             </Text>
-            <Icon
-              viewBox={'0 0 500 120'}
-              color={'grey_scale.grey3'}
-            >
+            <Icon viewBox={"0 0 500 120"} color={"grey_scale.grey3"} />
             <Icon viewBox={"0 0 500 120"} color={"grey_scale.grey3"}>
               <path
                 fill={"currentColor"}
