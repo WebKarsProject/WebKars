@@ -23,7 +23,7 @@ const ProductCard = ({ cars }: any) => {
     <Card
       minW={"300px"}
       maxW={"300px"}
-      maxH={"410px"}
+      maxH={"430px"}
       padding={"1.5px"}
       role={"group"}
       cursor={"pointer"}
@@ -83,7 +83,7 @@ const ProductCard = ({ cars }: any) => {
               letra.toUpperCase()
             )}
           </Text>
-          <Text variant={"body-2-400"} noOfLines={3}>
+          <Text h={"72px"} variant={"body-2-400"} noOfLines={3}>
             {cars?.description}
           </Text>
           {location.pathname !== `/profile/${id}` && (
@@ -95,6 +95,8 @@ const ProductCard = ({ cars }: any) => {
         display={"flex"}
         justifyContent={"space-between"}
         gap={"0.5rem"}
+        p={"none"}
+        margin={"1rem 0"}
       >
         <HStack spacing="12px">
           <Tag bg={"brand.brand4"} color={"brand.brand1"} padding={"0.3rem"}>

@@ -37,10 +37,7 @@ const KenzieApiProvider = ({ children }: IProviderProps) => {
           setAllCars(setData);
         });
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const data = error.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(error);
       }
     };
     getBrands();

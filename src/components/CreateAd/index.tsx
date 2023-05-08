@@ -23,10 +23,7 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
         const response = await Instance.get<any>(`/users/${id}`);
         setDataUser(response.data);
       } catch (err) {
-        if (axios.isAxiosError(err)) {
-          const data = err.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(err);
       }
     };
 
@@ -66,8 +63,9 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
               {dataUser.buyer ? "Comprador" : "Anunciante"}
             </Text>
           </Flex>
-          <Text variant={"body-1-400"}></Text>
-          {dataUser.description ? dataUser.description : "Nada informado"}
+          <Text variant={"body-1-400"} h={"110px"} noOfLines={5}>
+            {dataUser.description ? dataUser.description : "Nada informado"}
+          </Text>
           {!dataUser.buyer && userVerify() && (
             <Button
               w={"160px"}

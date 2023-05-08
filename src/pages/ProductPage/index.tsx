@@ -73,10 +73,7 @@ const ProductPage = () => {
         const response = await Instance.get<any>(`/vehicle/${id}`);
         setDataCar(response.data);
       } catch (err) {
-        if (axios.isAxiosError(err)) {
-          const data = err.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(err);
       }
     };
     fetchData();

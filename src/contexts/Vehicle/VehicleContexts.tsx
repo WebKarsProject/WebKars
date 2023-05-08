@@ -44,10 +44,7 @@ const VehicleProvider = ({ children }: IProviderProps) => {
         setAllCars(data.pagination.vehicles);
         return data.pagination.vehicles;
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const data = error.response?.data as IAxiosData;
-          toast.error(`${data.message}❗❗`);
-        }
+        console.log(error);
       }
     };
     getVehicle();
@@ -57,6 +54,37 @@ const VehicleProvider = ({ children }: IProviderProps) => {
     setLoading(true);
     try {
       await Instance.post("/vehicle", body);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        toast.error(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updateVehicle = async (
+    body: IVehiclePost,
+    vehicleId: string | undefined
+  ) => {
+    setLoading(true);
+    try {
+      await Instance.patch(`/vehicle/${vehicleId}`, body);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const data = error.response?.data as IAxiosData;
+        toast.error(`${data.message}❗❗`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const deleteVehicle = async (vehicleId: string | undefined) => {
+    setLoading(true);
+    try {
+      await Instance.delete(`/vehicle/${vehicleId}`);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
@@ -114,6 +142,8 @@ const VehicleProvider = ({ children }: IProviderProps) => {
         dataCar,
         setDataCar,
         setInfoPage,
+        updateVehicle,
+        deleteVehicle,
       }}
     >
       {children}

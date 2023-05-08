@@ -39,6 +39,11 @@ export interface IVehicleContext {
   dataCar: any;
   setDataCar: Dispatch<any>;
   setInfoPage: Dispatch<SetStateAction<IPageInfo>>;
+  updateVehicle: (
+    body: IVehiclePost,
+    vehicleId: string | undefined
+  ) => Promise<void>;
+  deleteVehicle: (vehicleId: string | undefined) => Promise<void>;
 }
 
 export interface IkenzieApiContext {
