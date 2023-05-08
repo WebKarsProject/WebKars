@@ -35,6 +35,7 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
   const { brand, filterCar, carsBrand, carMark, carModel } =
     useContext(kenzieApiContext);
   const [inputModal, setInputModal] = useState<number[]>([]);
+  const [isPublished, setIsPublished] = useState(true);
 
   const {
     register,
@@ -81,6 +82,8 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
       images: newImages,
       published: true,
     };
+
+    data.published = isPublished;
 
     updateVehicle(data, car?.id);
     onClose();
@@ -246,6 +249,29 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
             errors={errors}
             defaultValue={car?.description}
           />
+
+          <Stack direction={"row"} justifyContent={"space-between"}>
+            <Button
+              variant={isPublished ? "brand1" : "outline2"}
+              padding={"12px 28px 12px 28px"}
+              h={"48px"}
+              w={"100%"}
+              _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
+              onClick={() => setIsPublished(true)}
+            >
+              Sim
+            </Button>
+            <Button
+              variant={isPublished ? "outline2" : "brand1"}
+              padding={"12px 28px 12px 28px"}
+              h={"48px"}
+              w={"100%"}
+              _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
+              onClick={() => setIsPublished(false)}
+            >
+              Não
+            </Button>
+          </Stack>
 
           {inputModal.map((item, index) => {
             return (
