@@ -18,15 +18,22 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import * as Yup from 'yup';
 import { useContext, useState } from 'react';
 import { commentContext } from '../../contexts/Comment/commentContext';
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 
 const validationSchema = Yup.object({
   description: Yup.string().required('A descrição é obrigatória'),
 });
 
-const ModalEditComment = ({ commentId }: any) => {
+interface IProps {
+  idUser: string | undefined;
+  commentId: any | undefined;
+}
+
+const ModalEditComment = ({ commentId, idUser }: IProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [errors, setErrors] = useState({ description: '' });
   const [description, setDescription] = useState('');
+  const { user } = useContext(AuthContext);
 
   const { updateComment, deleteComment } = useContext(commentContext);
 
@@ -52,12 +59,14 @@ const ModalEditComment = ({ commentId }: any) => {
 
   return (
     <>
-      <IconButton
-        aria-label="Editar descrição"
-        icon={<AiOutlineEdit />}
-        onClick={onOpen}
-        bg={'none'}
-      />
+      {idUser === user.id && (
+        <IconButton
+          aria-label="Editar descrição"
+          icon={<AiOutlineEdit />}
+          onClick={onOpen}
+          bg={'none'}
+        />
+      )}
 
       <Modal
         isOpen={isOpen}

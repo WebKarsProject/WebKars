@@ -19,6 +19,7 @@ const timeAgo = (timestamp: string) => {
 const CardLi = ({ cars }: any) => {
   const { getComment, comments } = useContext(commentContext);
   const { loading, setLoading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const idUser = cars.id;
 
@@ -80,7 +81,10 @@ const CardLi = ({ cars }: any) => {
             >
               {timeAgo(cars.createdAt)}
             </Text>
-            <ModalEditComment commentId={cars.id} />
+            <ModalEditComment
+              commentId={cars.id}
+              idUser={specificComment?.data.user.id}
+            />
           </Box>
           <Text
             variant={'body-2-400'}
