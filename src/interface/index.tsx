@@ -1,5 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction } from 'react';
-import { NavigateFunction } from 'react-router-dom';
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { NavigateFunction } from "react-router-dom";
 
 export interface IAuthContext {
   token: string | null;
@@ -15,6 +15,7 @@ export interface IAuthContext {
   deleteUser: () => Promise<void>;
   updateAddress: (body: IAddressUpdate) => Promise<void>;
   userId: string | undefined;
+  date: string;
 }
 
 export interface IResetPasswordContext {
@@ -81,7 +82,7 @@ export interface IUserRes {
   email: string;
   cpf: string;
   phone: string;
-  birthday: Date;
+  birthday: string;
   description?: string;
   buyer?: boolean;
   address: IAddress;
