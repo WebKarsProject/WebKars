@@ -249,28 +249,30 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
             errors={errors}
             defaultValue={car?.description}
           />
-
-          <Stack direction={"row"} justifyContent={"space-between"}>
-            <Button
-              variant={isPublished ? "brand1" : "outline2"}
-              padding={"12px 28px 12px 28px"}
-              h={"48px"}
-              w={"100%"}
-              _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
-              onClick={() => setIsPublished(true)}
-            >
-              Sim
-            </Button>
-            <Button
-              variant={isPublished ? "outline2" : "brand1"}
-              padding={"12px 28px 12px 28px"}
-              h={"48px"}
-              w={"100%"}
-              _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
-              onClick={() => setIsPublished(false)}
-            >
-              Não
-            </Button>
+          <Stack direction={"column"}>
+            <FormLabel>Publicado</FormLabel>
+            <Stack direction={"row"} justifyContent={"space-between"}>
+              <Button
+                variant={isPublished ? "brand1" : "outline2"}
+                padding={"12px 28px 12px 28px"}
+                h={"48px"}
+                w={"100%"}
+                _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
+                onClick={() => setIsPublished(true)}
+              >
+                Sim
+              </Button>
+              <Button
+                variant={isPublished ? "outline2" : "brand1"}
+                padding={"12px 28px 12px 28px"}
+                h={"48px"}
+                w={"100%"}
+                _focus={{ bg: "brand.brand1", color: "grey_scale.whiteFixed" }}
+                onClick={() => setIsPublished(false)}
+              >
+                Não
+              </Button>
+            </Stack>
           </Stack>
 
           {inputModal.map((item, index) => {
@@ -306,25 +308,26 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
           <Stack
             spacing={4}
             direction="row"
-            alignSelf={"end"}
             p={"42px 0px 18px 0px"}
+            justifyContent={"space-between"}
           >
             <Button
               variant={"brand_opacity"}
               color={"grey_scale.grey2"}
               colorScheme="blue"
               onClick={onClose}
+              width={"100%"}
             >
               Cancelar
             </Button>
             <Button
-              bg={"red.500"}
-              variant={"outline2"}
+              variant={"alert"}
               onClick={() => delVehicle(car!.id)}
+              width={"100%"}
             >
               Excluir
             </Button>
-            <Button type={"submit"} variant={"outline2"}>
+            <Button type={"submit"} variant={"outline2"} width={"100%"}>
               Salvar
             </Button>
           </Stack>
