@@ -284,7 +284,7 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
                     : "Imagem da capa"
                 }
                 type={"text"}
-                placeholder={"https://image.com"}
+                placeholder={"Informe a URL"}
                 defaultValue={
                   inputModal.length <= index ? car!.images[index].img_url : ""
                 }

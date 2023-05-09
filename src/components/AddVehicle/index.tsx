@@ -198,7 +198,7 @@ const VehicleModal = () => {
                     : "Imagem da capa"
                 }
                 type={"text"}
-                placeholder={"https://image.com"}
+                placeholder={"Informe a URL"}
                 register={register}
                 errors={errors}
               />
