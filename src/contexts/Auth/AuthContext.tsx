@@ -111,9 +111,8 @@ const AuthProvider = ({ children }: IProviderProps) => {
     Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     setLoading(true);
     try {
-      const { data } = await Instance.delete(`/users/${userId}`);
-      await getMyProfile();
-      setUser(data);
+      await Instance.delete(`/users`);
+      toast.success(`Usuário deletado com sucesso❗❗`);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data as IAxiosData;
