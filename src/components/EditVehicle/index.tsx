@@ -103,7 +103,7 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
         justifyContent={"center"}
         alignContent={"center"}
       >
-        <ModalHeader>Editar anuncio</ModalHeader>
+        <ModalHeader>Editar anúncio</ModalHeader>
         <ModalCloseButton />
 
         <ModalBody
@@ -114,8 +114,13 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
           gap={"24px"}
           onSubmit={handleSubmit(editVehicle)}
         >
-          <Text variant={"body-2-500"} color={"grey_scale.grey0"} pb={"24px"}>
-            Infomações do veículo
+          <Text
+            variant={"body-2-500"}
+            color={"grey_scale.grey0"}
+            pb={"24px"}
+            p="0"
+          >
+            Informações do veículo
           </Text>
 
           <FormControl>
@@ -308,7 +313,7 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
           <Stack
             spacing={4}
             direction="row"
-            p={"42px 0px 18px 0px"}
+            p={"0px 0px 18px 0px"}
             justifyContent={"space-between"}
           >
             <Button

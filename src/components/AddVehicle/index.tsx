@@ -45,7 +45,7 @@ const VehicleModal = () => {
         justifyContent={"center"}
         alignContent={"center"}
       >
-        <ModalHeader>Criar anuncio</ModalHeader>
+        <ModalHeader>Criar anúncio</ModalHeader>
         <ModalCloseButton />
 
         <ModalBody
@@ -57,7 +57,7 @@ const VehicleModal = () => {
           onSubmit={handleSubmit(addVehicle)}
         >
           <Text variant={"body-2-500"} color={"grey_scale.grey0"} pb={"24px"}>
-            Infomações do veículo
+            Informações do veículo
           </Text>
 
           <FormControl>
@@ -218,7 +218,7 @@ const VehicleModal = () => {
             spacing={4}
             direction="row"
             alignSelf={"end"}
-            p={"42px 0px 18px 0px"}
+            p={"0px 0px 18px 0px"}
           >
             <Button
               variant={"brand_opacity"}
