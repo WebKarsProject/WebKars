@@ -1,5 +1,5 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
-import { NavigateFunction } from "react-router-dom";
+import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { NavigateFunction } from 'react-router-dom';
 
 export interface IAuthContext {
   token: string | null;
@@ -59,6 +59,8 @@ export interface ICommentContext {
   getComment: (id: string) => Promise<void>;
   comments: any;
   listComment: boolean;
+  updateComment: (commentId: string, body: IRegisterComment) => Promise<void>;
+  deleteComment: (commentId: string) => Promise<void>;
 }
 
 export interface IUserReq {

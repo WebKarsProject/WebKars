@@ -11,12 +11,44 @@ import {
   FormControl,
   FormLabel,
   Textarea,
+  Text,
 } from '@chakra-ui/react';
 import { IconButton } from '@chakra-ui/react';
 import { AiOutlineEdit } from 'react-icons/ai';
+import * as Yup from 'yup';
+import { useContext, useState } from 'react';
+import { commentContext } from '../../contexts/Comment/commentContext';
 
-const ModalEditComment = () => {
+const validationSchema = Yup.object({
+  description: Yup.string().required('A descrição é obrigatória'),
+});
+
+const ModalEditComment = ({ commentId }: any) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [errors, setErrors] = useState({ description: '' });
+  const [description, setDescription] = useState('');
+
+  const { updateComment, deleteComment } = useContext(commentContext);
+
+  const handleSubmitUpdate = async (e: any) => {
+    e.preventDefault();
+    try {
+      await validationSchema.validate({ description });
+      setErrors({ description: '' });
+
+      await updateComment(commentId, { description });
+      onClose();
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        setErrors({ description: error.message });
+      }
+    }
+  };
+
+  const handleSubmitDelete = async () => {
+    deleteComment(commentId);
+    onClose();
+  };
 
   return (
     <>
@@ -38,20 +70,31 @@ const ModalEditComment = () => {
           <ModalBody>
             <FormControl id="description">
               <FormLabel>Descrição</FormLabel>
-              <Textarea placeholder="Digite a descrição aqui..." />
+              <Textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Digite a descrição aqui..."
+              />
+              {errors.description && (
+                <Text color="red.500">{errors.description}</Text>
+              )}
             </FormControl>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter gap="10px">
             <Button
               colorScheme="blue"
               mr={3}
-              onClick={onClose}
+              onClick={handleSubmitUpdate}
+              type="submit"
             >
-              Salvar
+              Editar
             </Button>
             <Button
               variant="ghost"
-              onClick={onClose}
+              onClick={handleSubmitDelete}
+              type="submit"
+              bg="feedback.alert2"
+              color="feedback.alert1"
             >
               Excluir
             </Button>
