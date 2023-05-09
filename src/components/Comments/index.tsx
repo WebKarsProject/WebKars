@@ -22,7 +22,7 @@ const Comments = () => {
       >
         Comentários
       </Text>
-      <Box>
+      <Box key={dataCar.comments.id}>
         {dataCar.comments.map((cars: any) => (
           <CardLi
             key={cars.id}
