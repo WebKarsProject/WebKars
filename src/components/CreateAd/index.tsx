@@ -22,8 +22,8 @@ const CreateAd = ({ onOpen }: IModalCreateAd) => {
       try {
         const response = await Instance.get<any>(`/users/${id}`);
         setDataUser(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     };
 
