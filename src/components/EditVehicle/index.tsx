@@ -36,6 +36,7 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
     useContext(kenzieApiContext);
   const [inputModal, setInputModal] = useState<number[]>([]);
   const [isPublished, setIsPublished] = useState(true);
+  let imagesFixed: number = 0;
 
   const {
     register,
@@ -51,12 +52,13 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
     if (!!car) {
       carMark(car?.brand);
       const imgs: number[] = [];
-
+      imagesFixed = car?.images.length;
       car?.images.map((i, index) => {
         imgs.push(index);
       });
       setInputModal(imgs);
     }
+    console.log(imagesFixed);
   }, []);
 
   const editVehicle = (body: IVehicleBody) => {
@@ -285,15 +287,11 @@ const EditVehicle = ({ id, isOpen, onClose }: IEditVehicle) => {
               <Inputs
                 key={index}
                 id={`images[${String(index)}]`}
-                label={
-                  index !== 0
-                    ? index + " " + "Imagem da capa"
-                    : "Imagem da capa"
-                }
+                label={index !== 0 ? index + " " + "Imagem" : "Imagem da capa"}
                 type={"text"}
                 placeholder={"Informe a URL"}
                 defaultValue={
-                  inputModal.length <= index ? car!.images[index].img_url : ""
+                  imagesFixed < index ? "" : car!.images[index].img_url
                 }
                 register={register}
                 errors={errors}
