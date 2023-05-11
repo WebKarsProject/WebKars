@@ -21,8 +21,9 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
-const ModalUserUpdate = ({ isOpen, onOpen, onClose }: IModal) => {
-  const { updateUser, deleteUser, user, date } = useContext(AuthContext);
+const ModalUserUpdate = () => {
+  const { updateUser, deleteUser, user, date, isOpen, onOpen, onClose } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
 

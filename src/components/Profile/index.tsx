@@ -49,12 +49,8 @@ const Profile = () => {
 
   return (
     <Menu>
-      {isOpen && (
-        <ModalUserUpdate isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-      )}
-      {isOpen && (
-        <ModalAddressUpdate isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-      )}
+      {isOpen && <ModalUserUpdate />}
+      {isOpen && <ModalAddressUpdate />}
       <MenuButton
         as={IconButton}
         aria-label={"Options"}
@@ -85,11 +81,7 @@ const Profile = () => {
             bg="none"
             w={"100%"}
           >
-            <ModalUserUpdate
-              isOpen={isUserModalOpen}
-              onOpen={openUserModal}
-              onClose={closeUserModal}
-            />
+            <ModalUserUpdate />
             Editar Perfil
           </Link>
         </MenuItem>
@@ -98,11 +90,7 @@ const Profile = () => {
             onClick={openAddressModal}
             _hover={{ textDecoration: "none", background: "none" }}
           >
-            <ModalAddressUpdate
-              isOpen={isAddressModalOpen}
-              onOpen={openAddressModal}
-              onClose={closeAddressModal}
-            />
+            <ModalAddressUpdate />
             Editar Endereço
           </Link>
         </MenuItem>

@@ -1,23 +1,21 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
-  IAddress,
   IAddressUpdate,
   IAuthContext,
   IAxiosData,
   IProviderProps,
   IReqLogin,
   IToken,
-  IUser,
   IUserReq,
   IUserRes,
   IUserUpdateRequest,
 } from "../../interface";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Instance } from "../../services/axios";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import moment from "moment";
+import { useDisclosure } from "@chakra-ui/react";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
@@ -29,6 +27,7 @@ const AuthProvider = ({ children }: IProviderProps) => {
   const [user, setUser] = useState<IUserRes>({} as IUserRes);
   const [userId, setUserId] = useState<string | undefined>();
   const [date, setDate] = useState<string>("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     Instance.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -160,6 +159,9 @@ const AuthProvider = ({ children }: IProviderProps) => {
         deleteUser,
         userId,
         date,
+        isOpen,
+        onOpen,
+        onClose,
       }}
     >
       {children}

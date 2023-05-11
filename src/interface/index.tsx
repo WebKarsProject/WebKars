@@ -16,6 +16,9 @@ export interface IAuthContext {
   updateAddress: (body: IAddressUpdate) => Promise<void>;
   userId: string | undefined;
   date: string;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 export interface IResetPasswordContext {
