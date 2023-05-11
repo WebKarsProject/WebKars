@@ -36,7 +36,7 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const { dataCar, setDataCar } = useContext(VehicleContext);
   const { listComment } = useContext(commentContext);
-  const { token, setLoading, userId } = useContext(AuthContext);
+  const { token, setLoading, userId, loading } = useContext(AuthContext);
   const { id } = useParams<{ id: string }>();
   const [imgUrl, setImgUrl] = useState({} as IUrlImg);
 
@@ -74,7 +74,7 @@ const ProductPage = () => {
       }
     };
     fetchData();
-  }, [id, listComment]);
+  }, [id, listComment, loading]);
 
   if (!dataCar) {
     return <p></p>;
