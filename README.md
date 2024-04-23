@@ -1,12 +1,14 @@
-# Wicomm Sapatella
+# # WebKars
 
-Projeto de um site para o teste prático de desenvolvedor front-end na Wicomm.
+Projeto de um site para venda de veiculos automotivos, com suporte a usuários compradores e anunciantes. 
 
 ## Features
 
-- Projeto componentizado.
-- Tamanho e cor padronizados.
-- Componentes reutilizáveis seguindo o padrão de grandes projetos.
+- Criação de Usarios, tanto comprador e anunciante
+- Edição de perfil do usuario e exclusão.
+- Criação de anuncios, com edição e exclusão.
+- Filtragem de anuncios.
+- Comentarios em cada anuncio.
 
 
 ## Rode Localmente
@@ -14,33 +16,33 @@ Projeto de um site para o teste prático de desenvolvedor front-end na Wicomm.
 Realize o clone do projeto:
 
 ```bash
-  git clone (https://github.com/lfeitosaf/wicomm_sapatella.git)
+    git clone https://github.com/WebKarsProject/WebKars
 ```
 
 Vá para o diretório do projeto:
 
 ```bash
-  cd wicomm_sapatella
+ cd my-project
 ```
 
 Instale as dependencias do projeto:
 
 ```bash
-  npm i
+  yarn
 ```
 
 Inicie o servidor:
 
 ```bash
-  npm run dev
+  yarn dev
 ```
 
 ## Tech Stack
 
 <div style="display: inline_block"><br>
   
-<img src="https://skillicons.dev/icons?i=react,ts,styledcomponents,github,vercel" />
+<img src="https://skillicons.dev/icons?i=react,ts,fastapi,vercel,&perline=8" />
 </div><br>
 
 
-**Client:** React, TypeScript, Styled Components, Framer-Motion, Swiper.
+**Client:** React, TypeScript, ChakraUI, Axios.
